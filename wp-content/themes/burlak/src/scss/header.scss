@@ -157,6 +157,11 @@
   .sidebar {
     display: none;
   }
+  .navigation-visible {
+    .header {
+      box-shadow: none;
+    }
+  }
 }
 
 @media (max-width: 1200px) {
