@@ -63,7 +63,7 @@
 		?>
 	</div>
 	<?php
-		$preloader = get_bloginfo('template_directory').'/logo.svg';
+		$preloader = get_bloginfo('template_directory').'/preloader.svg';
 	?>
 	<div data-preloader-url="<?= $preloader ?>"></div>
 	<div class="preloader preloader__visible">
