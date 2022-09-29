@@ -27,7 +27,7 @@
 <meta property="og:image" content="<?= $image ?>" />
 <meta property="og:image:width" content="200" />
 <meta property="og:image:height" content="200" />
-<meta property="og:url" content="<? the_permalink(); ?>" />
+<meta property="og:url" content="<?php the_permalink(); ?>" />
 <meta name="title" content="<?= $title ?>"/>
 <meta name="logo" content="<?= $logo_image ?>" />
 <link rel="image_src" href="<?= $logo_image ?>" />

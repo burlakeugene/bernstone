@@ -21,7 +21,7 @@
       justify-content: center;
     }
     &__submit {
-      width: auto;
+      width: 100%;
       display: inline-block;
       position: relative;
     }
@@ -35,7 +35,7 @@
       height: 16px;
       margin-top: -8px;
       margin-left: -8px;
-      border: 2px solid var(--theme);
+      border: 2px solid var(--white);
       border-right-color: transparent;
       background-color: transparent;
       &:before {
@@ -63,16 +63,16 @@
 input,
 textarea,
 select {
-  padding: 10px;
+  padding: 14px 20px;
   line-height: 1em;
   background-color: var(--white);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--gray-lightest);
+  border-radius: 50px;
   color: var(--black);
   display: block;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   width: 100%;
-  border-radius: 0;
   appearance: none;
   &::-webkit-input-placeholder {
     color: var(--gray-light);
@@ -88,6 +88,7 @@ select {
   }
   &:focus {
     outline: none;
+    border-color: var(--theme);
   }
 }
 textarea {

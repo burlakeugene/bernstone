@@ -1,59 +1,74 @@
 		</main>
+		<?php
+			$copyrights = get_option('copyrights');
+			$home_url = home_url();
+			$domain = parse_url($home_url)['host'];
+			$phones = get_option('phone');
+			$phones = explode(',', $phones);
+			$address = get_option('address');
+			$worktime = get_option('worktime');
+		?>
 		<footer class="footer">
 			<div class="container">
 				<div class="footer__blocks">
 					<div class="footer__block">
-						<h3>Компания</h3>
+						<?php
+							my_get_template_part('blocks/logo', [
+								'mini' => true
+							])
+						?>
+						<?php if($copyrights): ?>
+							<div class="footer__copyrights">
+								<?= $copyrights ?>
+							</div>
+						<?php endif; ?>
+						<div class="footer__domain">
+							<a href="<?= $home_url ?>" class="ajax">
+								<?= $domain ?>
+							</a>
+						</div>
+					</div>
+					<div class="footer__block">
 						<?php my_get_template_part('blocks/navigation', [
-							'type' => 'footer'
+							'type' => 'footer',
+							'items_wrap' => '<ul>%3$s<li><a class="developer" href="https://marketing.rockotov.ru/" target="_blank">Разработка сайтов</a></li></ul>'
 						]) ?>
 					</div>
 					<div class="footer__block">
-						<h3>Сервис и поддержка</h3>
-						<?php my_get_template_part('blocks/navigation', [
-							'type' => 'footer-2'
-						]) ?>
-					</div>
-					<div class="footer__block footer__block--right">
-						<h3>Контакты</h3>
 						<ul class="footer__contacts">
-							<li><?php get_template_part('icons/pin') ?><?= get_option('address') ?></li>
+							<?php if($address): ?>
+								<li><?= $address ?></li>
+							<?php endif; ?>
+							<?php if($worktime): ?>
+								<li><?= $worktime ?></li>
+							<?php endif; ?>
 							<li>
-								<?php get_template_part('icons/phone') ?>
 								<?php
-									$phones = get_option('phone');
-									$phones = explode(',', $phones);
 									foreach($phones as $index => $phone):
 										?>
-											<!-- <?= $index > 0 ? ', ' : '' ?> -->
-											<a class="footer__phone" href="tel:<?= phone_replace($phone) ?>">
-												<?= $phone ?>
-											</a>
+											<div>
+												<a class="footer__phone" href="tel:<?= phone_replace($phone) ?>">
+													<?= $phone ?>
+												</a>
+											</div>
 										<?php
 									endforeach;
 									?>
 							</li>
 							<li>
-								<?php get_template_part('icons/envelop') ?>
-								<a href="mailto:<?= get_option('email') ?>">
-									<?= get_option('email') ?>
-								</a>
+								<button class="button" data-callback="Замовити проєкт">
+									Замовити проєкт
+								</button>
 							</li>
 						</ul>
-					</div>
-					<div class="footer__block footer__block--wide">
-						<?= get_option('copyrights') ?>
-						<?php my_get_template_part('blocks/navigation', [
-							'type' => 'footer-3',
-							'items_wrap' => '<ul>%3$s<li><a class="developer" href="https://marketing.rockotov.ru/" target="_blank">Разработка сайтов</a></li></ul>'
-						]) ?>
 					</div>
 				</div>
 			</div>
 		</footer>
 		<?php
 			my_get_template_part('blocks/modal', array(
-				'title' => 'Получить предложение',
+				'title' => 'Зворотній зв’язок',
+				'text' => 'Наші спеціалісти допоможуть Вам з вибором: детально опишуть і докладно розкажуть про нашу продукції.',
 				'content' => array(
 					'path' => 'forms/callback',
 				),

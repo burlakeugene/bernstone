@@ -7870,6 +7870,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
   var isMobile = new burlak__WEBPACK_IMPORTED_MODULE_1__.Detection().isMobile;
   var View = burlak__WEBPACK_IMPORTED_MODULE_1__.InView;
   var Notification = new (notic__WEBPACK_IMPORTED_MODULE_4___default())();
+  document.addEventListener('wpcf7mailsent', function (event) {
+    _fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__.Fancybox.close();
+    Notification.addMessage({
+      message: event.detail.apiResponse.message,
+      type: 'success',
+      delay: 5000
+    });
+  });
 
   window.callModal = function (name) {
     _fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__.Fancybox.show([{
@@ -8181,7 +8189,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var maskits = document.querySelectorAll('input[data-maskit], input[name="phone"]');
     maskits.length && maskits.forEach(function (maskit) {
       new (maskit__WEBPACK_IMPORTED_MODULE_2___default())(maskit, {
-        mask: maskit.getAttribute('data-maskit') || '+{7}(000) 000-00-00',
+        mask: maskit.getAttribute('data-maskit') || '+{3}{8} (000) 000-00-0',
         // notFilledClear: true,
         onFilled: function onFilled(scope) {},
         offFilled: function offFilled(scope) {},

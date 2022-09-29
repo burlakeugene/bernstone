@@ -31,6 +31,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const View = Burlak.InView;
   const Notification = new Notic();
 
+  document.addEventListener('wpcf7mailsent', function (event) {
+    Fancybox.close();
+    Notification.addMessage({
+      message: event.detail.apiResponse.message,
+      type: 'success',
+      delay: 5000,
+    });
+  });
+
   window.callModal = function (name) {
     Fancybox.show(
       [
@@ -379,7 +388,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     maskits.length &&
       maskits.forEach((maskit) => {
         new Maskit(maskit, {
-          mask: maskit.getAttribute('data-maskit') || '+{7}(000) 000-00-00',
+          mask: maskit.getAttribute('data-maskit') || '+{3}{8} (000) 000-00-0',
           // notFilledClear: true,
           onFilled: (scope) => {},
           offFilled: (scope) => {},

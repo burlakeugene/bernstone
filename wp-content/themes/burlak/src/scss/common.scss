@@ -16,12 +16,12 @@
 
 ::selection {
   background: var(--theme);
-  color: var(--white);
+  color: var(--gray);
 }
 
 ::-moz-selection {
   background: var(--theme);
-  color: var(--white);
+  color: var(--gray);
 }
 
 ::-webkit-scrollbar {
@@ -112,8 +112,8 @@ a,
   position: relative;
   display: inline-block;
   &[disabled] {
-    background-color: var(--gray-light);
-    border-color: var(--gray-light);
+    background-color: var(--gray-lightest-more);
+    border-color: var(--gray-lightest-more);
     cursor: not-allowed;
   }
   &:not([disabled]):hover {
@@ -171,7 +171,7 @@ a,
   .button {
     cursor: progress;
     pointer-events: none;
-    background: var(--white);
+    background: var(--theme);
     color: transparent;
   }
 }
@@ -1599,14 +1599,23 @@ body.scrolled {
   }
 }
 
+.fancybox {
+  &__backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  &__content :focus:not(.carousel__button.is-close){
+    outline: none;
+  }
+}
+
 @media (max-width: 1400px) {
-  .button{
+  .button {
     padding: 15px 20px;
   }
 }
 
 @media (max-width: 768px) {
-  [data-hide="mobile"]{
+  [data-hide='mobile'] {
     display: none;
   }
   .fixed-button {

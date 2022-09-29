@@ -1,19 +1,31 @@
 .modal {
   width: 100%;
-  max-width: 650px;
-  padding: 30px;
+  max-width: 720px;
+  padding: 60px 120px;
   display: none;
+  border-radius: 50px;
+  &.fancybox__content > .carousel__button.is-close {
+    top: 30px;
+    right: 30px;
+    width: 24px;
+    height: 24px;
+    color: var(--gray-lightest);
+    svg {
+      filter: none;
+    }
+  }
   &__title {
     text-align: center;
-    font-size: 34px;
-    font-weight: 800;
-    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 40px;
+    color: var(--gray);
+    margin-bottom: 30px;
+    padding: 0 30px;
   }
   &__text {
     text-align: center;
-    font-size: 13px;
-    margin-bottom: 30px;
     color: var(--gray-light);
+    margin-bottom: 60px;
   }
 }
 
@@ -48,5 +60,17 @@
   }
   &.fancybox-is-open .fancybox-bg {
     opacity: 1;
+  }
+}
+
+@media(max-width: 768px){
+  .modal{
+    padding: 30px;
+    &__title{
+      font-size: 24px;
+    }
+    &__text{
+      margin-bottom: 30px;
+    }
   }
 }

@@ -10,8 +10,6 @@ if (!function_exists('burlak_setup')) :
       register_nav_menus(array(
         'header' => esc_html__('Header', 'burlak'),
         'footer' => esc_html__('Footer', 'burlak'),
-        'footer-2' => esc_html__('Footer 2', 'burlak'),
-        'footer-3' => esc_html__('Footer 3', 'burlak'),
       ));
       add_theme_support('custom-logo');
     	add_theme_support('custom-header');
@@ -100,13 +98,14 @@ add_action('admin_init', function () {
     register_setting('theme-page-settings', 'common_scripts');
     register_setting('theme-page-settings', 'head_additions');
     register_setting('theme-page-settings', 'theme');
-    register_setting('theme-page-settings', 'instagram');
-    register_setting('theme-page-settings', 'vkontakte');
-    register_setting('theme-page-settings', 'whatsapp');
+    // register_setting('theme-page-settings', 'instagram');
+    // register_setting('theme-page-settings', 'vkontakte');
+    // register_setting('theme-page-settings', 'whatsapp');
+    // register_setting('theme-page-settings', 'email');
     register_setting('theme-page-settings', 'address');
     register_setting('theme-page-settings', 'phone');
-    register_setting('theme-page-settings', 'email');
     register_setting('theme-page-settings', 'copyrights');
+    register_setting('theme-page-settings', 'worktime');
 });
 
 function theme_settings_page()
@@ -130,7 +129,7 @@ function theme_settings_page()
         <div>Theme color</div>
         <input name="theme" type="text" value="<?= esc_attr(get_option('theme')); ?>">
       </label>
-      <label>
+      <!-- <label>
         <div>Instagram</div>
         <input name="instagram" type="text" value="<?= esc_attr(get_option('instagram')); ?>">
       </label>
@@ -143,6 +142,10 @@ function theme_settings_page()
         <input name="whatsapp" type="text" value="<?= esc_attr(get_option('whatsapp')); ?>">
       </label>
       <label>
+        <div>Mail</div>
+        <input type="email" name="email" value="<?= esc_attr(get_option('email')) ?>" />
+      </label> -->
+      <label>
         <div>Address</div>
         <input type="text" name="address" value="<?= esc_attr(get_option('address')) ?>" />
       </label>
@@ -151,12 +154,12 @@ function theme_settings_page()
         <input type="tel" name="phone" value="<?= esc_attr(get_option('phone')) ?>" />
       </label>
       <label>
-        <div>Mail</div>
-        <input type="email" name="email" value="<?= esc_attr(get_option('email')) ?>" />
-      </label>
-      <label>
         <div>Copyrights</div>
         <input type="text" name="copyrights" value="<?= esc_attr(get_option('copyrights')) ?>" />
+      </label>
+      <label>
+        <div>Worktime</div>
+        <input type="text" name="worktime" value="<?= esc_attr(get_option('worktime')) ?>" />
       </label>
       <label>
       <?php submit_button(); ?>
