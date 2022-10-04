@@ -7902,17 +7902,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
   };
 
-  var modalBool = localStorage.getItem('modalBool') || false;
-  document.addEventListener('mouseout', function () {
-    var e = event,
-        t = e.relatedTarget || e.toElement;
+  var MOUSE_OUT_DELAY = 40000;
+  setTimeout(function () {
+    var modalBool = localStorage.getItem('modalBool') || false;
+    document.addEventListener('mouseout', function (event) {
+      var target = event.relatedTarget || event.toElement;
 
-    if ((!t || t.nodeName == 'HTML') && !modalBool) {
-      modalBool = true;
-      localStorage.setItem('modalBool', true);
-      window.callModal('Убрали мышь');
-    }
-  });
+      if ((!target || target.nodeName == 'HTML') && !modalBool) {
+        modalBool = true;
+        localStorage.setItem('modalBool', true);
+        window.callModal('Убрали мышь');
+      }
+    });
+  }, MOUSE_OUT_DELAY);
   window.Notification = Notification;
 
   var routerFunc = function routerFunc() {
@@ -8025,17 +8027,23 @@ document.addEventListener('DOMContentLoaded', function (event) {
         }
       });
     });
-    var sliders = document.querySelectorAll('.slider');
 
     var progressBarCheck = function progressBarCheck(swiper, slider) {
-      console.log(swiper);
-      var percent = 100 / swiper.slides.length * (swiper.activeIndex + 1);
+      var index = swiper.realIndex + 1;
+      var percent = 100 / (swiper.slides.length - 2) * index;
+      var line = slider.querySelector('.progressbar__line div');
+      var count = slider.querySelector('.progressbar__counts__start');
 
-      if (slider.querySelector('.progressbar__line')) {
-        slider.querySelector('.progressbar__line div').style.width = "".concat(percent, "%");
+      if (line) {
+        line.style.width = "".concat(percent, "%");
+      }
+
+      if (count) {
+        count.innerHTML = index < 10 ? "0".concat(index) : index;
       }
     };
 
+    var sliders = document.querySelectorAll('.slider');
     sliders.length && sliders.forEach(function (slider) {
       var config = JSON.parse(slider.dataset.config);
       var sliderInit = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_10___default())(slider.querySelector('.swiper-container'), _objectSpread(_objectSpread({}, config || {}), {}, {
@@ -8058,6 +8066,33 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         }
       }));
+    });
+    var banners = document.querySelectorAll('.banners');
+    banners.length && banners.forEach(function (banner) {
+      var slider = banner.querySelector('.banners__slider');
+      var contents = banner.querySelectorAll('.banners__panel__content');
+      if (!slider) return;
+      var instance = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_10___default())(slider, {
+        loop: true,
+        navigation: {
+          prevEl: banner.querySelector('.swiper-button-prev'),
+          nextEl: banner.querySelector('.swiper-button-next')
+        },
+        autoplay: {
+          delay: 5000
+        },
+        on: {
+          init: function init(instance) {
+            progressBarCheck(instance, banner);
+          },
+          slideChange: function slideChange(instance) {
+            contents.forEach(function (content) {
+              content.dataset.active = +content.dataset.index === +instance.realIndex ? '1' : '';
+            });
+            progressBarCheck(instance, banner);
+          }
+        }
+      });
     });
     var maps = document.querySelectorAll('.map');
     maps.length && maps.forEach(function (map) {

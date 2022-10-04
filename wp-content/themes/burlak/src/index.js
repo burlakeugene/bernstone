@@ -70,16 +70,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     );
   };
 
-  let modalBool = localStorage.getItem('modalBool') || false;
-  document.addEventListener('mouseout', function () {
-    let e = event,
-      t = e.relatedTarget || e.toElement;
-    if ((!t || t.nodeName == 'HTML') && !modalBool) {
-      modalBool = true;
-      localStorage.setItem('modalBool', true);
-      window.callModal('Убрали мышь');
-    }
-  });
+  const MOUSE_OUT_DELAY = 40_000;
+  setTimeout(() => {
+    let modalBool = localStorage.getItem('modalBool') || false;
+    document.addEventListener('mouseout', function (event) {
+      const target = event.relatedTarget || event.toElement;
+      if ((!target || target.nodeName == 'HTML') && !modalBool) {
+        modalBool = true;
+        localStorage.setItem('modalBool', true);
+        window.callModal('Убрали мышь');
+      }
+    });
+  }, MOUSE_OUT_DELAY);
 
   window.Notification = Notification;
 
@@ -209,16 +211,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
       });
 
-    let sliders = document.querySelectorAll('.slider');
     const progressBarCheck = (swiper, slider) => {
-      console.log(swiper);
-      let percent = (100 / swiper.slides.length) * (swiper.activeIndex + 1);
-      if (slider.querySelector('.progressbar__line')) {
-        slider.querySelector(
-          '.progressbar__line div'
-        ).style.width = `${percent}%`;
+      const index = swiper.realIndex + 1;
+      const percent = (100 / (swiper.slides.length - 2)) * index;
+      const line = slider.querySelector('.progressbar__line div');
+      const count = slider.querySelector('.progressbar__counts__start');
+      if (line) {
+        line.style.width = `${percent}%`;
+      }
+      if (count) {
+        count.innerHTML = index < 10 ? `0${index}` : index;
       }
     };
+
+    let sliders = document.querySelectorAll('.slider');
     sliders.length &&
       sliders.forEach((slider) => {
         let config = JSON.parse(slider.dataset.config);
@@ -242,6 +248,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
             },
             slideChange: (swiper) => {
               progressBarCheck(swiper, slider);
+            },
+          },
+        });
+      });
+
+    let banners = document.querySelectorAll('.banners');
+    banners.length &&
+      banners.forEach((banner) => {
+        let slider = banner.querySelector('.banners__slider');
+        let contents = banner.querySelectorAll('.banners__panel__content');
+        if (!slider) return;
+        let instance = new Swiper(slider, {
+          loop: true,
+          navigation: {
+            prevEl: banner.querySelector('.swiper-button-prev'),
+            nextEl: banner.querySelector('.swiper-button-next'),
+          },
+          autoplay: {
+            delay: 5000,
+          },
+          on: {
+            init: (instance) => {
+              progressBarCheck(instance, banner);
+            },
+            slideChange: (instance) => {
+              contents.forEach((content) => {
+                content.dataset.active =
+                  +content.dataset.index === +instance.realIndex ? '1' : '';
+              });
+              progressBarCheck(instance, banner);
             },
           },
         });

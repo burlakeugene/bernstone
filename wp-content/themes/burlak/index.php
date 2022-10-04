@@ -2,6 +2,7 @@
   get_header();
   my_get_template_part('banners/index');
   my_get_template_part('sections/section', [
+    'id' => 'categories',
     'header' => [
       'title' => [
         'text' => get_post_type_object('product')->labels->name,

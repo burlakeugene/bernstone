@@ -47,7 +47,7 @@ function phone_replace($string)
 
 add_image_size('lazy', 50, 50, false);
 add_image_size('lazy-square', 50, 50, true);
-add_image_size('lazy-square', 1450, 650, true);
+add_image_size('banner', 1680, 800, true);
 
 function getMonth($month)
 {
