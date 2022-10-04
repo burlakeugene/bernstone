@@ -3280,8 +3280,7 @@ body.scrolled .fixed-button--top .icon {
   transition: all 0.3s;
 }
 .banners__next__arrow {
-  height: 100%;
-  max-height: 90px;
+  height: 40%;
   width: auto;
 }
 .banners__next__letters {
