@@ -2,16 +2,16 @@ body {
   --container-width: 1700px;
   --white: #ffffff;
   --black: #000000;
-  --background: #E3E3E3;
+  --background: #e3e3e3;
   --theme: #ffe168;
-  --theme-light: #FFEB9C;
-  --theme-dark: #DFC040;
+  --theme-light: #ffeb9c;
+  --theme-dark: #dfc040;
   --red: #ff0000;
   --border-color: #bdbdbd;
   --gray: #444348;
-  --gray-light: #8F8F91;
-  --gray-lightest: #B4B4B6;
-  --gray-lightest-more: #DBDBDB;
+  --gray-light: #8f8f91;
+  --gray-lightest: #b4b4b6;
+  --gray-lightest-more: #dbdbdb;
 }
 
 @import 'js/swiper/swiper.min.css';
@@ -27,6 +27,7 @@ body {
 @import './scss/header';
 @import './scss/banners';
 @import './scss/footer';
+@import './scss/grid';
 
 // woo
 @import './scss/product';

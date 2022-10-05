@@ -455,7 +455,7 @@ a,
   padding: 50px 0;
   &__header {
     color: var(--black);
-    margin-bottom: 50px;
+    margin-bottom: 58px;
     display: flex;
     gap: 15px;
     align-items: center;
@@ -472,6 +472,29 @@ a,
   background-size: cover;
   background-position: center center;
   font-size: 0;
+  margin: 60px 0;
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  &__content {
+    color: var(--white);
+    position: relative;
+    z-index: 2;
+    padding: 60px;
+    transition: all 0.3s;
+    position: absolute;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 40px;
+  }
+  &__text {
+    font-size: 18px;
+    line-height: 1.4em;
+    margin-top: 14px;
+  }
   video {
     opacity: 0;
     width: 100%;
@@ -479,8 +502,8 @@ a,
   }
   &:before {
     content: '';
-    background-color: var(--black);
-    opacity: 0.6;
+    background-color: var(--gray);
+    opacity: 0.5;
     position: absolute;
     top: 0;
     left: 0;
@@ -489,46 +512,36 @@ a,
     z-index: 1;
     transition: all 0.3s;
   }
-  &__text {
-    position: absolute;
-    bottom: 125px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-family: druk;
-    font-size: 48px;
-    color: var(--white);
-    z-index: 2;
-    text-transform: uppercase;
-    line-height: 1em;
-    transition: all 0.3s;
-    transition-delay: 0.3s;
-  }
   &__control {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background-color: transparent;
     z-index: 3;
-    border: none;
-    color: var(--gray-ultra-light);
+    color: var(--white);
     cursor: pointer;
     transition: all 0.3s;
+    background-color: transparent;
+    border: none;
     padding: 0;
+    &__letters {
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      animation: rotate 15s linear infinite;
+    }
     .icon {
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: 54%;
       transform: translate(-50%, -50%);
-      width: 20%;
+      width: 30%;
       z-index: 2;
-      color: var(--theme);
-      svg {
-      }
     }
     &:after,
     &:before {
@@ -545,7 +558,7 @@ a,
       z-index: 1;
     }
     &:before {
-      opacity: 0.2;
+      background-color: rgba(244, 244, 244, 0.2);
     }
     &:after {
       opacity: 0.4;
@@ -553,13 +566,16 @@ a,
       height: 60%;
     }
     &:hover {
-      color: var(--black);
+      color: var(--theme);
+      .video__control__letters {
+        animation-play-state: paused;
+      }
       &:after,
       &:before {
-        background-color: var(--white);
+        background-color: var(--black);
         opacity: 1;
-        width: 80%;
-        height: 80%;
+        width: 90%;
+        height: 90%;
       }
     }
   }
@@ -574,10 +590,10 @@ a,
       transition-delay: 0.3s;
     }
     .video {
-      &__text {
+      &__content {
         opacity: 0;
         visibility: hidden;
-        bottom: 0;
+        transform: translateY(-50px);
       }
       &__control {
         opacity: 0;
@@ -1509,17 +1525,11 @@ body.scrolled {
 }
 
 .title {
-  font-size: 60px;
-  color: var(--theme);
-  text-transform: uppercase;
+  font-size: 40px;
+  color: var(--gray);
+  font-weight: 500;
   &--mini {
-    font-size: 40px;
-  }
-  &__light {
-    color: var(--white);
-  }
-  &__dark {
-    color: var(--gray-dark);
+    font-size: 30px;
   }
 }
 

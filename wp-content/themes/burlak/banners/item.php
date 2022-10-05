@@ -21,6 +21,9 @@
       <a <?= $fields['external'] ? '_blank' : '' ?>
         class="button button--dark <?= $fields['external'] ? '' : 'ajax' ?>"
         href="<?= $fields['link'] ?>"
+        <?php if($fields['external']):?>
+          target="_blank"
+        <?php endif; ?>
       >
         Подробнее
       </a>

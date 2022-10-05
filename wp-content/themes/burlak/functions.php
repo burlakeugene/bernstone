@@ -48,6 +48,7 @@ function phone_replace($string)
 add_image_size('lazy', 50, 50, false);
 add_image_size('lazy-square', 50, 50, true);
 add_image_size('banner', 1680, 800, true);
+add_image_size('grid', 390, 390, true);
 
 function getMonth($month)
 {
@@ -272,7 +273,7 @@ function woo_settings(){
 
   $get_post_type = get_post_type_object('product');
   $labels = $get_post_type->labels;
-  $labels->name = 'Каталог товаров';
+  $labels->name = 'Категорії продукції';
 }
 add_action('init', 'woo_settings');
 
