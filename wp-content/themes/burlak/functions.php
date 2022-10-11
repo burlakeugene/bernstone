@@ -49,6 +49,7 @@ add_image_size('lazy', 50, 50, false);
 add_image_size('lazy-square', 50, 50, true);
 add_image_size('banner', 1680, 800, true);
 add_image_size('grid', 390, 390, true);
+add_image_size('article', 530, 380, true);
 
 function getMonth($month)
 {
@@ -66,7 +67,7 @@ function my_query($query){
       return;
   }
   if (!is_admin() && is_post_type_archive('articles')) {
-      $query->set('posts_per_page', 8);
+      $query->set('posts_per_page', 12);
       return;
   }
 }
@@ -183,11 +184,25 @@ function settings(){
     array(
       'label' => 'Баннер',
       'labels' => array(
-        'menu_name' => 'Баннеры'
+        'menu_name' => 'Баннеры',
       ),
       'public' => true,
       'has_archive' => false,
       'supports' => array('title', 'custom-fields')
+    )
+  );
+
+  register_post_type(
+    'articles',
+    array(
+      'label' => 'Новини та статті',
+      'labels' => array(
+        'menu_name' => 'Новости',
+        'link_name' => 'Дивитися усі новини'
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'supports' => array('title', 'custom-fields', 'excerpt', 'editor', 'thumbnail')
     )
   );
 }
@@ -274,6 +289,7 @@ function woo_settings(){
   $get_post_type = get_post_type_object('product');
   $labels = $get_post_type->labels;
   $labels->name = 'Категорії продукції';
+  $labels->link_name = 'Дивитися усі категорії';
 }
 add_action('init', 'woo_settings');
 

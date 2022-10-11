@@ -154,6 +154,12 @@ a,
       background-color: var(--theme);
     }
   }
+  &--border {
+    border: 1px solid var(--gray);
+    &:not([disabled]):hover {
+      border: 1px solid var(--gray);
+    }
+  }
   &--loader {
     .icon {
       position: absolute;

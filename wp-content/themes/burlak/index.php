@@ -8,7 +8,7 @@
         'text' => get_post_type_object('product')->labels->name,
       ],
       'link' => [
-        'text' => 'Дивитися усі категорії',
+        'text' => get_post_type_object('product')->labels->link_name,
         'ajax' => true,
         'href' => get_permalink(wc_get_page_id('shop')),
       ]
@@ -21,5 +21,6 @@
     ]
   ]);
   get_template_part('video/index');
+  get_template_part('articles/index');
   get_footer();
 ?>
