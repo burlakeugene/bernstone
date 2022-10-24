@@ -22,5 +22,10 @@
   ]);
   get_template_part('video/index');
   get_template_part('articles/index');
+  my_get_template_part('sections/section', [
+    'content' => [
+      'path' => 'promo/index',
+    ]
+  ]);
   get_footer();
 ?>

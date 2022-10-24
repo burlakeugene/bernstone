@@ -111,6 +111,7 @@ a,
   font-weight: 500;
   position: relative;
   display: inline-block;
+  text-align: center;
   &[disabled] {
     background-color: var(--gray-lightest-more);
     border-color: var(--gray-lightest-more);
@@ -140,7 +141,8 @@ a,
     }
   }
   &--dark {
-    color: var(--black);
+    color: var(--theme);
+    background-color: var(--gray);
     &:not([disabled]):hover {
       color: var(--theme);
       background-color: var(--black);
@@ -1418,22 +1420,22 @@ body.scrolled {
   }
 }
 
-.section {
-  .form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    &__item {
-      flex: 0 0 33.333%;
-      &:last-child {
-        flex: 0 0 100%;
-      }
-      &__submit {
-        width: 100%;
-      }
-    }
-  }
-}
+// .section {
+//   .form {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     &__item {
+//       flex: 0 0 33.333%;
+//       &:last-child {
+//         flex: 0 0 100%;
+//       }
+//       &__submit {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
 
 .navigation {
   padding: 0;
