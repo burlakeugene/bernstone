@@ -27,5 +27,6 @@
       'path' => 'promo/index',
     ]
   ]);
+  my_get_template_part('blocks/content-slider', get_fields(87));
   get_footer();
 ?>

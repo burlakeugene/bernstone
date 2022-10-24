@@ -50,6 +50,7 @@ add_image_size('lazy-square', 50, 50, true);
 add_image_size('banner', 1680, 800, true);
 add_image_size('grid', 390, 390, true);
 add_image_size('article', 530, 380, true);
+add_image_size('slider', 620, 410, true);
 
 function getMonth($month)
 {
