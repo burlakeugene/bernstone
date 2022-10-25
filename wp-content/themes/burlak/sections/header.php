@@ -16,12 +16,15 @@ if($data):
   <div class="container">
   <?php endif; ?>
     <div class="<?= $classes ?>">
+      <?php if($breadcrumbs):?>
+        <?php get_template_part('blocks/breadcrumbs'); ?>
+      <?php endif; ?>
       <?php
         my_get_template_part('blocks/title', $title);
-        ?>
-        <?php if($breadcrumbs):?>
-          <?php get_template_part('blocks/breadcrumbs'); ?>
-        <?php endif; ?>
+      ?>
+      <?php if($breadcrumbs):?>
+        <div></div>
+      <?php endif; ?>
         <?php if($link):
           $linkClasses = 'button button--light';
           if($link['ajax']) $linkClasses .= ' ajax';

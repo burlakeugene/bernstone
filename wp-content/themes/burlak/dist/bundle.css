@@ -1897,6 +1897,13 @@ a:focus,
 .section__header--center {
   justify-content: center;
 }
+.section__header--page .title {
+  text-align: center;
+  flex: 2;
+}
+.section__header--page * {
+  flex: 1;
+}
 
 .video {
   position: relative;
@@ -2074,7 +2081,6 @@ a:focus,
 .breadcrumbs {
   font-size: 16px;
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   gap: 20px;
 }
@@ -2099,7 +2105,7 @@ a:focus,
   transition: all 0.3s;
 }
 .breadcrumbs a:hover {
-  color: var(--theme);
+  color: var(--black);
 }
 
 .top {
@@ -2864,7 +2870,7 @@ body.scrolled .fixed-button--top .icon {
 }
 
 .title {
-  font-size: 40px;
+  font-size: 48px;
   color: var(--gray);
   font-weight: 500;
 }
@@ -2876,15 +2882,19 @@ body.scrolled .fixed-button--top .icon {
 .breadcrumbs a {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--white);
+  gap: 15px;
+  color: var(--gray);
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
-.link:after,
-.breadcrumbs a:after {
+.link:after, .link:before,
+.breadcrumbs a:after,
+.breadcrumbs a:before {
   content: "";
-  width: 30px;
+  width: 40px;
   height: 15px;
-  background-image: url(assets/0312fdede2701d1abd66.svg);
+  background-image: url(assets/e5124213ea33f13e7a38.svg);
   display: inline-block;
   vertical-align: middle;
   background-size: contain;
@@ -2897,13 +2907,20 @@ body.scrolled .fixed-button--top .icon {
 .breadcrumbs a:hover:after {
   transform: translateX(-15%);
 }
+.link:hover:before,
+.breadcrumbs a:hover:before {
+  transform: translateX(15%);
+}
+
+.breadcrumbs a:after {
+  display: none;
+}
 
 .content {
-  font-size: 16px;
-  line-height: 1.5em;
+  font-size: 15px;
+  line-height: 1.4em;
   padding: 15px;
-  color: var(--black);
-  background-color: var(--white);
+  color: var(--gray);
 }
 .content a {
   color: var(--theme);
@@ -2974,6 +2991,36 @@ body.scrolled .fixed-button--top .icon {
 }
 .content p:last-child {
   margin-bottom: 0;
+}
+.content mark {
+  background: linear-gradient(transparent 25%, var(--theme) 25%, var(--theme) 80%, transparent 80%);
+  color: inherit;
+}
+.content-block--image {
+  margin: 60px 0;
+}
+.content-block--image a {
+  border-radius: 50px;
+  overflow: hidden;
+}
+.content-block--text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 60px auto;
+}
+.content-block--text .content {
+  flex: 1;
+  padding: 0;
+  min-width: calc(50% - 40px);
+  font-size: 18px;
+}
+.content-block--text .content--big {
+  font-size: 40px;
+}
+.content-block--video {
+  margin: 60px 0;
 }
 
 .fancybox__backdrop {
