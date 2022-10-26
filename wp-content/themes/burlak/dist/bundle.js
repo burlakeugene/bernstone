@@ -480,7 +480,7 @@ var Map = /*#__PURE__*/function () {
         iconLayout: 'default#image',
         iconImageHref: data.pin.href,
         iconImageSize: [data.pin.width, data.pin.height],
-        iconImageOffset: [-(data.pin.width / 2), -data.pin.height]
+        iconImageOffset: [-(data.pin.width / 2), -(data.pin.height / 2)]
       });
       return placemark;
     }

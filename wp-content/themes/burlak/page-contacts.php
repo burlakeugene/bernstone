@@ -1,5 +1,4 @@
 <?php
-/* Template name: Конфигурационный шаблон */
   get_header();
   my_get_template_part('sections/section', [
     'header' => [
@@ -10,9 +9,7 @@
       ],
     ],
     'content' => [
-      'wide' => true,
-      'path' => 'page/configurable/content',
-      'props' => get_field('blocks'),
+      'path' => 'contacts/page'
     ]
   ]);
   get_footer();

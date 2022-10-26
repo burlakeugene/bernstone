@@ -101,7 +101,6 @@ a,
 .button {
   cursor: pointer;
   background-color: var(--theme);
-  border: 1px solid var(--theme);
   border-radius: 80px;
   color: var(--gray);
   padding: 16px 50px;
@@ -112,6 +111,7 @@ a,
   position: relative;
   display: inline-block;
   text-align: center;
+  border: none;
   &[disabled] {
     background-color: var(--gray-lightest-more);
     border-color: var(--gray-lightest-more);
@@ -128,7 +128,6 @@ a,
   &--light {
     color: var(--gray);
     background-color: var(--white);
-    border-color: var(--white);
     &:not([disabled]):hover {
       color: var(--gray-light);
       background-color: var(--white);
@@ -146,14 +145,6 @@ a,
     &:not([disabled]):hover {
       color: var(--theme);
       background-color: var(--black);
-    }
-  }
-  &--ghost {
-    background-color: transparent;
-    color: var(--black);
-    &:not([disabled]):hover {
-      color: var(--white);
-      background-color: var(--theme);
     }
   }
   &--border {
@@ -1704,8 +1695,29 @@ body.scrolled {
         }
       }
     }
-    &--video{
+    &--button {
+      max-width: 1100px;
+      margin: -30px auto;
+      & + .content-block--button {
+        margin-top: 50px;
+      }
+    }
+    &--video {
       margin: 60px 0;
+    }
+    &--slider {
+      overflow: hidden;
+      margin: 60px 0;
+      .slider__inner{
+        padding: 0;
+      }
+      .swiper-slide {
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      .swiper-container{
+        overflow: visible;
+      }
     }
   }
 }
@@ -1768,6 +1780,12 @@ body.scrolled {
       line-height: 1.4em;
     }
   }
+}
+
+.map{
+  height: 720px;
+  border-radius: 50px;
+  overflow: hidden;
 }
 
 @media (max-width: 1400px) {
