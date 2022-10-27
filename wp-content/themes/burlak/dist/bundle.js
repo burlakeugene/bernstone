@@ -348,6 +348,153 @@ var CookieToggler = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./src/js/google-map.js":
+/*!******************************!*\
+  !*** ./src/js/google-map.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var Map = /*#__PURE__*/function () {
+  function Map(_ref) {
+    var element = _ref.element,
+        options = _ref.options;
+
+    _classCallCheck(this, Map);
+
+    if (!element || !element.id) return;
+    this.element = element;
+    this.options = options;
+    this.init = this.init.bind(this);
+    this.init();
+  }
+
+  _createClass(Map, [{
+    key: "init",
+    value: function init() {
+      var element = this.element,
+          isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      console.log(element.dataset.center);
+      var centerArr = element.dataset.center.split(',').map(function (item) {
+        return parseFloat(item);
+      });
+      this.map = new google.maps.Map(element, {
+        zoom: 10,
+        center: new google.maps.LatLng(centerArr[0], centerArr[1])
+      });
+      element.mapApi = this.map;
+      element.map = this;
+      var _element$dataset = element.dataset,
+          objects = _element$dataset.objects,
+          point = _element$dataset.point;
+
+      if (point) {
+        point = JSON.parse(point);
+        new google.maps.Marker({
+          position: new google.maps.LatLng(point.coords.lat, point.coords.lng),
+          icon: {
+            url: point.pin.href,
+            scaledSize: new google.maps.Size(point.pin.width, point.pin.height),
+            anchor: new google.maps.Point(point.pin.width / 2, point.pin.height / 2)
+          },
+          map: this.map
+        });
+      } // if (objects) {
+      //   objects = JSON.parse(objects);
+      //   this.setObjects(objects);
+      // }
+      // if (point) {
+      //   point = JSON.parse(point);
+      //   this.setPoint(point);
+      // }
+
+    }
+  }, {
+    key: "setPlacemark",
+    value: function setPlacemark(data) {
+      var options = {
+        balloonContentHeader: data.title
+      };
+
+      if (data.link && data.photo && data.title) {
+        options.balloonContentBody = "<a class=\"map__photo\" href=\"".concat(data.link, "\"><img src=\"").concat(data.photo, "\" alt=\"").concat(data.title, "\"/></a>");
+      }
+
+      if (data.text) {
+        options.balloonContentBody = data.text;
+      }
+
+      var placemark = new ymaps.Placemark([data.coords.lat, data.coords.lng], options, {
+        iconLayout: 'default#image',
+        iconImageHref: data.pin.href,
+        iconImageSize: [data.pin.width, data.pin.height],
+        iconImageOffset: [-(data.pin.width / 2), -(data.pin.height / 2)]
+      });
+      return placemark;
+    }
+  }, {
+    key: "setPoint",
+    value: function setPoint(point) {
+      this.map.geoObjects.removeAll();
+      var placemark = this.setPlacemark({
+        title: point.title,
+        text: point.text,
+        coords: point.coords,
+        pin: point.pin
+      });
+      this.map.geoObjects.add(placemark);
+    }
+  }, {
+    key: "setObjects",
+    value: function setObjects(objects) {
+      var _this = this;
+
+      this.clusterer.removeAll();
+      var geoObjects = [];
+      objects.forEach(function (object) {
+        try {
+          var placemark = {
+            photo: object.fields.photos[0].photo.sizes.medium,
+            title: object.fields.address,
+            link: object.link,
+            coords: object.fields.coords
+          };
+          geoObjects.push(_this.setPlacemark(placemark));
+        } catch (e) {
+          console.log('Error placemark', e, object);
+        }
+      });
+      this.clusterer.add(geoObjects);
+      this.map.geoObjects.add(this.clusterer);
+      var bounds = this.clusterer.getBounds();
+      if (!bounds) return;
+      bounds[0][0] -= 0.02;
+      bounds[0][1] -= 0.02;
+      bounds[1][0] += 0.02;
+      bounds[1][1] += 0.02;
+      this.map.setBounds(bounds, {
+        checkZoomRange: true
+      });
+    }
+  }]);
+
+  return Map;
+}();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Map);
+
+/***/ }),
+
 /***/ "./src/js/helpers.js":
 /*!***************************!*\
   !*** ./src/js/helpers.js ***!
@@ -7821,17 +7968,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var maskit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! maskit */ "./node_modules/maskit/package/bundle.js");
 /* harmony import */ var maskit__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(maskit__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _js_map_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/map.js */ "./src/js/map.js");
-/* harmony import */ var notic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! notic */ "./node_modules/notic/package/bundle.js");
-/* harmony import */ var notic__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(notic__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _js_cookieToggler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/cookieToggler */ "./src/js/cookieToggler.js");
-/* harmony import */ var _js_search__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/search */ "./src/js/search.js");
-/* harmony import */ var _js_cart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/cart */ "./src/js/cart.js");
-/* harmony import */ var _js_request__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/request */ "./src/js/request.js");
-/* harmony import */ var _js_helpers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/helpers */ "./src/js/helpers.js");
-/* harmony import */ var _js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/swiper/swiper.min.js */ "./src/js/swiper/swiper.min.js");
-/* harmony import */ var _js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fancyapps/ui */ "./node_modules/@fancyapps/ui/dist/fancybox.esm.js");
-/* harmony import */ var _fancyapps_ui_dist_fancybox_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fancyapps/ui/dist/fancybox.css */ "./node_modules/@fancyapps/ui/dist/fancybox.css");
+/* harmony import */ var _js_google_map_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/google-map.js */ "./src/js/google-map.js");
+/* harmony import */ var notic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! notic */ "./node_modules/notic/package/bundle.js");
+/* harmony import */ var notic__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(notic__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _js_cookieToggler__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/cookieToggler */ "./src/js/cookieToggler.js");
+/* harmony import */ var _js_search__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/search */ "./src/js/search.js");
+/* harmony import */ var _js_cart__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/cart */ "./src/js/cart.js");
+/* harmony import */ var _js_request__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/request */ "./src/js/request.js");
+/* harmony import */ var _js_helpers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/helpers */ "./src/js/helpers.js");
+/* harmony import */ var _js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/swiper/swiper.min.js */ "./src/js/swiper/swiper.min.js");
+/* harmony import */ var _js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fancyapps/ui */ "./node_modules/@fancyapps/ui/dist/fancybox.esm.js");
+/* harmony import */ var _fancyapps_ui_dist_fancybox_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fancyapps/ui/dist/fancybox.css */ "./node_modules/@fancyapps/ui/dist/fancybox.css");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -7852,12 +8000,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-if (_fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__.Fancybox) {
-  _fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__.Fancybox.defaults.Hash = false;
+
+if (_fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox) {
+  _fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox.defaults.Hash = false;
 }
 
 var setShippingField = function setShippingField(data) {
-  return _js_request__WEBPACK_IMPORTED_MODULE_8__["default"].post({
+  return _js_request__WEBPACK_IMPORTED_MODULE_9__["default"].post({
     url: '?wc-ajax=shipping_set',
     data: data,
     headers: {
@@ -7869,9 +8018,9 @@ var setShippingField = function setShippingField(data) {
 document.addEventListener('DOMContentLoaded', function (event) {
   var isMobile = new burlak__WEBPACK_IMPORTED_MODULE_1__.Detection().isMobile;
   var View = burlak__WEBPACK_IMPORTED_MODULE_1__.InView;
-  var Notification = new (notic__WEBPACK_IMPORTED_MODULE_4___default())();
+  var Notification = new (notic__WEBPACK_IMPORTED_MODULE_5___default())();
   document.addEventListener('wpcf7mailsent', function (event) {
-    _fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__.Fancybox.close();
+    _fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox.close();
     Notification.addMessage({
       message: event.detail.apiResponse.message,
       type: 'success',
@@ -7880,7 +8029,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   });
 
   window.callModal = function (name) {
-    _fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__.Fancybox.show([{
+    _fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox.show([{
       src: '#callback',
       type: 'inline'
     }], {
@@ -7920,7 +8069,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   var routerFunc = function routerFunc() {
     var callbackButtons = document.querySelectorAll('[data-callback]');
     callbackButtons.length && callbackButtons.forEach(function (button) {
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: button,
         event: {
           type: 'click',
@@ -7961,7 +8110,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
       var openButton = dialog.querySelector('.dialog-call'),
           closeButton = dialog.querySelector('.dialog-close');
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: openButton,
         event: {
           type: 'click',
@@ -7972,7 +8121,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         }
       });
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: closeButton,
         event: {
           type: 'click',
@@ -8013,7 +8162,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
     var toggles = document.querySelectorAll('.toggle');
     toggles.length && toggles.forEach(function (toggle) {
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: toggle,
         event: {
           type: 'click',
@@ -8046,7 +8195,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var sliders = document.querySelectorAll('.slider');
     sliders.length && sliders.forEach(function (slider) {
       var config = JSON.parse(slider.dataset.config);
-      var sliderInit = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_10___default())(slider.querySelector('.swiper-container'), _objectSpread(_objectSpread({}, config || {}), {}, {
+      var sliderInit = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default())(slider.querySelector('.swiper-container'), _objectSpread(_objectSpread({}, config || {}), {}, {
         speed: 600,
         observer: true,
         navigation: _objectSpread({
@@ -8072,7 +8221,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       var slider = banner.querySelector('.banners__slider');
       var contents = banner.querySelectorAll('.banners__panel__content');
       if (!slider) return;
-      var instance = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_10___default())(slider, {
+      var instance = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default())(slider, {
         loop: true,
         navigation: {
           prevEl: banner.querySelector('.swiper-button-prev'),
@@ -8096,7 +8245,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
     var maps = document.querySelectorAll('.map');
     maps.length && maps.forEach(function (map) {
-      new _js_map_js__WEBPACK_IMPORTED_MODULE_3__["default"]({
+      // new Map({
+      //   element: map,
+      // });
+      new _js_google_map_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
         element: map
       });
     });
@@ -8111,7 +8263,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         target.style.height = target.scrollHeight + 'px';
       }
 
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: accordionToggle,
         event: {
           type: 'click',
@@ -8156,7 +8308,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var loadMore = document.querySelectorAll('.load-more');
     loadMore.length && loadMore.forEach(function (container) {
       var button = container.querySelector('.load-more__pagination__button');
-      button && (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      button && (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: button,
         event: {
           type: 'click',
@@ -8168,7 +8320,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 list = button.closest('.load-more').querySelector('.load-more__list'),
                 next = navigation.querySelector('.next'),
                 href = next.href;
-            _js_request__WEBPACK_IMPORTED_MODULE_8__["default"].get({
+            _js_request__WEBPACK_IMPORTED_MODULE_9__["default"].get({
               url: href,
               headers: {
                 'Content-Type': 'text/html; charset=utf-8'
@@ -8204,7 +8356,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var selects = document.querySelectorAll('.select');
     selects.length && selects.forEach(function (select) {
       var active = select.querySelector('.select__current');
-      active && (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      active && (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: active,
         event: {
           type: 'click',
@@ -8237,7 +8389,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     videos.length && videos.forEach(function (videoWrapper) {
       var video = videoWrapper.querySelector('video'),
           control = videoWrapper.querySelector('.video__control');
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: control,
         event: {
           type: 'click',
@@ -8247,7 +8399,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         }
       });
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: video,
         event: {
           type: 'play',
@@ -8256,7 +8408,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         }
       });
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: video,
         event: {
           type: 'pause',
@@ -8269,7 +8421,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         }
       });
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: video,
         event: {
           type: 'seeking',
@@ -8278,7 +8430,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         }
       });
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: video,
         event: {
           type: 'seeked',
@@ -8315,7 +8467,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         };
 
         buttons.forEach(function (button) {
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8359,11 +8511,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
     };
 
     fieldsInit();
-    var cart = new _js_cart__WEBPACK_IMPORTED_MODULE_7__["default"]({
+    var cart = new _js_cart__WEBPACK_IMPORTED_MODULE_8__["default"]({
       listeners: function listeners(cart) {
         var products = document.querySelectorAll('.cart__add');
         products.length && products.forEach(function (button) {
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8380,7 +8532,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
         var clearCart = document.querySelectorAll('.cart__clear');
         clearCart.length && clearCart.forEach(function (button) {
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8392,7 +8544,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
         var continueCart = document.querySelectorAll('.cart__continue');
         continueCart.length && continueCart.forEach(function (button) {
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8404,7 +8556,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
         var remove = document.querySelectorAll('.product__remove');
         remove.length && remove.forEach(function (button) {
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8422,7 +8574,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         document.body.classList.remove('navigation-visible');
       }
     });
-    var search = new _js_search__WEBPACK_IMPORTED_MODULE_6__["default"]({
+    var search = new _js_search__WEBPACK_IMPORTED_MODULE_7__["default"]({
       onShow: function onShow() {
         cart.hide();
         document.body.classList.remove('navigation-visible');
@@ -8432,10 +8584,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
         routerFunc();
       }
     });
-    var favorite = new _js_cookieToggler__WEBPACK_IMPORTED_MODULE_5__["default"]({
+    var favorite = new _js_cookieToggler__WEBPACK_IMPORTED_MODULE_6__["default"]({
       key: 'favorite'
     });
-    var compare = new _js_cookieToggler__WEBPACK_IMPORTED_MODULE_5__["default"]({
+    var compare = new _js_cookieToggler__WEBPACK_IMPORTED_MODULE_6__["default"]({
       key: 'compare'
     });
     window.compare = compare;
@@ -8451,7 +8603,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               valueDom = count.querySelector('.' + instance.key + '__count__value'),
               labelDom = count.querySelector('.' + instance.key + '__count__label');
           if (valueDom) valueDom.innerHTML = value;
-          if (labelDom) labelDom.innerHTML = (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.declension)(value);
+          if (labelDom) labelDom.innerHTML = (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.declension)(value);
         });
       };
 
@@ -8462,7 +8614,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         buttonsAdd && buttonsAdd.forEach(function (button) {
           var id = button.dataset.id;
           if (!id) return;
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8498,7 +8650,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           });
         });
         buttonsClear.length && buttonsClear.forEach(function (button) {
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8515,7 +8667,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         buttonRemove.length && buttonRemove.forEach(function (button) {
           var id = button.dataset.id;
           if (!id) return;
-          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+          (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
             target: button,
             event: {
               type: 'click',
@@ -8532,7 +8684,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     var shippingSets = document.querySelectorAll('[data-set-shipping]');
     shippingSets.length && shippingSets.forEach(function (target) {
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_9__.eventDecorator)({
+      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: target,
         event: {
           type: 'change',
@@ -8584,7 +8736,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     preloader: true,
     beforeInit: function beforeInit() {},
     beforeRendered: function beforeRendered() {
-      _fancyapps_ui__WEBPACK_IMPORTED_MODULE_11__.Fancybox.close();
+      _fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox.close();
     },
     afterRendered: function afterRendered(appContainer) {
       window.scrollTo(0, 0);

@@ -1708,14 +1708,14 @@ body.scrolled {
     &--slider {
       overflow: hidden;
       margin: 60px 0;
-      .slider__inner{
+      .slider__inner {
         padding: 0;
       }
       .swiper-slide {
         border-radius: 50px;
         overflow: hidden;
       }
-      .swiper-container{
+      .swiper-container {
         overflow: visible;
       }
     }
@@ -1782,10 +1782,8 @@ body.scrolled {
   }
 }
 
-.map{
-  height: 720px;
-  border-radius: 50px;
-  overflow: hidden;
+.map {
+  min-height: 720px;
 }
 
 @media (max-width: 1400px) {

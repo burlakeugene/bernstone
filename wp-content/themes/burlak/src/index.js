@@ -2,6 +2,7 @@ import Router from './js/router.js';
 import * as Burlak from 'burlak';
 import Maskit from 'maskit';
 import Map from './js/map.js';
+import GoogleMap from './js/google-map.js';
 import Notic from 'notic';
 import CookieToggler from './js/cookieToggler';
 import Search from './js/search';
@@ -286,8 +287,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let maps = document.querySelectorAll('.map');
     maps.length &&
       maps.forEach((map) => {
-        new Map({
-          element: map,
+        // new Map({
+        //   element: map,
+        // });
+        new GoogleMap({
+          element: map
         });
       });
 

@@ -104,7 +104,7 @@ add_action('admin_init', function () {
     // register_setting('theme-page-settings', 'instagram');
     // register_setting('theme-page-settings', 'vkontakte');
     // register_setting('theme-page-settings', 'whatsapp');
-    // register_setting('theme-page-settings', 'email');
+    register_setting('theme-page-settings', 'email');
     register_setting('theme-page-settings', 'address');
     register_setting('theme-page-settings', 'phone');
     register_setting('theme-page-settings', 'copyrights');
@@ -144,10 +144,11 @@ function theme_settings_page()
         <div>Whatsapp</div>
         <input name="whatsapp" type="text" value="<?= esc_attr(get_option('whatsapp')); ?>">
       </label>
+       -->
       <label>
         <div>Mail</div>
         <input type="email" name="email" value="<?= esc_attr(get_option('email')) ?>" />
-      </label> -->
+      </label>
       <label>
         <div>Address</div>
         <input type="text" name="address" value="<?= esc_attr(get_option('address')) ?>" />
