@@ -290,9 +290,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // new Map({
         //   element: map,
         // });
-        new GoogleMap({
-          element: map
+        const mapApi = new GoogleMap({
+          element: map,
         });
+        const buttons = map
+          .closest('.contacts')
+          ?.querySelectorAll('.contacts__button');
+        buttons?.length &&
+          buttons.forEach((button) => {
+            eventDecorator({
+              target: button,
+              event: {
+                type: 'click',
+                body: (event) => {
+                  let { index } = event.target.dataset;
+                  mapApi.setActive(index);
+                },
+              },
+            });
+          });
       });
 
     let accordions = document.querySelectorAll('.accordion');

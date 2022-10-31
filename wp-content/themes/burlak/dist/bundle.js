@@ -377,26 +377,28 @@ var Map = /*#__PURE__*/function () {
     this.options = options;
     this.init = this.init.bind(this);
     this.init();
+    return this;
   }
 
   _createClass(Map, [{
     key: "init",
     value: function init() {
+      var _this = this;
+
       var element = this.element,
           isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      console.log(element.dataset.center);
-      var centerArr = element.dataset.center.split(',').map(function (item) {
-        return parseFloat(item);
-      });
       this.map = new google.maps.Map(element, {
-        zoom: 10,
-        center: new google.maps.LatLng(centerArr[0], centerArr[1])
+        zoom: 10
       });
       element.mapApi = this.map;
       element.map = this;
       var _element$dataset = element.dataset,
-          objects = _element$dataset.objects,
-          point = _element$dataset.point;
+          point = _element$dataset.point,
+          points = _element$dataset.points;
+      this.infoWindow = new google.maps.InfoWindow();
+      this.infoWindow.addListener('closeclick', function () {
+        _this.setActive(-1);
+      });
 
       if (point) {
         point = JSON.parse(point);
@@ -409,82 +411,58 @@ var Map = /*#__PURE__*/function () {
           },
           map: this.map
         });
-      } // if (objects) {
-      //   objects = JSON.parse(objects);
-      //   this.setObjects(objects);
-      // }
-      // if (point) {
-      //   point = JSON.parse(point);
-      //   this.setPoint(point);
-      // }
-
-    }
-  }, {
-    key: "setPlacemark",
-    value: function setPlacemark(data) {
-      var options = {
-        balloonContentHeader: data.title
-      };
-
-      if (data.link && data.photo && data.title) {
-        options.balloonContentBody = "<a class=\"map__photo\" href=\"".concat(data.link, "\"><img src=\"").concat(data.photo, "\" alt=\"").concat(data.title, "\"/></a>");
+        this.map.setCenter(new google.maps.LatLng(point.coords.lat, point.coords.lng));
       }
 
-      if (data.text) {
-        options.balloonContentBody = data.text;
+      if (points) {
+        this.markers = [];
+        points = JSON.parse(points);
+        points.forEach(function (point, index) {
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(point.map.coords.lat, point.map.coords.lng),
+            icon: {
+              url: point.map.pin["default"],
+              scaledSize: new google.maps.Size(point.map.pin.width, point.map.pin.height),
+              anchor: new google.maps.Point(point.map.pin.width / 2, point.map.pin.height)
+            },
+            map: _this.map,
+            animation: google.maps.Animation.DROP
+          });
+
+          _this.markers.push({
+            marker: marker,
+            point: point
+          });
+
+          marker.addListener('click', function () {
+            _this.setActive(index);
+          });
+        });
+        var bounds = new google.maps.LatLngBounds();
+        points.forEach(function (point) {
+          bounds.extend(new google.maps.LatLng(point.map.coords.lat, point.map.coords.lng));
+        });
+        this.map.fitBounds(bounds);
       }
-
-      var placemark = new ymaps.Placemark([data.coords.lat, data.coords.lng], options, {
-        iconLayout: 'default#image',
-        iconImageHref: data.pin.href,
-        iconImageSize: [data.pin.width, data.pin.height],
-        iconImageOffset: [-(data.pin.width / 2), -(data.pin.height / 2)]
-      });
-      return placemark;
     }
   }, {
-    key: "setPoint",
-    value: function setPoint(point) {
-      this.map.geoObjects.removeAll();
-      var placemark = this.setPlacemark({
-        title: point.title,
-        text: point.text,
-        coords: point.coords,
-        pin: point.pin
+    key: "setActive",
+    value: function setActive(index) {
+      this.markers.forEach(function (_ref2, currentIndex) {
+        var marker = _ref2.marker,
+            point = _ref2.point;
+        marker.setIcon({
+          url: currentIndex == index ? point.map.pin.active : point.map.pin["default"],
+          scaledSize: new google.maps.Size(point.map.pin.width, point.map.pin.height),
+          anchor: new google.maps.Point(point.map.pin.width / 2, point.map.pin.height)
+        });
       });
-      this.map.geoObjects.add(placemark);
-    }
-  }, {
-    key: "setObjects",
-    value: function setObjects(objects) {
-      var _this = this;
-
-      this.clusterer.removeAll();
-      var geoObjects = [];
-      objects.forEach(function (object) {
-        try {
-          var placemark = {
-            photo: object.fields.photos[0].photo.sizes.medium,
-            title: object.fields.address,
-            link: object.link,
-            coords: object.fields.coords
-          };
-          geoObjects.push(_this.setPlacemark(placemark));
-        } catch (e) {
-          console.log('Error placemark', e, object);
-        }
-      });
-      this.clusterer.add(geoObjects);
-      this.map.geoObjects.add(this.clusterer);
-      var bounds = this.clusterer.getBounds();
-      if (!bounds) return;
-      bounds[0][0] -= 0.02;
-      bounds[0][1] -= 0.02;
-      bounds[1][0] += 0.02;
-      bounds[1][1] += 0.02;
-      this.map.setBounds(bounds, {
-        checkZoomRange: true
-      });
+      var _this$markers$index = this.markers[index],
+          marker = _this$markers$index.marker,
+          point = _this$markers$index.point;
+      this.infoWindow.close();
+      this.infoWindow.setContent("\u0414\u0456\u043B\u0435\u0440<br /><br />".concat(point.map.balloon));
+      this.infoWindow.open(marker.getMap(), marker);
     }
   }]);
 
@@ -8245,11 +8223,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
     var maps = document.querySelectorAll('.map');
     maps.length && maps.forEach(function (map) {
+      var _map$closest;
+
       // new Map({
       //   element: map,
       // });
-      new _js_google_map_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
+      var mapApi = new _js_google_map_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
         element: map
+      });
+      var buttons = (_map$closest = map.closest('.contacts')) === null || _map$closest === void 0 ? void 0 : _map$closest.querySelectorAll('.contacts__button');
+      (buttons === null || buttons === void 0 ? void 0 : buttons.length) && buttons.forEach(function (button) {
+        (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
+          target: button,
+          event: {
+            type: 'click',
+            body: function body(event) {
+              var index = event.target.dataset.index;
+              mapApi.setActive(index);
+            }
+          }
+        });
       });
     });
     var accordions = document.querySelectorAll('.accordion');

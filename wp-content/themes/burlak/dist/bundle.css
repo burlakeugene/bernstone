@@ -2910,7 +2910,6 @@ body.scrolled .fixed-button--top .icon {
 .content {
   font-size: 15px;
   line-height: 1.4em;
-  padding: 15px;
   color: var(--gray);
 }
 .content a {
@@ -3209,8 +3208,8 @@ body.scrolled .fixed-button--top .icon {
 
 .sidebar {
   position: fixed;
-  top: 67px;
-  height: calc(100% - 67px);
+  top: 65px;
+  height: calc(100% - 65px);
   width: 100%;
   max-width: 320px;
   right: 0;
@@ -3800,6 +3799,7 @@ body.scrolled .fixed-button--top .icon {
 
 .contacts {
   display: flex;
+  flex-wrap: wrap;
 }
 .contacts__map {
   flex: 1;
@@ -3857,6 +3857,43 @@ body.scrolled .fixed-button--top .icon {
   text-decoration: underline;
 }
 .contacts__data__block a[href^="mailto:"]:hover {
+  text-decoration: none;
+}
+.contacts__table {
+  overflow: auto;
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: 45px;
+}
+.contacts__table table {
+  width: 100%;
+}
+.contacts__table table th {
+  font-weight: 400;
+  padding: 15px 0;
+  color: var(--gray-light);
+  vertical-align: bottom;
+}
+.contacts__table table td {
+  padding: 30px 0;
+  color: var(--gray);
+  font-size: 18px;
+}
+.contacts__table table td:nth-child(2) {
+  font-weight: 600;
+}
+.contacts__table table th,
+.contacts__table table td {
+  text-align: left;
+  vertical-align: top;
+  padding-right: 5px;
+  border-bottom: 1px solid var(--gray);
+}
+.contacts__table table a {
+  color: inherit;
+  text-decoration: underline;
+}
+.contacts__table table a:hover {
   text-decoration: none;
 }
 

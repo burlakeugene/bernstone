@@ -1,10 +1,11 @@
 <?php
   $map = get_field('map');
-  $map['pin'] = array(
+  $map['pin'] = [
     'href' => get_bloginfo('template_directory').'/src/images/pin-animated.svg',
     'width' => 145,
     'height' => 145
-  );
+  ];
+
   $phones = get_option('phone');
   $phones = explode(',', $phones);
   $address = get_option('address');
@@ -15,7 +16,6 @@
   <div
     class="map contacts__map"
     id="map--contacts"
-    data-center="<?= $map['coords']['lat'] ?>,<?= $map['coords']['lng'] ?>"
     data-point='<?= json_encode($map) ?>'></div>
   <div class="contacts__data">
     <div class="contacts__data__block">

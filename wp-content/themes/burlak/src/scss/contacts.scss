@@ -1,5 +1,6 @@
 .contacts {
   display: flex;
+  flex-wrap: wrap;
   &__map {
     flex: 1;
     border-radius: 50px;
@@ -41,19 +42,56 @@
         font-size: 30px;
         font-weight: 500;
       }
-      a{
+      a {
         color: var(--gray);
         transition: all 0.3s;
         font-weight: 600;
-        &:hover{
+        &:hover {
           color: var(--black);
         }
-        &[href^="mailto:"]{
+        &[href^='mailto:'] {
           font-weight: 400;
           text-decoration: underline;
-          &:hover{
+          &:hover {
             text-decoration: none;
           }
+        }
+      }
+    }
+  }
+  &__table {
+    overflow: auto;
+    width: 100%;
+    flex-shrink: 0;
+    margin-top: 45px;
+    table {
+      width: 100%;
+      th {
+        font-weight: 400;
+        padding: 15px 0;
+        color: var(--gray-light);
+        vertical-align: bottom;
+      }
+      td {
+        padding: 30px 0;
+        color: var(--gray);
+        font-size: 18px;
+        &:nth-child(2) {
+          font-weight: 600;
+        }
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding-right: 5px;
+        border-bottom: 1px solid var(--gray);
+      }
+      a {
+        color: inherit;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
         }
       }
     }
