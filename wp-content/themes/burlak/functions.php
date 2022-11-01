@@ -291,6 +291,7 @@ function woo_settings(){
   $get_post_type = get_post_type_object('product');
   $labels = $get_post_type->labels;
   $labels->name = 'Категорії продукції';
+  $labels->page_title = 'Категорії';
   $labels->link_name = 'Дивитися усі категорії';
 }
 add_action('init', 'woo_settings');
@@ -578,7 +579,7 @@ function my_checkout(){
 }
 add_action('wc_ajax_my_checkout', 'my_checkout');
 
-function getCategories(){
+function getCategories($id = 0){
   $args = array(
     'taxonomy'     => 'product_cat',
     'orderby'      => 'name',
@@ -587,6 +588,7 @@ function getCategories(){
     'hierarchical' => 1,
     'title_li'     => '',
     'hide_empty'   => 1,
+    'parent' => $id
   );
   $categories = get_categories($args);
   return $categories;
@@ -625,4 +627,11 @@ function isAvailable($type){
     'compare' => false
   ];
   return $settings[$type];
+}
+
+function objectToArray($obj){
+  if (is_object($obj)):
+      $object = get_object_vars($obj);
+  endif;
+  return array_map('objectToArray', $object);
 }

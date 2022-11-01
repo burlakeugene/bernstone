@@ -66,6 +66,11 @@
       z-index: 1;
       font-weight: 500;
       font-size: 20px;
+      white-space: nowrap;
+      text-align: center;
+      max-width: calc(100% - 40px);
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     &__label {
       position: absolute;
@@ -98,7 +103,7 @@
           bottom: 50%;
           transform: translate(-50%, 50%);
         }
-        &__label{
+        &__label {
           bottom: 30px;
           opacity: 1;
           visibility: visible;

@@ -3596,6 +3596,11 @@ body.scrolled .fixed-button--top .icon {
   z-index: 1;
   font-weight: 500;
   font-size: 20px;
+  white-space: nowrap;
+  text-align: center;
+  max-width: calc(100% - 40px);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .grid__item__label {
   position: absolute;

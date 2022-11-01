@@ -2,6 +2,13 @@
 get_header();
 get_template_part('blocks/shipping');
 $query = get_queried_object();
+$categories = getCategories($query->term_id);
+if($categories):
+  my_get_template_part('product/categories', [
+    'title' => $query->name,
+    'list' => $categories
+  ]);
+else:
 $link = is_tax() ? get_term_link($query->term_id) : get_permalink(wc_get_page_id('shop'));
 // orderby=menu_order&paged=1
 // orderby=popularity&paged=1
@@ -76,5 +83,6 @@ my_get_template_part('sections/header', array(
   )); ?>
 </div>
 <?php
+endif;
 get_footer();
 ?>

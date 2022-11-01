@@ -1,42 +1,45 @@
 <?php
-$categories = getCategories();
+if(!$list){
+	$list = getCategories();
+}
+
+if(!$title){
+	$title = get_post_type_object('product')->labels->page_title;
+}
+
+foreach($list as $index => $item){
+	$fields = get_fields($item);
+	// $description = term_description($item);
+
+	$url = esc_url(get_term_link($item));
+
+	$thumbnail_id = get_term_meta($item->term_id, 'thumbnail_id', true );
+	$icon = wp_get_attachment_url($thumbnail_id);
+	$list[$index] = [
+		'title' => $item->name,
+		'label' => 'Дивитися каталог',
+		'href' => $url,
+		'icon' => [
+			'url' => $icon,
+		],
+		'background' => $fields['background']
+	];
+}
+
+my_get_template_part('sections/section', [
+	'header' => [
+		'breadcrumbs' => true,
+		'modificators' => ['page'],
+		'title' => [
+			'tag' => 'h1',
+			'text' => $title
+		],
+	],
+	'content' => [
+		'path' => 'grid/list',
+		'props' => [
+			'list' => $list
+		]
+	]
+]);
 ?>
-<div class="products__categories">
-	<?php
-    foreach ($categories as $category):
-			$fields = get_fields($category);
-			if($index && !$fields['index']) continue;
-			$url = esc_url(get_term_link($category));
-			$description = term_description($category);
-			$background = $fields['background'];
-			$current_url = home_url($wp->request).'/';
-			?>
-				<div class="products__category__wrapper <?= $current_url === $url ? 'products__category--active' : '' ?>">
-					<a
-						class="products__category ajax"
-						style="background-image: url(<?= $background['sizes']['large'] ?>)"
-						href="<?= $url ?>">
-						<div class="products__category__inner">
-							<div class="products__category__inner__top">
-								<div class="products__category__name">
-									<?= $category->name ?>
-								</div>
-								<div class="products__category__description">
-									<?= $description ?>
-								</div>
-								<div class="products__category__image">
-									<?= woocommerce_subcategory_thumbnail($category); ?>
-								</div>
-							</div>
-							<div class="products__category__inner__bottom">
-								<div class="link">
-									Перейти
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-			<?php
-    endforeach;
-	?>
-</div>
