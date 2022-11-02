@@ -1,4 +1,7 @@
 <?php
+  if(!$data){
+    $data = get_post(get_the_ID());
+  }
   $image = get_the_post_thumbnail_url($data->ID, 'article');
   $date = date_format(date_create($data->post_date), 'd.m.Y');
 ?>

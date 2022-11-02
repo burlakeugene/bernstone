@@ -68,7 +68,7 @@ function my_query($query){
       return;
   }
   if (!is_admin() && is_post_type_archive('articles')) {
-      $query->set('posts_per_page', 12);
+      $query->set('posts_per_page', 9);
       return;
   }
 }

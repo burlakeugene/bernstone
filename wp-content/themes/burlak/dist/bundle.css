@@ -1601,6 +1601,7 @@ a:focus,
 }
 .button--loader.button--loading {
   color: transparent;
+  background: var(--white);
   cursor: progress;
 }
 .button--loader.button--loading .icon {
@@ -1687,10 +1688,10 @@ a:focus,
 .pagination .page-numbers {
   display: inline-block;
   font-size: 14px;
-  width: 89px;
-  height: 57px;
+  width: 80px;
+  height: 50px;
   background-color: var(--white);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--white);
   color: var(--gray-dark);
   margin-left: 15px;
   transition: all 0.3s;
@@ -1701,8 +1702,15 @@ a:focus,
   font-size: 14px;
 }
 .pagination .page-numbers:hover, .pagination .page-numbers.current {
-  border-color: var(--gray-ultra-light);
-  background-color: var(--gray-ultra-light);
+  border-color: var(--theme);
+  background-color: var(--theme);
+  color: var(--black);
+}
+.pagination .page-numbers.dots, .pagination .page-numbers.dots:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--black);
+  width: 25px;
 }
 .pagination .page-numbers.next, .pagination .page-numbers.prev {
   width: auto;
@@ -2060,9 +2068,6 @@ a:focus,
 }
 .load-more__pagination:empty {
   margin: 0;
-}
-.load-more__pagination__button {
-  border: 1px solid var(--border-color);
 }
 .load-more .pagination .prev,
 .load-more .pagination .next {
@@ -3032,6 +3037,11 @@ body.scrolled .fixed-button--top .icon {
 }
 .content-block--slider .swiper-container {
   overflow: visible;
+}
+.content--single-page {
+  padding: 50px;
+  border-radius: 50px;
+  background-color: var(--white);
 }
 
 .fancybox__backdrop {

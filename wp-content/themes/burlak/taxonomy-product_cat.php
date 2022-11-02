@@ -1,6 +1,5 @@
 <?php
 get_header();
-get_template_part('blocks/shipping');
 $query = get_queried_object();
 $categories = getCategories($query->term_id);
 if($categories):
