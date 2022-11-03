@@ -14,9 +14,11 @@
     <div class="article__title">
       <?= $data->post_title ?>
     </div>
-    <div class="article__excerpt">
-      <?= $data->post_excerpt ?>
-    </div>
+    <?php if($data->post_excerpt): ?>
+      <div class="article__excerpt">
+        <?= $data->post_excerpt ?>
+      </div>
+    <?php endif ?>
     <div class="article__button">
       <button class="button button--light button--border">
         Докладніше

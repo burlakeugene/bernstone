@@ -1,0 +1,39 @@
+.call-to-action {
+  margin: 50px 0;
+  padding: 60px;
+  border-radius: 50px;
+  background-color: var(--gray);
+  background-image: url(./images/callToAction.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  &__title{
+    font-size: 30px;
+    color: var(--white);
+    margin-bottom: 30px;
+  }
+  &__inner{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 30px;
+    &__text{
+      color: var(--gray-lightest);
+      padding-top: 5px;
+    }
+    &__form{
+      flex: 1;
+      margin: 0;
+      .form{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        &__item{
+          flex: 1;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+}

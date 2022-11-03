@@ -51,6 +51,7 @@ add_image_size('banner', 1680, 800, true);
 add_image_size('grid', 390, 390, true);
 add_image_size('article', 530, 380, true);
 add_image_size('slider', 620, 410, true);
+add_image_size('print', 330, 380, true);
 
 function getMonth($month)
 {

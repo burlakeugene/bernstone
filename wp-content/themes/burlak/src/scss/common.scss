@@ -287,8 +287,9 @@ a,
       background-color: var(--theme);
       color: var(--black);
     }
-    &.dots{
-      &,&:hover{
+    &.dots {
+      &,
+      &:hover {
         background-color: transparent;
         border-color: transparent;
         color: var(--black);
@@ -662,7 +663,6 @@ a,
       margin: 0;
     }
     &__button {
-      
     }
   }
   .pagination {
@@ -1592,6 +1592,20 @@ body.scrolled {
   }
 }
 
+.link{
+  &:before{
+    display: none;
+  }
+  &:after{
+    transform: rotate(180deg);
+  }
+  &:hover{
+    &:after {
+      transform: translateX(-15%) rotate(180deg);;
+    }
+  }
+}
+
 .content {
   font-size: 15px;
   line-height: 1.4em;
@@ -1729,10 +1743,49 @@ body.scrolled {
       }
     }
   }
-  &--single-page{
-    padding: 50px;
-    border-radius: 50px;
-    background-color: var(--white);
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    &__inner {
+      padding: 50px;
+      border-radius: 50px;
+      background-color: var(--white);
+      flex: 1;
+    }
+    &__sidebar {
+      width: 500px;
+      flex-shrink: 0;
+      padding: 50px;
+      border-radius: 50px;
+      background-color: var(--white);
+      h2{
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.preview {
+  &s {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  &__title {
+    color: var(--black);
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+    display: block;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  &__excerpt{
+    margin: 15px 0;
   }
 }
 
