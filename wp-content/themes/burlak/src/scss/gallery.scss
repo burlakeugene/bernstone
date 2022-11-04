@@ -1,0 +1,36 @@
+.gallery.gallery--page{
+  text-align: left;
+  .gallery{
+    &__buttons{
+      display: flex;
+      gap: 10px;
+    }
+    &__viewer{
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 30px;
+      &__image{
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      &__list{
+        display: flex;
+        gap: 30px 40px;
+        flex-wrap: wrap;
+        a{
+          border-radius: 25px;
+          overflow: hidden;
+          width: calc(100% / 6 - (5 * 40px) / 6);
+          flex-shrink: 0;
+          opacity: 0.5;
+          transition: all 0.3s;
+          &:hover,
+          &.active{
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

@@ -52,6 +52,8 @@ add_image_size('grid', 390, 390, true);
 add_image_size('article', 530, 380, true);
 add_image_size('slider', 620, 410, true);
 add_image_size('print', 330, 380, true);
+add_image_size('gallery-item', 250, 160, true);
+add_image_size('gallery-item-lazy', 50, 32, true);
 
 function getMonth($month)
 {
@@ -64,7 +66,7 @@ function my_query($query){
       $query->set('posts_per_page',
       $query->query['numberposts'] ?
         $query->query['numberposts'] : $_GET['posts_per_page'] ?
-          $_GET['posts_per_page'] : 12
+          $_GET['posts_per_page'] : -1
       );
       return;
   }

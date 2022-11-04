@@ -4051,6 +4051,40 @@ body.scrolled .fixed-button--top .icon {
   padding: 0;
 }
 
+.gallery.gallery--page {
+  text-align: left;
+}
+.gallery.gallery--page .gallery__buttons {
+  display: flex;
+  gap: 10px;
+}
+.gallery.gallery--page .gallery__viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
+}
+.gallery.gallery--page .gallery__viewer__image {
+  border-radius: 50px;
+  overflow: hidden;
+}
+.gallery.gallery--page .gallery__viewer__list {
+  display: flex;
+  gap: 30px 40px;
+  flex-wrap: wrap;
+}
+.gallery.gallery--page .gallery__viewer__list a {
+  border-radius: 25px;
+  overflow: hidden;
+  width: calc(16.6666666667% - 33.3333333333px);
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+.gallery.gallery--page .gallery__viewer__list a:hover, .gallery.gallery--page .gallery__viewer__list a.active {
+  opacity: 1;
+}
+
 .products__categories {
   display: flex;
   flex-wrap: wrap;
