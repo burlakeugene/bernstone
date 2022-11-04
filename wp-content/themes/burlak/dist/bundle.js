@@ -8736,10 +8736,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var galleries = document.querySelectorAll('.gallery--page');
     galleries.length && galleries.forEach(function (gallery) {
       var view = gallery.querySelector('.gallery__viewer__image');
-      var viewLink = view.querySelector('a');
-      var viewImage = viewLink.querySelector('img');
-      var navigation = view.querySelector('.gallery__viewer__image__navigation');
-      var navigationButtons = navigation.querySelectorAll('button[data-direction]');
+      var viewLink = view === null || view === void 0 ? void 0 : view.querySelector('a');
+      var viewImage = viewLink === null || viewLink === void 0 ? void 0 : viewLink.querySelector('img');
+      var navigation = view === null || view === void 0 ? void 0 : view.querySelector('.gallery__viewer__image__navigation');
+      var navigationButtons = navigation === null || navigation === void 0 ? void 0 : navigation.querySelectorAll('button[data-direction]');
       var list = gallery.querySelectorAll('.gallery__viewer__list a');
 
       var fancyboxList = _toConsumableArray(list).map(function (item) {
@@ -8755,7 +8755,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
       };
 
-      navigationButtons.length && navigationButtons.forEach(function (button) {
+      (navigationButtons === null || navigationButtons === void 0 ? void 0 : navigationButtons.length) && navigationButtons.forEach(function (button) {
         (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
           target: button,
           event: {
@@ -8781,7 +8781,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         });
       });
-      (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
+      viewLink && (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
         target: viewLink,
         event: {
           type: 'click',
@@ -8801,6 +8801,50 @@ document.addEventListener('DOMContentLoaded', function (event) {
               e.preventDefault();
               var index = listItem.dataset.index;
               showFancybox(index);
+            }
+          }
+        });
+      });
+      var buttons = gallery.querySelectorAll('[data-gallery-url]');
+      buttons.length && buttons.forEach(function (button) {
+        (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
+          target: button,
+          event: {
+            type: 'click',
+            body: function body(e) {
+              e.preventDefault();
+              var url = button.dataset.galleryUrl;
+              button.classList.add('button--loading');
+              Notification.loadingOn();
+              var viewer = gallery.querySelector('.gallery__viewer');
+              _js_request__WEBPACK_IMPORTED_MODULE_9__["default"].get({
+                url: url,
+                headers: {
+                  'Content-Type': 'text/html; charset=utf-8'
+                }
+              }).then(function (html) {
+                var parser = new DOMParser();
+                html = parser.parseFromString(html, 'text/html');
+                var htmlViewer = html.querySelector('.gallery__viewer');
+                viewer.parentNode.replaceChild(htmlViewer, viewer);
+                history.pushState(null, null, url);
+                buttons.forEach(function (button) {
+                  var isActive = button.dataset.galleryUrl === url;
+                  button.classList.remove('button--loading');
+
+                  if (isActive) {
+                    button.setAttribute('disabled', 1);
+                    button.classList.remove('button--light');
+                    button.classList.add('button--dark');
+                  } else {
+                    button.removeAttribute('disabled');
+                    button.classList.remove('button--dark');
+                    button.classList.add('button--light');
+                  }
+                });
+                routerFunc();
+                Notification.loadingOff();
+              });
             }
           }
         });

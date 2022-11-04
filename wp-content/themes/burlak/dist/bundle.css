@@ -1578,6 +1578,10 @@ a:focus,
   color: var(--theme);
   background-color: var(--black);
 }
+.button--dark[disabled] {
+  background-color: var(--gray);
+  color: var(--white);
+}
 .button--border {
   border: 1px solid var(--gray);
 }
@@ -1600,8 +1604,8 @@ a:focus,
   stroke-width: 4px;
 }
 .button--loader.button--loading {
-  color: transparent;
-  background: var(--white);
+  color: transparent !important;
+  background: var(--white) !important;
   cursor: progress;
 }
 .button--loader.button--loading .icon {
@@ -4093,10 +4097,15 @@ body.scrolled .fixed-button--top .icon {
   border: none;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
+  transition: all 0.3s;
 }
 .gallery.gallery--page .gallery__viewer__image__navigation__button .icon {
   width: 40px;
   flex-shrink: 0;
+}
+.gallery.gallery--page .gallery__viewer__image__navigation__button:hover {
+  background-color: var(--theme);
+  color: var(--black);
 }
 .gallery.gallery--page .gallery__viewer__image__navigation__counter {
   color: var(--gray-light);

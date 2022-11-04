@@ -13,10 +13,16 @@
     <div class="gallery__buttons">
       <?php
         foreach($list as $index => $item):
-          $is_active = $index === $activeIndex;
+          $is_active = $index == $activeIndex;
       ?>
-      <button data-index="<?= $index ?>" class="button <?= $is_active ? 'button--dark': 'button--light' ?>">
+
+      <button
+        data-gallery-url="<?= get_the_permalink().'?index='.$index ?>"
+        class="button button--loader <?= $is_active ? 'button--dark' : 'button--light' ?>"
+        <?= $is_active ? 'disabled' : '' ?>
+      >
         <?= $item->post_title ?>
+        <?php get_template_part('icons/loading') ?>
       </button>
       <?php
         endforeach;
@@ -84,8 +90,6 @@
       endif;
       ?>
     </div>
-  </div>
-
   <?php
   endif;
 ?>

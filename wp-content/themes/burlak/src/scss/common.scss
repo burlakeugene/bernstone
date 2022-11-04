@@ -146,6 +146,10 @@ a,
       color: var(--theme);
       background-color: var(--black);
     }
+    &[disabled]{
+      background-color: var(--gray);
+      color: var(--white);
+    }
   }
   &--border {
     border: 1px solid var(--gray);
@@ -170,8 +174,8 @@ a,
       }
     }
     &.button--loading {
-      color: transparent;
-      background: var(--white);
+      color: transparent !important;
+      background: var(--white) !important;
       cursor: progress;
       .icon {
         transform: translate(-50%, -50%) scale(1);

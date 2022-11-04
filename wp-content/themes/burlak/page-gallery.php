@@ -13,7 +13,9 @@
       'path' => 'gallery/page'
     ]
   ]);
+
   my_get_template_part('blocks/call-to-action', [
     'title' => 'Сподобалось огородження?'
   ]);
+
   get_footer();

@@ -836,12 +836,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     galleries.length &&
       galleries.forEach((gallery) => {
         const view = gallery.querySelector('.gallery__viewer__image');
-        const viewLink = view.querySelector('a');
-        const viewImage = viewLink.querySelector('img');
-        const navigation = view.querySelector(
+        const viewLink = view?.querySelector('a');
+        const viewImage = viewLink?.querySelector('img');
+        const navigation = view?.querySelector(
           '.gallery__viewer__image__navigation'
         );
-        const navigationButtons = navigation.querySelectorAll(
+        const navigationButtons = navigation?.querySelectorAll(
           'button[data-direction]'
         );
 
@@ -858,7 +858,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           });
         };
 
-        navigationButtons.length &&
+        navigationButtons?.length &&
           navigationButtons.forEach((button) => {
             eventDecorator({
               target: button,
@@ -890,17 +890,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
           });
 
-        eventDecorator({
-          target: viewLink,
-          event: {
-            type: 'click',
-            body: (e) => {
-              e.preventDefault();
-              const { index } = e.target.dataset;
-              showFancybox(index);
+        viewLink &&
+          eventDecorator({
+            target: viewLink,
+            event: {
+              type: 'click',
+              body: (e) => {
+                e.preventDefault();
+                const { index } = e.target.dataset;
+                showFancybox(index);
+              },
             },
-          },
-        });
+          });
         list.forEach((listItem) => {
           eventDecorator({
             target: listItem,
@@ -914,6 +915,51 @@ document.addEventListener('DOMContentLoaded', (event) => {
             },
           });
         });
+
+        const buttons = gallery.querySelectorAll('[data-gallery-url]');
+        buttons.length &&
+          buttons.forEach((button) => {
+            eventDecorator({
+              target: button,
+              event: {
+                type: 'click',
+                body: (e) => {
+                  e.preventDefault();
+                  let url = button.dataset.galleryUrl;
+                  button.classList.add('button--loading');
+                  Notification.loadingOn();
+                  const viewer = gallery.querySelector('.gallery__viewer');
+                  Request.get({
+                    url,
+                    headers: {
+                      'Content-Type': 'text/html; charset=utf-8',
+                    },
+                  }).then((html) => {
+                    let parser = new DOMParser();
+                    html = parser.parseFromString(html, 'text/html');
+                    const htmlViewer = html.querySelector('.gallery__viewer');
+                    viewer.parentNode.replaceChild(htmlViewer, viewer);
+                    history.pushState(null, null, url);
+                    buttons.forEach((button) => {
+                      const isActive = button.dataset.galleryUrl === url;
+                      button.classList.remove('button--loading');
+                      if (isActive) {
+                        button.setAttribute('disabled', 1);
+                        button.classList.remove('button--light');
+                        button.classList.add('button--dark');
+                      } else {
+                        button.removeAttribute('disabled');
+                        button.classList.remove('button--dark');
+                        button.classList.add('button--light');
+                      }
+                    });
+                    routerFunc();
+                    Notification.loadingOff();
+                  });
+                },
+              },
+            });
+          });
       });
   };
 
