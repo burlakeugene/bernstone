@@ -831,6 +831,90 @@ document.addEventListener('DOMContentLoaded', (event) => {
           },
         });
       });
+
+    const galleries = document.querySelectorAll('.gallery--page');
+    galleries.length &&
+      galleries.forEach((gallery) => {
+        const view = gallery.querySelector('.gallery__viewer__image');
+        const viewLink = view.querySelector('a');
+        const viewImage = viewLink.querySelector('img');
+        const navigation = view.querySelector(
+          '.gallery__viewer__image__navigation'
+        );
+        const navigationButtons = navigation.querySelectorAll(
+          'button[data-direction]'
+        );
+
+        const list = gallery.querySelectorAll('.gallery__viewer__list a');
+
+        const fancyboxList = [...list].map((item) => ({
+          src: item.href,
+          type: 'image',
+        }));
+
+        const showFancybox = (index) => {
+          Fancybox.show(fancyboxList, {
+            startIndex: index,
+          });
+        };
+
+        navigationButtons.length &&
+          navigationButtons.forEach((button) => {
+            eventDecorator({
+              target: button,
+              event: {
+                type: 'click',
+                body: (e) => {
+                  e.preventDefault();
+                  const { direction } = button.dataset;
+                  const { index } = viewLink.dataset;
+                  let nextIndex = +index + +direction;
+                  if (nextIndex < 0) nextIndex = list.length - 1;
+                  if (nextIndex > list.length - 1) nextIndex = 0;
+                  const indexTargets = view.querySelectorAll(
+                    '[data-current-index]'
+                  );
+                  indexTargets.length &&
+                    indexTargets.forEach((item) => {
+                      let render = nextIndex + 1;
+                      item.innerHTML = `${render <= 9 ? '0' : ''}${render}`;
+                    });
+
+                  const target = list[nextIndex];
+                  const targetImg = target.querySelector('img');
+                  viewLink.dataset.index = nextIndex;
+                  viewImage.src = target.href;
+                  viewImage.alt = targetImg.alt;
+                },
+              },
+            });
+          });
+
+        eventDecorator({
+          target: viewLink,
+          event: {
+            type: 'click',
+            body: (e) => {
+              e.preventDefault();
+              const { index } = e.target.dataset;
+              showFancybox(index);
+            },
+          },
+        });
+        list.forEach((listItem) => {
+          eventDecorator({
+            target: listItem,
+            event: {
+              type: 'click',
+              body: (e) => {
+                e.preventDefault();
+                const { index } = listItem.dataset;
+                showFancybox(index);
+              },
+            },
+          });
+        });
+      });
   };
 
   window.router = new Router({

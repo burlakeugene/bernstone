@@ -15,7 +15,7 @@
         foreach($list as $index => $item):
           $is_active = $index === $activeIndex;
       ?>
-      <button class="button <?= $is_active ? 'button--dark': 'button--light' ?>">
+      <button data-index="<?= $index ?>" class="button <?= $is_active ? 'button--dark': 'button--light' ?>">
         <?= $item->post_title ?>
       </button>
       <?php
@@ -28,20 +28,35 @@
         $images = get_field('images', $data->ID);
         $firstImage = $images[$activeImageIndex]['image'];
         $alt = $firstImage['alt'] ? $firstImage['alt'] : $firstImage['title'];
+        $count = count($images);
+        $count = $count < 10 ? '0'.$count : $count;
+        $currentIndex = $activeImageIndex + 1;
+        $currentIndex = $currentIndex < 10 ? '0'.$currentIndex : $currentIndex;
         ?>
         <div class="gallery__viewer">
           <div class="gallery__viewer__image">
-            <div class="lazy">
-              <a
-                data-view
-                data-gallery-active-index="<?= $activeImageIndex ?>"
-              >
+            <a
+              data-view
+              data-index="<?= $activeImageIndex ?>"
+            >
+              <div class="lazy">
                 <img
                   src="<?= $firstImage['sizes']['lazy'] ?>"
                   data-lazy="<?= $firstImage['sizes']['banner'] ?>"
                   alt="<?= $alt ?>"
                 />
-              </a>
+              </div>
+            </a>
+            <div class="gallery__viewer__image__navigation">
+              <button class="gallery__viewer__image__navigation__button" data-direction="-1">
+                <?php get_template_part('icons/arrow-left-tail') ?>
+              </button>
+              <button class="gallery__viewer__image__navigation__button" data-direction="1">
+                <?php get_template_part('icons/arrow-right-tail') ?>
+              </button>
+              <div class="gallery__viewer__image__navigation__counter">
+                <span data-current-index><?= $currentIndex ?></span> / <?= $count ?>
+              </div>
             </div>
           </div>
           <div class="gallery__viewer__list">
@@ -50,7 +65,7 @@
               $alt = $image['alt'] ? $image['alt'] : $image['title'];
               ?>
               <a
-                class="<?= $activeImageIndex === $index ? 'active' : '' ?>"
+                data-view
                 data-index="<?= $index ?>"
                 href="<?= $image['sizes']['banner'] ?>"
               >
