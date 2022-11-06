@@ -638,3 +638,7 @@ function objectToArray($obj){
   endif;
   return array_map('objectToArray', $object);
 }
+
+function getAlt($image){
+  return $image['alt'] ? $image['alt'] : $image['title'];
+}

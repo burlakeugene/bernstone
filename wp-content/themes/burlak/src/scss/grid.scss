@@ -3,6 +3,14 @@
   gap: 40px;
   flex-wrap: wrap;
   justify-content: center;
+  &__title{
+    flex-shrink: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--gray);
+  }
   &__item {
     position: relative;
     width: calc(25% - 30px);
