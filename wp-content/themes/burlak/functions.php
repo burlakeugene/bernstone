@@ -54,6 +54,9 @@ add_image_size('slider', 620, 410, true);
 add_image_size('print', 330, 380, true);
 add_image_size('gallery-item', 250, 160, true);
 add_image_size('gallery-item-lazy', 50, 32, true);
+add_image_size('material', 200, 200, true);
+add_image_size('color', 160, 160, true);
+add_image_size('price-image', 740, 420, true);
 
 function getMonth($month)
 {
@@ -74,6 +77,10 @@ function my_query($query){
       $query->set('posts_per_page', 9);
       return;
   }
+  if (!is_admin() && is_post_type_archive('price')) {
+    $query->set('posts_per_page', -1);
+    return;
+}
 }
 add_action('pre_get_posts', 'my_query', 1);
 
@@ -208,6 +215,31 @@ function settings(){
       'public' => true,
       'has_archive' => true,
       'supports' => array('title', 'custom-fields', 'excerpt', 'editor', 'thumbnail')
+    )
+  );
+
+  register_post_type(
+    'price',
+    array(
+      'label' => 'Прайс',
+      'labels' => array(
+        'menu_name' => 'Прайс',
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'supports' => array('title', 'custom-fields', 'excerpt', 'editor', 'thumbnail')
+    )
+  );
+
+  register_post_type(
+    'materials',
+    array(
+      'label' => 'Материалы',
+      'labels' => array(
+        'menu_name' => 'Материалы',
+      ),
+      'public' => true,
+      'supports' => array('title', 'custom-fields', 'thumbnail')
     )
   );
 }

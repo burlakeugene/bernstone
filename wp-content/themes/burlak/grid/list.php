@@ -9,7 +9,7 @@
     <?php endif; ?>
     <?php
       foreach($list as $item){
-        my_get_template_part('grid/item', $item);
+        my_get_template_part('grid/item', $item['grid']);
       }
     ?>
   </div>
