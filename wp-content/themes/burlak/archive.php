@@ -20,4 +20,3 @@ my_get_template_part('sections/section', [
 ]);
 get_footer();
 ?>
-?>

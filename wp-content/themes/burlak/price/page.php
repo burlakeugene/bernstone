@@ -28,7 +28,7 @@
               <?php if($template['images']): ?>
                 <div class="price__images">
                   <?php foreach($template['images'] as $image): ?>
-                  <div class="price__image wow fadeInUp">
+                  <div class="price__image">
                     <?php if($image['title']): ?>
                       <h2 class="price__image__title">
                         <?= $image['title'] ?>
@@ -38,9 +38,8 @@
                       <a data-fancybox="image-<?= $index ?>" href="<?= $image['image']['url'] ?>">
                         <div class="lazy">
                           <img
-                            src="<?= $image['photo']['sizes']['lazy-square'] ?>"
+                            src="<?= $image['image']['sizes']['lazy-square'] ?>"
                             data-lazy="<?= $image['image']['sizes']['price-image'] ?>"
-                            title="<?= $image['image']['caption'] ?>"
                             alt="<?= getAlt($image['image']) ?>"
                           />
                         </div>
@@ -54,7 +53,6 @@
           <?php
           endforeach;
         ?>
-      </div>
       </div>
     </div>
   </div>
