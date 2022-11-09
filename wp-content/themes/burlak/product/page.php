@@ -4,115 +4,35 @@
   $sku = $product->get_sku();
   $quantity = 1;
   $image_id = get_post_thumbnail_id($id);
-  $gallery = get_field('gallery');
-  if($gallery){
-    foreach($gallery as $key => $item){
-      $type = $item['item']['type'];
-      $result = array(
-        'preview' => $item['preview'] ? $item['preview']['sizes']['product-mini'] : $item['item']['sizes']['product-mini'],
-        'preview-big' => $item['preview'] ? $item['preview']['sizes']['product-big'] : $item['item']['sizes']['product-big'],
-        'src' => $item['item']['url'],
-        'type' => $type,
-        'alt' => $item['item']['caption'] ? $item['item']['caption'] : $item['item']['title']
-      );
-      $gallery[$key] = $result;
-    }
-  }
-  $galleryActiveIndex = 0;
+  $fields = get_fields();
+  $info = $fields['info'];
+  $related = $product->get_cross_sell_ids();
 ?>
-<div class="container">
-  <div class="product product--page">
-    <div class="product__gallery">
-      <div class="product__gallery__thumbs">
-        <?php foreach($gallery as $index => $item): ?>
-          <div
-            class="product__gallery__thumb"
-            data-type="<?= $item['type'] ?>"
-            data-index="<?= $index ?>"
-            <?= $galleryActiveIndex == $index ? 'data-active' : '' ?>>
-            <?php if($item['type'] == 'video'): ?>
-              <button class="video__control">
-                <?php get_template_part('icons/play') ?>
-              </button>
-            <?php endif; ?>
-            <img src="<?= $item['preview'] ?>" alt="<?= $item['alt'] ?>">
-          </div>
-        <?php endforeach; ?>
-      </div>
-      <div class="product__gallery__items">
-        <?php foreach($gallery as $index => $item): ?>
-          <div
-            data-index="<?= $index ?>"
-            <?= $galleryActiveIndex == $index ? 'data-active' : '' ?>
-            class="product__gallery__item">
-              <?php if($item['type'] == 'video'): ?>
-                <?php
-                  my_get_template_part('blocks/video', array(
-                    'src' => $item['src'],
-                    'preview' => $item['preview-big']
-                  ))
-                ?>
-              <?php else: ?>
-                <a data-fancybox="product" href="<?= $item['src'] ?>">
-                  <img src="<?= $item['preview-big'] ?>" alt="<?= $item['alt'] ?>">
-                </a>
-              <?php endif; ?>
-          </div>
-        <?php endforeach; ?>
-      </div>
+
+<div class="product">
+  <?php
+    my_get_template_part('product/gallery', $product);
+  ?>
+  <div class="tabs">
+    <div class="tabs__buttons">
+      <button data-tab-id="0" class="tabs__button" data-active>
+        <?= $info['tab_first'] ?>
+      </button>
+      <button data-tab-id="1" class="tabs__button" >
+        <?= $info['tab_second'] ?>
+      </button>
     </div>
-    <div class="product__info">
-      <div class="product__title">
-        <h1><?php the_title() ?></h1>
+    <div class="tabs__contents">
+      <div data-tab-id="0" class="tabs__content" data-active>
+        <?php my_get_template_part('page/configurable/content', $info['blocks']); ?>
+        <?php my_get_template_part('product/related', [
+          'list' => $related,
+          'title' => $info['related']['title']
+        ]); ?>
       </div>
-      <?php
-        if($sku):
-        ?>
-        <div class="product__sku">
-          Артикул: <?= $sku ?>
-        </div>
-        <?php
-        endif;
-      ?>
-      <div class="deliver"></div>
-      <div class="product__prices">
-        <div class="product__price product__price--current">
-          <?= wc_price($product->price) ?>
-        </div>
-        <?php if($product->price != $product->regular_price): ?>
-          <div class="product__price product__price--old">
-            <?= wc_price($product->regular_price) ?>
-          </div>
-        <?php endif; ?>
+      <div data-tab-id="1" class="tabs__content">
+        dsadsadas
       </div>
-      <div class="product__cart">
-        <?php my_get_template_part('blocks/field', array(
-          'value' => $quantity,
-          'min' => 1,
-          'step' => 1,
-          'postfix' => ' шт.'
-        )) ?>
-        <?php my_get_template_part('cart/button', array(
-          'classes' => ['product__button', 'product__button--cart'],
-          'title' => $product->get_title(),
-          'id' => $product->get_id()
-        )) ?>
-        <?php my_get_template_part('favorite/button', array(
-          'classes' => ['product__button'],
-          'id' => $product->get_id()
-        )) ?>
-        <?php my_get_template_part('compare/button', array(
-          'classes' => ['product__button'],
-          'id' => $product->get_id()
-        )) ?>
-      </div>
-      <div class="deliver"></div>
-      <div class="product__content">
-        <div class="content">
-          <?php the_content() ?>
-        </div>
-      </div>
-      <a href="#attributes" class="product__scroller scroller">Показать параметры<?php get_template_part('icons/arrow-bottom-tail') ?></a>
     </div>
   </div>
 </div>

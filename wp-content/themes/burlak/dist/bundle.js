@@ -828,7 +828,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       replaced.parentNode.replaceChild(replacement, replaced);
-      if (addToHistory) history.pushState(null, null, href);
+      if (addToHistory) history.pushState({
+        referer: location.href
+      }, null, href);
       self.addLinksEvent(self.options.navItems);
 
       if (self.afterRendered) {
@@ -7993,6 +7995,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 if (_fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox) {
   _fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox.defaults.Hash = false;
+  _fancyapps_ui__WEBPACK_IMPORTED_MODULE_12__.Fancybox.defaults.placeFocusBack = false;
 }
 
 var setShippingField = function setShippingField(data) {
@@ -8849,6 +8852,39 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         });
       });
+    });
+    var productGalleries = document.querySelectorAll('.product__gallery');
+    productGalleries.length && productGalleries.forEach(function (gallery) {
+      var main = gallery.querySelector('.product__gallery__main .swiper');
+      var thumbs = gallery.querySelector('.product__gallery__thumbs');
+
+      if (thumbs) {
+        thumbs.swiper = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default())(thumbs, {
+          spaceBetween: 40,
+          slidesPerView: 6
+        });
+      }
+
+      if (main) {
+        main.swiper = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default())(main, {
+          spaceBetween: 40,
+          thumbs: {
+            swiper: thumbs.swiper
+          },
+          navigation: {
+            prevEl: gallery.querySelector('.swiper-button-prev'),
+            nextEl: gallery.querySelector('.swiper-button-next')
+          },
+          on: {
+            init: function init(instance) {
+              progressBarCheck(instance, gallery);
+            },
+            slideChange: function slideChange(instance) {
+              progressBarCheck(instance, gallery);
+            }
+          }
+        });
+      }
     });
   };
 

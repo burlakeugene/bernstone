@@ -5,7 +5,6 @@ $tags = get_current_tags();
 my_get_template_part('sections/section', [
 	'header' => [
 		'breadcrumbs' => true,
-		'modificators' => ['page'],
 		'title' => [
 			'tag' => 'h1',
 			'text' => post_type_archive_title('', false)

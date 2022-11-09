@@ -467,27 +467,19 @@ a,
 
 .section {
   padding: 50px 0;
+  &--overflow-hidden {
+    overflow: hidden;
+  }
   &__header {
     color: var(--black);
     margin-bottom: 58px;
     display: flex;
-    gap: 15px;
     align-items: center;
-    justify-content: space-between;
-    &--center {
-      justify-content: center;
-    }
-    &--page {
-      .title {
-        text-align: center;
-        flex: 2;
-      }
-      * {
-        flex: 1;
-      }
-      // .breadcrumbs{
-      //   margin-right: auto;
-      // }
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    &--with-link {
+      justify-content: space-between;
     }
   }
 }
@@ -682,6 +674,8 @@ a,
   display: flex;
   align-items: center;
   gap: 20px;
+  width: 100%;
+  flex-shrink: 0;
   &,
   & a {
     color: var(--white);
@@ -1717,7 +1711,6 @@ body.scrolled {
       margin: 60px 0;
     }
     &--slider {
-      overflow: hidden;
       margin: 60px 0;
       .slider__inner {
         padding: 0;

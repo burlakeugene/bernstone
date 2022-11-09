@@ -6,6 +6,9 @@ if($data):
   $tag = $data['tag'] ? $data['tag'] : 'h2';
 
   $classes = 'section__header '.implode(' ', data['classes']);
+  if($link){
+    $classes .= ' section__header--with-link';
+  }
   if($data['modificators']){
     foreach($data['modificators'] as $modificator){
       $classes.= ' section__header--'.$modificator;
@@ -22,9 +25,6 @@ if($data):
       <?php
         my_get_template_part('blocks/title', $title);
       ?>
-      <?php if($breadcrumbs):?>
-        <div></div>
-      <?php endif; ?>
         <?php if($link):
           $linkClasses = 'button button--light';
           if($link['ajax']) $linkClasses .= ' ajax';

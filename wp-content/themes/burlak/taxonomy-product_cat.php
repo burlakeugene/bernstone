@@ -80,7 +80,6 @@ else:
 my_get_template_part('sections/section', [
 	'header' => [
 		'breadcrumbs' => true,
-		'modificators' => ['page'],
 		'title' => [
 			'tag' => 'h1',
 			'text' => $query->name

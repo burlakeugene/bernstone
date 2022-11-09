@@ -15,6 +15,7 @@ import '@fancyapps/ui/dist/fancybox.css';
 
 if (Fancybox) {
   Fancybox.defaults.Hash = false;
+  Fancybox.defaults.placeFocusBack = false;
 }
 
 const setShippingField = (data) => {
@@ -960,6 +961,39 @@ document.addEventListener('DOMContentLoaded', (event) => {
               },
             });
           });
+      });
+
+    const productGalleries = document.querySelectorAll('.product__gallery');
+    productGalleries.length &&
+      productGalleries.forEach((gallery) => {
+        const main = gallery.querySelector('.product__gallery__main .swiper');
+        const thumbs = gallery.querySelector('.product__gallery__thumbs');
+        if (thumbs) {
+          thumbs.swiper = new Swiper(thumbs, {
+            spaceBetween: 40,
+            slidesPerView: 6,
+          });
+        }
+        if (main) {
+          main.swiper = new Swiper(main, {
+            spaceBetween: 40,
+            thumbs: {
+              swiper: thumbs.swiper,
+            },
+            navigation: {
+              prevEl: gallery.querySelector('.swiper-button-prev'),
+              nextEl: gallery.querySelector('.swiper-button-next'),
+            },
+            on: {
+              init: (instance) => {
+                progressBarCheck(instance, gallery);
+              },
+              slideChange: (instance) => {
+                progressBarCheck(instance, gallery);
+              },
+            },
+          });
+        }
       });
   };
 

@@ -57,6 +57,7 @@ add_image_size('gallery-item-lazy', 50, 32, true);
 add_image_size('material', 200, 200, true);
 add_image_size('color', 160, 160, true);
 add_image_size('price-image', 740, 420, true);
+add_image_size('product-card', 270, 270, true);
 
 function getMonth($month)
 {

@@ -2,15 +2,14 @@
 /* Template name: Конфигурационный шаблон */
   get_header();
   my_get_template_part('sections/section', [
+    'modificators' => ['overflow-hidden'],
     'header' => [
       'breadcrumbs' => true,
-      'modificators' => ['page'],
       'title' => [
         'text' => get_the_title(),
       ],
     ],
     'content' => [
-      'wide' => true,
       'path' => 'page/configurable/content',
       'props' => get_field('blocks'),
     ]

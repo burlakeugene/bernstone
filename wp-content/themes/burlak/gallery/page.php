@@ -33,7 +33,6 @@
         $activeImageIndex = 0;
         $images = get_field('images', $data->ID);
         $firstImage = $images[$activeImageIndex]['image'];
-        $alt = $firstImage['alt'] ? $firstImage['alt'] : $firstImage['title'];
         $count = count($images);
         $count = $count < 10 ? '0'.$count : $count;
         $currentIndex = $activeImageIndex + 1;
@@ -49,7 +48,7 @@
                 <img
                   src="<?= $firstImage['sizes']['lazy'] ?>"
                   data-lazy="<?= $firstImage['sizes']['banner'] ?>"
-                  alt="<?= $alt ?>"
+                  alt="<?= getAlt($firstImage); ?>"
                 />
               </div>
             </a>
@@ -68,7 +67,6 @@
           <div class="gallery__viewer__list">
             <?php foreach($images as $index => $image):
               $image = $image['image'];
-              $alt = $image['alt'] ? $image['alt'] : $image['title'];
               ?>
               <a
                 data-view
@@ -79,7 +77,7 @@
                   <img
                     src="<?= $image['sizes']['gallery-item-lazy'] ?>"
                     data-lazy="<?= $image['sizes']['gallery-item'] ?>"
-                    alt="<?= $alt ?>"
+                    alt="<?= getAlt($image) ?>"
                   />
                 </div>
               </a>
