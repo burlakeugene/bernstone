@@ -11,6 +11,16 @@
 ?>
 
 <div class="product">
+  <div class="product__prices" style="display: none;">
+    <div class="product__price product__price--current">
+      <?= wc_price($product->price) ?>
+    </div>
+    <?php if($product->price != $product->regular_price): ?>
+      <div class="product__price product__price--old">
+        <?= wc_price($product->regular_price) ?>
+      </div>
+    <?php endif; ?>
+  </div>
   <?php
     my_get_template_part('product/gallery', $product);
   ?>
