@@ -873,6 +873,9 @@ a,
     transition: all 0.3s;
     border-bottom: 2px solid var(--gray);
     flex: 1;
+    border-radius: 0;
+    font-weight: 400;
+    text-align: center;
     &:hover,
     &[data-active] {
       color: var(--gray-light);
@@ -884,14 +887,10 @@ a,
     overflow: hidden;
   }
   &__content {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
+    display: none;
     width: 100%;
     &[data-active] {
-      opacity: 1;
-      visibility: visible;
-      position: static;
+      display: block;
     }
   }
 }
@@ -1702,7 +1701,7 @@ body.scrolled {
     }
     &--button {
       max-width: 1100px;
-      margin: -30px auto;
+      margin: 60px auto;
       & + .content-block--button {
         margin-top: 50px;
       }

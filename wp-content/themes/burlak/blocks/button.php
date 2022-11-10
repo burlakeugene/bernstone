@@ -1,6 +1,9 @@
 <?php
   if($data):
-    $classes = 'button';
+    if(!$default_class){
+      $default_class = 'button';
+    }
+    $classes = $default_class;
     if($data['classes']){
       $classes .= ' '.$data['classes'];
     }

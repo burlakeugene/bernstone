@@ -8914,7 +8914,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
       var images = document.querySelectorAll('img[srcset]');
       images.forEach(function (img, index) {
         img.outerHTML = img.outerHTML;
-      });
+      }); // if (ym) {
+      //   ym(49313680, 'hit', location.href, {
+      //     title: document.title,
+      //     referer: window.history?.state?.referer,
+      //   });
+      // }
     },
     afterInit: function afterInit() {}
   });
