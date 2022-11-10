@@ -419,7 +419,8 @@ function get_search_result(){
 add_filter('woocommerce_enqueue_styles', '__return_empty_array');
 
 function get_current_tags(){
-    $post_type = get_post_type();
+    // $post_type = get_post_type();
+    $post_type = get_queried_object()->name;
     $tags = get_tags();
     $link = get_post_type_archive_link($post_type);
     $result = $tags ? array(

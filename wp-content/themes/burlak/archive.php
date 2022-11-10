@@ -1,6 +1,6 @@
 <?php
 get_header();
-$post_type = get_post_type();
+$post_type = get_queried_object()->name;
 $tags = get_current_tags();
 my_get_template_part('sections/section', [
 	'header' => [
