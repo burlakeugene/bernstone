@@ -971,8 +971,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const thumbs = gallery.querySelector('.product__gallery__thumbs');
         if (thumbs) {
           thumbs.swiper = new Swiper(thumbs, {
-            spaceBetween: 40,
-            slidesPerView: 6,
+            spaceBetween: 20,
+            slidesPerView: 2,
+            breakpoints: {
+              991: {
+                slidesPerView: 6,
+                spaceBetween: 40,
+              },
+              768: {
+                slidesPerView: 4,
+              }
+            }
           });
         }
         if (main) {

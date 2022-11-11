@@ -106,15 +106,16 @@
     }
   }
   &__color {
-    margin-top: 60px;
     flex-shrink: 0;
-    width: calc(20% - 60px + 60px / 5);
+    width: flexWidth(5, 60px);
     &s {
       display: flex;
+      margin-top: 60px;
       gap: 60px;
       flex-wrap: wrap;
     }
     &__image {
+      text-align: center;
       img {
         border-radius: 50%;
         max-width: 100%;

@@ -20,10 +20,6 @@
           <?php
             foreach($section['items'] as $item){
               my_get_template_part('print/item', $item);
-              my_get_template_part('print/item', $item);
-              my_get_template_part('print/item', $item);
-              my_get_template_part('print/item', $item);
-              my_get_template_part('print/item', $item);
             }
           ?>
         </div>

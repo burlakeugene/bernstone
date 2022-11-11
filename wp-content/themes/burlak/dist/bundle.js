@@ -8865,8 +8865,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
       if (thumbs) {
         thumbs.swiper = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default())(thumbs, {
-          spaceBetween: 40,
-          slidesPerView: 6
+          spaceBetween: 20,
+          slidesPerView: 2,
+          breakpoints: {
+            991: {
+              slidesPerView: 6,
+              spaceBetween: 40
+            },
+            768: {
+              slidesPerView: 4
+            }
+          }
         });
       }
 
