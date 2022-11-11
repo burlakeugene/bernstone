@@ -48,11 +48,22 @@
               my_get_template_part('slider/slider', [
                 'list' => $data['slider'],
                 'config' => [
-                  'spaceBetween' => 40,
-                  'slidesPerView' => 'auto',
+                  'spaceBetween' => 20,
+                  'slidesPerView' => 1,
                   'autoplay' => [
                     'delay' =>  5000,
                   ],
+                  'breakpoints' => [
+                    991 => [
+                      'slidesPerView' => 'auto',
+                    ],
+                    768 => [
+                      'spaceBetween' => 40,
+                    ],
+                    500 => [
+                      'slidesPerView' => 2,
+                    ]
+                  ]
                 ],
                 'item' => [
                   'path' => 'blocks/content-slider-item'

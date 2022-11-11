@@ -17,6 +17,10 @@
               'breakpoints' => [
                 991 => [
                   'slidesPerView' => 3,
+                ],
+                700 => [
+                  'slidesPerView' => 2,
+                  'spaceBetween' => 20,
                 ]
               ]
             ]

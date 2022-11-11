@@ -27,11 +27,12 @@
                   <div class="banners__panel__content__text">
                     <?= $banner->data['text'] ?>
                   </div>
-                  <a
-                    class="button button--light <?= $banner->data['button']['external'] ? '' : 'ajax' ?>"
-                    href="<?= $banner->data['button']['href'] ?>">
-                    <?= $banner->data['button']['text'] ?>
-                  </a>
+                  <div>
+                    <?php
+                      $banner->data['button']['classes'] = 'button--light';
+                      my_get_template_part('blocks/button', $banner->data['button']);
+                    ?>
+                  </div>
                 </div>
               <?php endforeach; ?>
             </div>

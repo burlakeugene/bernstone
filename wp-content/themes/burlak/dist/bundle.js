@@ -8254,6 +8254,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
             type: 'click',
             body: function body(event) {
               var index = event.target.dataset.index;
+              map.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+                inline: "nearest"
+              });
               mapApi.setActive(index);
             }
           }

@@ -54,7 +54,7 @@
     </div>
   </div>
   <div class="contacts__table">
-    <table>
+    <table cellspacing="0" cellpadding="0">
       <thead>
         <th>Область та місто</th>
         <th>Назва ділеру</th>

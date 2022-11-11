@@ -305,6 +305,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 type: 'click',
                 body: (event) => {
                   let { index } = event.target.dataset;
+                  map.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
                   mapApi.setActive(index);
                 },
               },
