@@ -1,5 +1,5 @@
 <?php
-  $classes = 'section '.implode(' ', $classes);
+  $classes = 'section '.implode(' ', $classes ? $classes : []);
   if($modificators){
     foreach($modificators as $modificator){
       $classes.= ' section--'.$modificator;

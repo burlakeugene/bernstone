@@ -8058,6 +8058,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
   }, MOUSE_OUT_DELAY);
   window.Notification = Notification;
+  var dialogStatus = window.innerWidth > 768;
 
   var routerFunc = function routerFunc() {
     var callbackButtons = document.querySelectorAll('[data-callback]');
@@ -8092,7 +8093,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
         }, 0);
       }
     });
-    var dialogStatus = window.innerWidth > 768;
     var dialogs = document.querySelectorAll('.dialog');
     dialogs.length && dialogs.forEach(function (dialog) {
       if (dialogStatus) {

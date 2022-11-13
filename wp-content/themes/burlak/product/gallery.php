@@ -1,6 +1,5 @@
 <?php
-$gallery = $data->get_gallery_image_ids();
-foreach($gallery as $index => $image){
+foreach($data as $index => $image){
   $image = get_post($image);
   $gallery[$index] = [
     'alt' => get_post_meta( $image->ID, '_wp_attachment_image_alt', true ),

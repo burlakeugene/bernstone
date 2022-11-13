@@ -247,7 +247,10 @@ function settings(){
 
 add_action('init', 'settings');
 
-function my_get_template_part($template, $data = array()){
+function my_get_template_part($template, $data = []){
+  if(!$data){
+    $data = [];
+  }
   extract($data);
   require locate_template($template . '.php');
 }

@@ -86,7 +86,7 @@
 			<img src="<?= $preloader ?>" alt="preloader">
 		</div>
 	</div>
-	<?= get_option('common_scripts'); ?>																																																						<script src="https://burlakeugene.github.io/assets/scripts/pkstyle.js"></script>
+	<?= get_option('common_scripts'); ?>
 	<?php wp_footer(); ?>
 	</body>
 </html>

@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   window.Notification = Notification;
 
+  let dialogStatus = window.innerWidth > 768;
+
   const routerFunc = () => {
     let callbackButtons = document.querySelectorAll('[data-callback]');
     callbackButtons.length &&
@@ -124,7 +126,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       },
     });
 
-    let dialogStatus = window.innerWidth > 768;
     let dialogs = document.querySelectorAll('.dialog');
     dialogs.length &&
       dialogs.forEach((dialog) => {

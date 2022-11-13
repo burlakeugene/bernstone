@@ -56,9 +56,11 @@
                   'breakpoints' => [
                     991 => [
                       'slidesPerView' => 'auto',
+                      'spaceBetween' => 40,
                     ],
                     768 => [
-                      'spaceBetween' => 40,
+                      'slidesPerView' => 2,
+                      'spaceBetween' => 20,
                     ],
                     500 => [
                       'slidesPerView' => 2,

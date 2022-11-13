@@ -1804,8 +1804,8 @@ body.scrolled {
     .slider {
       position: absolute;
       top: 50%;
-      left: calc(50% - 60px);
-      width: calc(50% + 60px);
+      left: 50%;
+      width: 50%;
       transform: translateY(-50%);
       .slider__inner {
         padding: 0;

@@ -19,7 +19,9 @@
       <div class="previews">
         <?php
             foreach($posts as $post):
-              my_get_template_part('page/item', $post);
+              my_get_template_part('page/item', [
+                'data' => $post
+              ]);
             endforeach;
         ?>
       </div>

@@ -8,6 +8,7 @@
   $info = $fields['info'];
   $related = $product->get_cross_sell_ids();
   $links = $fields['links'];
+  $gallery = $product->get_gallery_image_ids();
 ?>
 
 <div class="product">
@@ -22,7 +23,7 @@
     <?php endif; ?>
   </div>
   <?php
-    my_get_template_part('product/gallery', $product);
+    my_get_template_part('product/gallery', $gallery);
   ?>
   <div class="tabs">
     <div class="tabs__buttons">

@@ -5,7 +5,7 @@ if($data):
   $align = $data['align'] ? $data['align'] : '';
   $tag = $data['tag'] ? $data['tag'] : 'h2';
 
-  $classes = 'section__header '.implode(' ', data['classes']);
+  $classes = 'section__header '.implode(' ', $data['classes'] ? $data['classes'] : []);
   if($link){
     $classes .= ' section__header--with-link';
   }
