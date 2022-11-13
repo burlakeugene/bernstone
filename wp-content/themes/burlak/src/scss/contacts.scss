@@ -47,7 +47,7 @@
         transition: all 0.3s;
         font-weight: 600;
         &:hover {
-          color: var(--black);
+          color: var(--gray-light);
         }
         &[href^='mailto:'] {
           font-weight: 400;

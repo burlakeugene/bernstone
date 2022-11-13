@@ -3922,7 +3922,7 @@ body.scrolled .fixed-button--top .icon {
   font-weight: 600;
 }
 .contacts__data__block a:hover {
-  color: var(--black);
+  color: var(--gray-light);
 }
 .contacts__data__block a[href^="mailto:"] {
   font-weight: 400;
