@@ -215,6 +215,7 @@
   }
   .banners__panel {
     width: 100%;
+    border-radius: 50px;
   }
   .banners__next {
     display: none;
@@ -368,6 +369,30 @@
   }
   ._3d__second__content {
     gap: 20px;
+  }
+  .grid__item {
+    &:before {
+      background-color: var(--black);
+      opacity: 0.5;
+    }
+    .grid__item {
+      &__background {
+        transform: scale(1.2);
+      }
+      &__icon {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% - 60px));
+      }
+      &__title {
+        bottom: 50%;
+        transform: translate(-50%, 50%);
+      }
+      &__label {
+        bottom: 30px;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 }
 

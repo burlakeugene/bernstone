@@ -26,7 +26,7 @@
 
 ::-webkit-scrollbar {
   background: 0 0;
-  width: 2px;
+  width: 10px;
   height: 2px;
 }
 
@@ -529,6 +529,7 @@ a,
     height: 100%;
     z-index: 1;
     transition: all 0.3s;
+    border-radius: 50px;
   }
   &__control {
     position: absolute;
@@ -623,18 +624,18 @@ a,
   }
 }
 
-@media (hover: none) {
-  .video {
-    video {
-      opacity: 1;
-      transition: none;
-      visibility: hidden;
-    }
-    &--played {
-      visibility: visible;
-    }
-  }
-}
+// @media (hover: none) {
+//   .video {
+//     video {
+//       opacity: 1;
+//       transition: none;
+//       visibility: hidden;
+//     }
+//     &--played {
+//       visibility: visible;
+//     }
+//   }
+// }
 
 .load-more {
   &__pagination {
