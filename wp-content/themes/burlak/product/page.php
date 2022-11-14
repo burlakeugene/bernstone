@@ -30,12 +30,16 @@
       <button data-tab-id="0" class="tabs__button" data-active>
         <?= $info['tab_first'] ?>
       </button>
+      <?php if($info['templates']): ?>
       <button data-tab-id="1" class="tabs__button" >
         <?= $info['tab_second'] ?>
       </button>
+      <?php endif; ?>
+      <?php if($info['colors']): ?>
       <button data-tab-id="2" class="tabs__button" >
         <?= $info['tab_third'] ?>
       </button>
+      <?php endif; ?>
       <?php
         if($links):
           foreach($links as $link):
@@ -55,18 +59,22 @@
           'title' => $info['related']['title']
         ]); ?>
       </div>
+      <?php if($info['templates']): ?>
       <div data-tab-id="1" class="tabs__content">
         <?php my_get_template_part('zoom/list', [
           'list' => $info['templates'],
-          'key' => 'templates22'
+          'key' => 'templates'
         ]); ?>
       </div>
+      <?php endif; ?>
+      <?php if($info['colors']): ?>
       <div data-tab-id="2" class="tabs__content">
         <?php my_get_template_part('zoom/list', [
           'list' => $info['colors'],
           'key' => 'colors'
         ]); ?>
       </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>
