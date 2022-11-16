@@ -493,9 +493,6 @@ a,
   margin: 60px 0;
   border-radius: 50px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   &__content {
     color: var(--white);
     position: relative;
@@ -503,6 +500,8 @@ a,
     padding: 60px;
     transition: all 0.3s;
     position: absolute;
+    bottom: 0;
+    left: 0;
   }
   &__title {
     font-weight: 500;
@@ -517,6 +516,9 @@ a,
     opacity: 0;
     width: 100%;
     transition: all 0.3s;
+    max-height: 800px;
+    position: relative;
+    z-index: 2;
   }
   &:before {
     content: '';
@@ -578,6 +580,7 @@ a,
     }
     &:before {
       background-color: rgba(244, 244, 244, 0.2);
+      z-index: 1;
     }
     &:after {
       opacity: 0.4;
@@ -602,11 +605,14 @@ a,
     video {
       opacity: 1;
       transition-delay: 0.3s;
+      max-width: 100%;
+      max-height: 800px;
+      margin: 0 auto;
+      display: block;
     }
     &:before {
-      opacity: 0;
-      visibility: hidden;
-      transition-delay: 0.3s;
+      background-color: var(--black);
+      opacity: 1;
     }
     .video {
       &__content {
@@ -1195,6 +1201,7 @@ body.scrolled {
   position: relative;
   .form {
     margin: 0;
+    width: 200px;
   }
   .form__item {
     padding: 0;

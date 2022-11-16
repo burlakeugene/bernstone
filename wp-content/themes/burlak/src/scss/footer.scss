@@ -2,6 +2,7 @@
   background-color: var(--gray);
   padding: 60px 0;
   color: var(--white);
+  user-select: text;
   .logo {
     width: 85px;
   }
@@ -38,7 +39,7 @@
       font-weight: 600;
     }
   }
-  &__phone{
+  &__phone {
     font-size: 18px;
     font-weight: 600;
   }
@@ -101,12 +102,12 @@
 }
 
 @media (max-width: 540px) {
-  .footer .navigation ul{
+  .footer .navigation ul {
     column-count: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    li{
+    li {
       margin-bottom: 0;
     }
   }

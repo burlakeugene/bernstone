@@ -703,3 +703,9 @@
   //   }
   // }
 }
+
+@media (max-height: 1000px) {
+  .video video {
+    max-height: 600px;
+  }
+}

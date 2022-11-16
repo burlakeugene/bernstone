@@ -25,17 +25,14 @@
           ?>
           <?php
             if($data['button']):
-            ?>
-            <div class="content-slider__content__button">
-              <a
-                class="button button--light button--border <?= $data['button']['text'] ? '' : 'ajax' ?>"
-                href="<?= $data['button']['href'] ?>"
-                <?= $data['button']['external'] ? 'target="_blank"' : '' ?>
-              >
-                <?= $data['button']['text'] ?>
-              </a>
-            </div>
-            <?php
+              $data['button']['classes'] = 'button--light button--border';
+              ?>
+              <div class="content-slider__content__button">
+                <?php
+                  my_get_template_part('blocks/button', $data['button']);
+                ?>
+              </div>
+              <?php
             endif;
           ?>
         </div>

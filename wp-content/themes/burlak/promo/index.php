@@ -46,15 +46,12 @@
         ?>
         <?php
           if($data['button']):
+            $data['button']['classes'] = 'button--dark';
             ?>
             <div>
-              <a
-                class="button button--dark <?= !$data['button']['external'] ? 'ajax' : '' ?>"
-                href="<?= $data['button']['href'] ?>"
-                <?= $data['button']['external'] ? 'target="_blank"' : '' ?>
-              >
-                <?= $data['button']['text'] ?>
-              </a>
+              <?php
+                my_get_template_part('blocks/button', $data['button']);
+              ?>
             </div>
             <?php
           endif;
