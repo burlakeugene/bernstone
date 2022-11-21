@@ -5,6 +5,8 @@
 			$domain = parse_url($home_url)['host'];
 			$phones = get_option('phone');
 			$phones = explode(',', $phones);
+			$sites = get_option('sites');
+			$sites = explode(',', $sites);
 			$address = get_option('address');
 			$worktime = get_option('worktime');
 		?>
@@ -22,10 +24,16 @@
 								<?= $copyrights ?>
 							</div>
 						<?php endif; ?>
-						<div class="footer__domain">
-							<a href="<?= $home_url ?>" class="ajax">
-								<?= $domain ?>
-							</a>
+						<div class="footer__domains">
+							<?php foreach($sites as $site):
+								$site = site_replace($site);
+								$home_url = site_replace($home_url);
+								$isCurrent = $home_url == $site
+								?>
+								<a href="//<?= $site ?>" <?= $isCurrent ? 'class="ajax"' : 'target="_blank"'?>>
+									<?= $site ?>
+								</a>
+							<?php endforeach; ?>
 						</div>
 					</div>
 					<div class="footer__block">
@@ -54,6 +62,9 @@
 										<?php
 									endforeach;
 									?>
+							</li>
+							<li>
+								<?php get_template_part('blocks/socials') ?>
 							</li>
 							<li>
 								<button class="button" data-callback="Замовити проєкт">

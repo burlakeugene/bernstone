@@ -36,13 +36,18 @@ function add_fancybox($content)
 
 add_filter('the_content', 'add_fancybox');
 
-function phone_replace($string)
-{
+function phone_replace($string){
     $string = str_replace(" ", "", $string);
     $string = str_replace("-", "", $string);
     $string = str_replace("(", "", $string);
     $string = str_replace(")", "", $string);
     return $string;
+}
+
+function site_replace($string){
+  $string = str_replace("http://", "", $string);
+  $string = str_replace("https://", "", $string);
+  return $string;
 }
 
 add_image_size('lazy', 50, 50, false);
@@ -112,14 +117,15 @@ add_action('admin_init', function () {
     register_setting('theme-page-settings', 'common_scripts');
     register_setting('theme-page-settings', 'head_additions');
     register_setting('theme-page-settings', 'theme');
-    // register_setting('theme-page-settings', 'instagram');
-    // register_setting('theme-page-settings', 'vkontakte');
-    // register_setting('theme-page-settings', 'whatsapp');
+    register_setting('theme-page-settings', 'facebook');
+    register_setting('theme-page-settings', 'instagram');
+    register_setting('theme-page-settings', 'youtube');
     register_setting('theme-page-settings', 'email');
     register_setting('theme-page-settings', 'address');
     register_setting('theme-page-settings', 'phone');
     register_setting('theme-page-settings', 'copyrights');
     register_setting('theme-page-settings', 'worktime');
+    register_setting('theme-page-settings', 'sites');
 });
 
 function theme_settings_page()
@@ -143,19 +149,18 @@ function theme_settings_page()
         <div>Theme color</div>
         <input name="theme" type="text" value="<?= esc_attr(get_option('theme')); ?>">
       </label>
-      <!-- <label>
+      <div>Facebook</div>
+        <input name="facebook" type="text" value="<?= esc_attr(get_option('facebook')); ?>">
+      </label>
+      <label>
         <div>Instagram</div>
         <input name="instagram" type="text" value="<?= esc_attr(get_option('instagram')); ?>">
       </label>
       <label>
-        <div>Vkontakte</div>
-        <input name="vkontakte" type="text" value="<?= esc_attr(get_option('vkontakte')); ?>">
-      </label>
       <label>
-        <div>Whatsapp</div>
-        <input name="whatsapp" type="text" value="<?= esc_attr(get_option('whatsapp')); ?>">
+        <div>YouTube</div>
+        <input name="youtube" type="text" value="<?= esc_attr(get_option('youtube')); ?>">
       </label>
-       -->
       <label>
         <div>Mail</div>
         <input type="email" name="email" value="<?= esc_attr(get_option('email')) ?>" />
@@ -175,6 +180,10 @@ function theme_settings_page()
       <label>
         <div>Worktime</div>
         <input type="text" name="worktime" value="<?= esc_attr(get_option('worktime')) ?>" />
+      </label>
+      <label>
+        <div>Sites</div>
+        <input type="text" name="sites" value="<?= esc_attr(get_option('sites')) ?>" />
       </label>
       <label>
       <?php submit_button(); ?>

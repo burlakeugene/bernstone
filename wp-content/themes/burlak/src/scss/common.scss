@@ -1503,26 +1503,34 @@ body.scrolled {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
-}
-
-.social {
-  width: 32px;
-  height: 32px;
-  display: block;
-  transition: all 0.3s;
-  font-size: 0;
-  color: var(--theme);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &--instagram {
+  gap: 14px;
+  .social {
+    width: 32px;
+    height: 32px;
+    display: block;
+    transition: all 0.3s;
+    font-size: 0;
+    color: var(--theme);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: var(--background);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--background);
     .icon {
-      width: 24px;
+      position: static;
+      width: 18px;
+      color: var(--gray);
+      transition: all 0.3s;
     }
-  }
-  &:last-child {
-    margin-right: 0;
+    &:hover {
+      background-color: var(--gray);
+      box-shadow: none;
+      .icon {
+        color: var(--theme);
+      }
+    }
   }
 }
 

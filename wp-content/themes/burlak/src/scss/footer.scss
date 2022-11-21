@@ -33,7 +33,10 @@
     font-size: 13px;
     color: var(--gray-light);
   }
-  &__domain {
+  &__domains {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     a {
       color: var(--theme);
       font-weight: 600;

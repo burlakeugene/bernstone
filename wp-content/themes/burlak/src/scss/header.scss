@@ -63,6 +63,11 @@
       margin-right: 0;
     }
   }
+  &__socials {
+    padding: 0 30px;
+    border-left: 1px solid var(--gray);
+    border-right: 1px solid var(--gray);
+  }
 }
 
 .scrolled {
@@ -99,8 +104,7 @@
     overflow: auto;
   }
   .socials {
-    padding-top: 15px;
-    margin-top: 15px;
+    padding: 15px 0;
     justify-content: center;
     border-top: 2px solid var(--theme);
     &:empty {

@@ -28,6 +28,9 @@
               'type' => 'header'
             ])
           ?>
+          <div class="header__socials">
+            <?php get_template_part('blocks/socials') ?>
+          </div>
           <div class="header__buttons">
             <button class="button" data-callback="Зв’язатися з менеджером">
               Зв’язатися<span data-hide="mobile"> з менеджером</span>
@@ -43,8 +46,8 @@
           'type' => 'header'
         ]) ?>
       </div>
-      <!-- <div class="sidebar__footer">
+      <div class="sidebar__footer">
         <?php get_template_part('blocks/socials') ?>
-      </div> -->
+      </div>
     </sidebar>
     <main>

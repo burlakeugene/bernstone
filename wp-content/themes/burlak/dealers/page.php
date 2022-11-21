@@ -47,6 +47,7 @@
       <?php
       endif;
     ?>
+    <?php get_template_part('blocks/socials') ?>
     <div class="contacts__data__block">
       <button class="button" data-callback="Страница дилеров">
         Зв’язатися з менеджером
