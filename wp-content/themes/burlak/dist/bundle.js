@@ -837,11 +837,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         var media = replacement.querySelectorAll('img, video');
         Promise.all(_toConsumableArray(media).map(function (item) {
           return new Promise(function (resolve, reject) {
-            item.onload = resolve;
-            if (item.tagName === 'IMG') item.onload = resolve;
+            if (item.tagName === 'IMG') {
+              item.onload = resolve;
+
+              item.onerror = function () {
+                console.warn("Warning, media can't resolve: ", item);
+                resolve();
+              };
+            }
 
             if (item.tagName === 'VIDEO') {
               item.addEventListener('loadedmetadata', function () {
+                resolve();
+              });
+              item.addEventListener('error', function () {
+                console.warn("Warning, media can't resolve: ", item);
                 resolve();
               });
             }
