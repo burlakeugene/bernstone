@@ -1,5 +1,5 @@
 <?php
-  $socials = get_socials();
+  $socials = get_socials($type);
 ?>
 
 <div class="socials">

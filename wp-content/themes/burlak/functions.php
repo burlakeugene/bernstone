@@ -63,6 +63,7 @@ add_image_size('material', 200, 200, true);
 add_image_size('color', 160, 160, true);
 add_image_size('price-image', 740, 420, true);
 add_image_size('product-card', 270, 270, true);
+add_image_size('zoom', 780, 660, false);
 
 function getMonth($month)
 {
@@ -117,15 +118,33 @@ add_action('admin_init', function () {
     register_setting('theme-page-settings', 'common_scripts');
     register_setting('theme-page-settings', 'head_additions');
     register_setting('theme-page-settings', 'theme');
-    register_setting('theme-page-settings', 'facebook');
-    register_setting('theme-page-settings', 'instagram');
-    register_setting('theme-page-settings', 'youtube');
     register_setting('theme-page-settings', 'email');
     register_setting('theme-page-settings', 'address');
     register_setting('theme-page-settings', 'phone');
     register_setting('theme-page-settings', 'copyrights');
     register_setting('theme-page-settings', 'worktime');
     register_setting('theme-page-settings', 'sites');
+    //header socials
+    register_setting('theme-page-settings', 'facebook__header');
+    register_setting('theme-page-settings', 'instagram__header');
+    register_setting('theme-page-settings', 'youtube__header');
+    register_setting('theme-page-settings', 'whatsapp__header');
+    register_setting('theme-page-settings', 'viber__header');
+    register_setting('theme-page-settings', 'telegram__header');
+    //sidebar socials
+    register_setting('theme-page-settings', 'facebook__sidebar');
+    register_setting('theme-page-settings', 'instagram__sidebar');
+    register_setting('theme-page-settings', 'youtube__sidebar');
+    register_setting('theme-page-settings', 'whatsapp__sidebar');
+    register_setting('theme-page-settings', 'viber__sidebar');
+    register_setting('theme-page-settings', 'telegram__sidebar');
+    //footer socials
+    register_setting('theme-page-settings', 'facebook__footer');
+    register_setting('theme-page-settings', 'instagram__footer');
+    register_setting('theme-page-settings', 'youtube__footer');
+    register_setting('theme-page-settings', 'whatsapp__footer');
+    register_setting('theme-page-settings', 'viber__footer');
+    register_setting('theme-page-settings', 'telegram__footer');
 });
 
 function theme_settings_page()
@@ -148,18 +167,6 @@ function theme_settings_page()
       <label>
         <div>Theme color</div>
         <input name="theme" type="text" value="<?= esc_attr(get_option('theme')); ?>">
-      </label>
-      <div>Facebook</div>
-        <input name="facebook" type="text" value="<?= esc_attr(get_option('facebook')); ?>">
-      </label>
-      <label>
-        <div>Instagram</div>
-        <input name="instagram" type="text" value="<?= esc_attr(get_option('instagram')); ?>">
-      </label>
-      <label>
-      <label>
-        <div>YouTube</div>
-        <input name="youtube" type="text" value="<?= esc_attr(get_option('youtube')); ?>">
       </label>
       <label>
         <div>Mail</div>
@@ -185,7 +192,81 @@ function theme_settings_page()
         <div>Sites</div>
         <input type="text" name="sites" value="<?= esc_attr(get_option('sites')) ?>" />
       </label>
+      <h3>Header socials</h3>
       <label>
+        <div>Facebook</div>
+        <input name="facebook__header" type="text" value="<?= esc_attr(get_option('facebook__header')); ?>">
+      </label>
+      <label>
+        <div>Instagram</div>
+        <input name="instagram__header" type="text" value="<?= esc_attr(get_option('instagram__header')); ?>">
+      </label>
+      <label>
+        <div>YouTube</div>
+        <input name="youtube__header" type="text" value="<?= esc_attr(get_option('youtube__header')); ?>">
+      </label>
+      <label>
+        <div>WhatsApp</div>
+        <input name="whatsapp__header" type="text" value="<?= esc_attr(get_option('whatsapp__header')); ?>">
+      </label>
+      <label>
+        <div>Telegram</div>
+        <input name="telegram__header" type="text" value="<?= esc_attr(get_option('telegram__header')); ?>">
+      </label>
+      <label>
+        <div>Viber</div>
+        <input name="viber__header" type="text" value="<?= esc_attr(get_option('viber__header')); ?>">
+      </label>
+      <h3>Sibebar socials</h3>
+      <label>
+        <div>Facebook</div>
+        <input name="facebook__sidebar" type="text" value="<?= esc_attr(get_option('facebook__sidebar')); ?>">
+      </label>
+      <label>
+        <div>Instagram</div>
+        <input name="instagram__sidebar" type="text" value="<?= esc_attr(get_option('instagram__sidebar')); ?>">
+      </label>
+      <label>
+        <div>YouTube</div>
+        <input name="youtube__sidebar" type="text" value="<?= esc_attr(get_option('youtube__sidebar')); ?>">
+      </label>
+      <label>
+        <div>WhatsApp</div>
+        <input name="whatsapp__sidebar" type="text" value="<?= esc_attr(get_option('whatsapp__sidebar')); ?>">
+      </label>
+      <label>
+        <div>Telegram</div>
+        <input name="telegram__sidebar" type="text" value="<?= esc_attr(get_option('telegram__sidebar')); ?>">
+      </label>
+      <label>
+        <div>Viber</div>
+        <input name="viber__sidebar" type="text" value="<?= esc_attr(get_option('viber__sidebar')); ?>">
+      </label>
+      <h3>Footer socials</h3>
+      <label>
+        <div>Facebook</div>
+        <input name="facebook__footer" type="text" value="<?= esc_attr(get_option('facebook__footer')); ?>">
+      </label>
+      <label>
+        <div>Instagram</div>
+        <input name="instagram__footer" type="text" value="<?= esc_attr(get_option('instagram__footer')); ?>">
+      </label>
+      <label>
+        <div>YouTube</div>
+        <input name="youtube__footer" type="text" value="<?= esc_attr(get_option('youtube__footer')); ?>">
+      </label>
+      <label>
+        <div>WhatsApp</div>
+        <input name="whatsapp__footer" type="text" value="<?= esc_attr(get_option('whatsapp__footer')); ?>">
+      </label>
+      <label>
+        <div>Telegram</div>
+        <input name="telegram__footer" type="text" value="<?= esc_attr(get_option('telegram__footer')); ?>">
+      </label>
+      <label>
+        <div>Viber</div>
+        <input name="viber__footer" type="text" value="<?= esc_attr(get_option('viber__footer')); ?>">
+      </label>
       <?php submit_button(); ?>
     </form>
   </div>
@@ -283,25 +364,25 @@ function mergeQueryString($array = []){
   return $result;
 }
 
-function get_socials(){
+function get_socials($type){
   $socials = array();
-  if (get_option('vkontakte')) {
-      $socials['vkontakte'] = get_option('vkontakte');
+  if (get_option('facebook__'.$type)) {
+    $socials['facebook'] = get_option('facebook__'.$type);
   }
-  if (get_option('facebook')) {
-    $socials['facebook'] = get_option('facebook');
+  if (get_option('youtube__'.$type)) {
+    $socials['youtube'] = get_option('youtube__'.$type);
   }
-  if (get_option('youtube')) {
-    $socials['youtube'] = get_option('youtube');
+  if (get_option('instagram__'.$type)) {
+    $socials['instagram'] = get_option('instagram__'.$type);
   }
-  if (get_option('instagram')) {
-    $socials['instagram'] = get_option('instagram');
+  if (get_option('telegram__'.$type)) {
+      $socials['telegram'] = get_option('telegram__'.$type);
   }
-  if (get_option('telegram')) {
-      $socials['telegram'] = get_option('telegram');
+  if(get_option('whatsapp__'.$type)) {
+    $socials['whatsapp'] = get_option('whatsapp__'.$type);
   }
-  if(get_option('whatsapp')) {
-    $socials['whatsapp'] = get_option('whatsapp');
+  if(get_option('viber__'.$type)) {
+    $socials['viber'] = get_option('viber__'.$type);
   }
   return $socials;
 }

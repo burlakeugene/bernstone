@@ -64,7 +64,9 @@
 									?>
 							</li>
 							<li>
-								<?php get_template_part('blocks/socials') ?>
+								<?php my_get_template_part('blocks/socials', [
+									'type' => 'footer'
+								]) ?>
 							</li>
 							<li>
 								<button class="button" data-callback="Замовити проєкт">

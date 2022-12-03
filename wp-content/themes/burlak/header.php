@@ -29,7 +29,9 @@
             ])
           ?>
           <div class="header__socials">
-            <?php get_template_part('blocks/socials') ?>
+            <?php my_get_template_part('blocks/socials', [
+              'type' => 'header'
+            ]) ?>
           </div>
           <div class="header__buttons">
             <button class="button" data-callback="Зв’язатися з менеджером">
@@ -47,7 +49,9 @@
         ]) ?>
       </div>
       <div class="sidebar__footer">
-        <?php get_template_part('blocks/socials') ?>
+        <?php my_get_template_part('blocks/socials', [
+          'type' => 'sidebar'
+        ]) ?>
       </div>
     </sidebar>
     <main>

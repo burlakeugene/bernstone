@@ -11,7 +11,7 @@ if($list):
         class="zoom__item"
         data-caption="<?= $item['label']; ?>"
         data-fancybox="<?= $key ?>" href="<?= $item['image']['url'] ?>"
-        style="background-image: url(<?= $item['image']['sizes']['medium'] ?>);"
+        style="background-image: url(<?= $item['image']['sizes']['zoom'] ?>);"
       >
         <div class="zoom__item__hover">
           <?php get_template_part('icons/zoom') ?>
