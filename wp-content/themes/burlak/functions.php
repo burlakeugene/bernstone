@@ -369,11 +369,11 @@ function get_socials($type){
   if (get_option('facebook__'.$type)) {
     $socials['facebook'] = get_option('facebook__'.$type);
   }
-  if (get_option('youtube__'.$type)) {
-    $socials['youtube'] = get_option('youtube__'.$type);
-  }
   if (get_option('instagram__'.$type)) {
     $socials['instagram'] = get_option('instagram__'.$type);
+  }
+  if (get_option('youtube__'.$type)) {
+    $socials['youtube'] = get_option('youtube__'.$type);
   }
   if (get_option('telegram__'.$type)) {
       $socials['telegram'] = get_option('telegram__'.$type);
