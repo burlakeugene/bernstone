@@ -2,7 +2,8 @@
   $list = get_pages([
     'numberposts' => -1,
     'child_of' => get_the_ID(),
-    'post_status' => array('publish', 'draft')
+    'post_status' => array('publish', 'draft'),
+    'sort_column' => 'menu_order'
   ]);
   $activeIndex = $_GET['index'] ? $_GET['index'] : 0;
   if($list):
