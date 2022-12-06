@@ -14,3 +14,8 @@ RewriteRule . /bs/index.php [L]
 </IfModule>
 
 # END WordPress
+
+# RewriteEngine On
+# Options -Indexes
+# RewriteCond %{HTTP_REFERER} !^http(s)?://localhost:8888/bs(/)?
+# RewriteRule .*\.(mp4)$ – [F]

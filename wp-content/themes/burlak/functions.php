@@ -769,3 +769,11 @@ function objectToArray($obj){
 function getAlt($image){
   return $image['alt'] ? $image['alt'] : $image['title'];
 }
+
+// function attachment_redirect() {
+//   global $post;
+//   if (is_attachment() && strpos($post->post_mime_type, 'video') !== false) {
+//     wp_safe_redirect(esc_url(home_url('/')));
+//   }
+// }
+// add_action( 'template_redirect', 'attachment_redirect' );

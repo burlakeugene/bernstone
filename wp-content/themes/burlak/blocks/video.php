@@ -2,7 +2,7 @@
   if($src):
   ?>
     <div class="video" style="background-image: url('<?= $preview['sizes']['banner'] ?>')">
-      <video src="<?= $src ?>" controls></video>
+      <video oncontextmenu="return false;" src="<?= $src ?>" controls controlsList="nodownload"></video>
       <button class="video__control">
         <?php get_template_part('icons/play') ?>
 
