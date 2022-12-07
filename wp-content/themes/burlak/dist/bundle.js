@@ -8265,9 +8265,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
             body: function body(event) {
               var index = event.target.dataset.index;
               map.scrollIntoView({
-                behavior: "smooth",
-                block: "end",
-                inline: "nearest"
+                behavior: 'smooth',
+                block: 'end',
+                inline: 'nearest'
               });
               mapApi.setActive(index);
             }
@@ -8762,7 +8762,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
       var fancyboxList = _toConsumableArray(list).map(function (item) {
         return {
-          src: item.href,
+          src: item.dataset.origin,
           type: 'image'
         };
       });

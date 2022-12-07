@@ -306,7 +306,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 type: 'click',
                 body: (event) => {
                   let { index } = event.target.dataset;
-                  map.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+                  map.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'end',
+                    inline: 'nearest',
+                  });
                   mapApi.setActive(index);
                 },
               },
@@ -851,7 +855,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const list = gallery.querySelectorAll('.gallery__viewer__list a');
 
         const fancyboxList = [...list].map((item) => ({
-          src: item.href,
+          src: item.dataset.origin,
           type: 'image',
         }));
 
@@ -981,8 +985,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
               },
               768: {
                 slidesPerView: 4,
-              }
-            }
+              },
+            },
           });
         }
         if (main) {
@@ -1040,7 +1044,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       //     referer: window.history?.state?.referer,
       //   });
       // }
-
     },
     afterInit: function () {},
   });

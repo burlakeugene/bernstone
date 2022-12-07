@@ -73,6 +73,7 @@
                 data-view
                 data-index="<?= $index ?>"
                 href="<?= $image['sizes']['banner'] ?>"
+                data-origin="<?= $image['url'] ?>"
               >
                 <div class="lazy">
                   <img
