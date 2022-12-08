@@ -19,6 +19,7 @@
     border: 1px solid var(--border-color);
     border-radius: 50px;
     overflow: hidden;
+    @extend .safari-overflow;
     &__background {
       position: absolute;
       top: 0;

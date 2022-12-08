@@ -52,6 +52,7 @@ function site_replace($string){
 
 add_image_size('lazy', 50, 50, false);
 add_image_size('lazy-square', 50, 50, true);
+add_image_size('lazy-banner', 50, 24, true);
 add_image_size('banner', 1680, 800, true);
 add_image_size('grid', 390, 390, true);
 add_image_size('article', 530, 380, true);

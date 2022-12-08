@@ -47,7 +47,7 @@
             >
               <div class="lazy">
                 <img
-                  src="<?= $firstImage['sizes']['lazy'] ?>"
+                  src="<?= $firstImage['sizes']['lazy-banner'] ?>"
                   data-lazy="<?= $firstImage['sizes']['banner'] ?>"
                   alt="<?= getAlt($firstImage); ?>"
                 />

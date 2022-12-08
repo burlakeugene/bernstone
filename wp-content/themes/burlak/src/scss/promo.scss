@@ -5,6 +5,7 @@
     border-radius: 50px;
     background-color: var(--white);
     overflow: hidden;
+    @extend .safari-overflow;
     padding: 150px 60px 120px 60px;
     flex: 1;
     position: relative;

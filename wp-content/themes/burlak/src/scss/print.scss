@@ -23,6 +23,7 @@
       &__image {
         border-radius: 40px 40px 0px 0px;
         overflow: hidden;
+        @extend .safari-overflow;
         margin-bottom: 30px;
         display: block;
         img{

@@ -1532,6 +1532,10 @@ a:focus,
   text-align: center;
 }
 
+.safari-overflow, .product--card, .product__gallery__main .swiper-slide a, .zoom__item, .gallery.gallery--page .gallery__viewer__list a, .gallery.gallery--page .gallery__viewer__image a, .print__section__item__image, .contacts__map, .promo__block, .grid__item, .banners__inner, .content-block--image a, .video, .notic {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
 .button {
   cursor: pointer;
   background-color: var(--theme);
@@ -1546,6 +1550,7 @@ a:focus,
   display: inline-block;
   text-align: center;
   border: none;
+  margin: 0;
 }
 .button[disabled] {
   background-color: var(--gray-lightest-more);
@@ -1834,6 +1839,7 @@ a:focus,
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: none;
 }
 .swiper-button-prev svg,
 .swiper-button-next svg {
@@ -1944,6 +1950,7 @@ a:focus,
   transition: all 0.3s;
   max-height: 800px;
   position: relative;
+  border-radius: 50px;
   z-index: 2;
 }
 .video:before {
@@ -1957,7 +1964,6 @@ a:focus,
   height: 100%;
   z-index: 1;
   transition: all 0.3s;
-  border-radius: 50px;
 }
 .video__control {
   position: absolute;
@@ -2259,6 +2265,7 @@ a:focus,
   margin-bottom: 20px;
 }
 .tabs__button {
+  margin: 0;
   position: relative;
   padding: 18px;
   display: block;
@@ -2440,6 +2447,7 @@ body .notic-loading svg {
   padding: 10px;
   background: transparent;
   border: none;
+  margin: 0;
 }
 .toggle__inner {
   position: relative;
@@ -3392,6 +3400,8 @@ body.scrolled .fixed-button--top .icon {
 .banners__inner {
   display: flex;
   position: relative;
+  overflow: hidden;
+  border-radius: 50px;
 }
 .banners .progressbar {
   transform: translateY(calc(50% - 1px));
@@ -3406,8 +3416,6 @@ body.scrolled .fixed-button--top .icon {
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
-  overflow: hidden;
-  border-radius: 50px 0 0 50px;
 }
 .banners__panel__content {
   position: absolute;
@@ -3451,8 +3459,6 @@ body.scrolled .fixed-button--top .icon {
   width: 100%;
   height: 100%;
   z-index: 1;
-  overflow: hidden;
-  border-radius: 50px;
 }
 .banners__slide {
   background-position: center center;
@@ -3782,7 +3788,7 @@ body.scrolled .fixed-button--top .icon {
   left: 0;
   width: 100%;
   height: 15px;
-  background-image: linear-gradient(transparent, var(--white));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--white));
 }
 .article:hover .article__image {
   height: 220px;
@@ -4088,6 +4094,7 @@ body.scrolled .fixed-button--top .icon {
   display: flex;
   gap: 10px;
   overflow: auto;
+  white-space: nowrap;
 }
 .gallery.gallery--page .gallery__viewer {
   display: flex;
@@ -5323,7 +5330,7 @@ body.scrolled .fixed-button--top .icon {
     padding: 20px 0;
   }
   .section__header {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .promo__block__image {
     display: none;

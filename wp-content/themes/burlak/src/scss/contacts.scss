@@ -5,6 +5,7 @@
     flex: 1;
     border-radius: 50px;
     overflow: hidden;
+    @extend .safari-overflow;
   }
   &__data {
     user-select: text;
