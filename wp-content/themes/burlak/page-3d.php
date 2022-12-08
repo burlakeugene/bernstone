@@ -3,6 +3,7 @@
   my_get_template_part('sections/section', [
     'header' => [
       'title' => [
+        'tag' => 'h1',
         'text' => get_the_title(),
       ],
     ],
