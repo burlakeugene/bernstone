@@ -4,8 +4,9 @@
     &__buttons {
       display: flex;
       gap: 10px;
-      overflow: auto;
+      flex-wrap: wrap;
       white-space: nowrap;
+      justify-content: center;
     }
     &__viewer {
       display: flex;

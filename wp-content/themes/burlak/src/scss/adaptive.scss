@@ -408,6 +408,11 @@
       }
     }
   }
+  .gallery.gallery--page .gallery__buttons {
+    flex-wrap: nowrap;
+    overflow: auto;
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 900px) {

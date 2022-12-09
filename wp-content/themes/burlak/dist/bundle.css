@@ -4093,8 +4093,9 @@ body.scrolled .fixed-button--top .icon {
 .gallery.gallery--page .gallery__buttons {
   display: flex;
   gap: 10px;
-  overflow: auto;
+  flex-wrap: wrap;
   white-space: nowrap;
+  justify-content: center;
 }
 .gallery.gallery--page .gallery__viewer {
   display: flex;
@@ -5611,6 +5612,11 @@ body.scrolled .fixed-button--top .icon {
     bottom: 30px;
     opacity: 1;
     visibility: visible;
+  }
+  .gallery.gallery--page .gallery__buttons {
+    flex-wrap: nowrap;
+    overflow: auto;
+    justify-content: flex-start;
   }
 }
 @media (max-width: 900px) {
