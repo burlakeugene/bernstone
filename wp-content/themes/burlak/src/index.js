@@ -1010,6 +1010,56 @@ document.addEventListener('DOMContentLoaded', (event) => {
           });
         }
       });
+
+    const productsSwitcher = document.querySelectorAll('.products__switcher');
+    productsSwitcher.length &&
+      productsSwitcher.forEach((switcher) => {
+        const buttons = switcher.querySelectorAll('.button');
+        buttons.length &&
+          buttons.forEach((button) => {
+            eventDecorator({
+              target: button,
+              event: {
+                type: 'click',
+                body: (e) => {
+                  e.preventDefault();
+                  const target = e.target;
+                  const { id, active, activeClass, unactiveClass } =
+                    target.dataset;
+
+                  const products = switcher?.parentNode
+                    ?.querySelector('.products__list')
+                    .querySelectorAll('.product');
+
+                  if (active) {
+                    return;
+                  }
+                  buttons.forEach((button) => {
+                    if (button.dataset.id === id) {
+                      return;
+                    }
+                    button.classList.remove(activeClass);
+                    button.classList.add(unactiveClass);
+                    button.disabled = false;
+                    delete button.dataset.active;
+                  });
+                  target.classList.remove(unactiveClass);
+                  target.classList.add(activeClass);
+                  button.disabled = true;
+
+                  products.forEach((product) => {
+                    const { category } = product.dataset;
+                    if (!id || category === id) {
+                      delete product.dataset.hidden;
+                    } else {
+                      product.dataset.hidden = 1;
+                    }
+                  });
+                },
+              },
+            });
+          });
+      });
   };
 
   window.router = new Router({

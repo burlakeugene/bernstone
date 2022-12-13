@@ -56,7 +56,8 @@
         <?php my_get_template_part('page/configurable/content', $info['blocks']); ?>
         <?php my_get_template_part('product/related', [
           'list' => $related,
-          'title' => $info['related']['title']
+          'title' => $info['related']['title'],
+          'switcher' => true
         ]); ?>
       </div>
       <?php if($info['templates']): ?>

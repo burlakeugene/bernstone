@@ -8910,6 +8910,57 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
       }
     });
+    var productsSwitcher = document.querySelectorAll('.products__switcher');
+    productsSwitcher.length && productsSwitcher.forEach(function (switcher) {
+      var buttons = switcher.querySelectorAll('.button');
+      buttons.length && buttons.forEach(function (button) {
+        (0,_js_helpers__WEBPACK_IMPORTED_MODULE_10__.eventDecorator)({
+          target: button,
+          event: {
+            type: 'click',
+            body: function body(e) {
+              var _switcher$parentNode;
+
+              e.preventDefault();
+              var target = e.target;
+              var _target$dataset = target.dataset,
+                  id = _target$dataset.id,
+                  active = _target$dataset.active,
+                  activeClass = _target$dataset.activeClass,
+                  unactiveClass = _target$dataset.unactiveClass;
+              var products = switcher === null || switcher === void 0 ? void 0 : (_switcher$parentNode = switcher.parentNode) === null || _switcher$parentNode === void 0 ? void 0 : _switcher$parentNode.querySelector('.products__list').querySelectorAll('.product');
+
+              if (active) {
+                return;
+              }
+
+              buttons.forEach(function (button) {
+                if (button.dataset.id === id) {
+                  return;
+                }
+
+                button.classList.remove(activeClass);
+                button.classList.add(unactiveClass);
+                button.disabled = false;
+                delete button.dataset.active;
+              });
+              target.classList.remove(unactiveClass);
+              target.classList.add(activeClass);
+              button.disabled = true;
+              products.forEach(function (product) {
+                var category = product.dataset.category;
+
+                if (!id || category === id) {
+                  delete product.dataset.hidden;
+                } else {
+                  product.dataset.hidden = 1;
+                }
+              });
+            }
+          }
+        });
+      });
+    });
   };
 
   window.router = new _js_router_js__WEBPACK_IMPORTED_MODULE_0__["default"]({

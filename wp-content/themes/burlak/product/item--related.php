@@ -19,6 +19,8 @@
   href="<?= $product->get_permalink() ?>"
   title="<?= $product->get_title() ?>"
   data-view
+  data-category="<?= $category['id'] ?>"
+  data-hidden="<?= $hidden ? '1' : '' ?>"
 >
   <?php if($image[0]): ?>
     <div class="product__image">
