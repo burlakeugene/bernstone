@@ -778,3 +778,17 @@ function getAlt($image){
 //   }
 // }
 // add_action( 'template_redirect', 'attachment_redirect' );
+
+add_filter('rank_math/sitemap/urlimages', function($initial, $id){
+  $images = get_field('images', $id);
+  if($images){
+    foreach($images as $image){
+      $image = $image['image'];
+      $initial[] = [
+        'src' => $image['url'],
+        'title' => getAlt($image),
+      ];
+    }
+  }
+  return $initial;
+}, 10, 2);
