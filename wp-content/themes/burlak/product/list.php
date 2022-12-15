@@ -6,16 +6,12 @@
 				$post = get_post();
 				$fields = get_fields($post->ID);
 				$grid = $fields['grid']['grid'];
-				$url = $grid['href'] ? $grid['href'] : get_permalink($post->ID);
+				$grid['url'] = $grid['href'] ? $grid['href'] : get_permalink($post->ID);
+				$grid['title'] = $grid['title'] ? $grid['title'] : $post->post_title;
+				$grid['label'] = $grid['label'] ? $grid['label'] : 'Дивитися товар';
+
 				$list[] = [
-					'grid' => [
-						'title' => $grid['title'] ? $grid['title'] : $post->post_title,
-						'label' => $grid['label'] ? $grid['label'] : 'Дивитися товар',
-						'href' => $url,
-						'icon' => $grid['icon'],
-						'background' => $grid['background'],
-						'external' => $grid['external']
-					]
+					'grid' => $grid
 				];
 			endwhile;
 		}
