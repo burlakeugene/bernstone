@@ -1,6 +1,6 @@
 <a
   href="<?= $href ?>"
-  class="grid__item <?= $external ? '' : 'ajax' ?>"
+  class="grid__item <?= !$mobile_unhovered ? 'grid__item--mobile-hovered' : '' ?> <?= $external ? '' : 'ajax' ?>"
   <?php if($external):?>
     target="_blank"
   <?php endif; ?>
