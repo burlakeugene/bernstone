@@ -6,7 +6,7 @@
 				$post = get_post();
 				$fields = get_fields($post->ID);
 				$grid = $fields['grid']['grid'];
-				$grid['url'] = $grid['href'] ? $grid['href'] : get_permalink($post->ID);
+				$grid['href'] = $grid['href'] ? $grid['href'] : get_permalink($post->ID);
 				$grid['title'] = $grid['title'] ? $grid['title'] : $post->post_title;
 				$grid['label'] = $grid['label'] ? $grid['label'] : 'Дивитися товар';
 
