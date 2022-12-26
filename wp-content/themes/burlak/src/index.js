@@ -992,9 +992,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (main) {
           main.swiper = new Swiper(main, {
             spaceBetween: 40,
-            thumbs: {
-              swiper: thumbs.swiper,
-            },
+            ...(thumbs
+              ? {
+                  thumbs: {
+                    swiper: thumbs.swiper,
+                  },
+                }
+              : {}),
             navigation: {
               prevEl: gallery.querySelector('.swiper-button-prev'),
               nextEl: gallery.querySelector('.swiper-button-next'),

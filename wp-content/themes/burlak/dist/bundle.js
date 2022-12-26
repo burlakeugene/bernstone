@@ -8890,11 +8890,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
       }
 
       if (main) {
-        main.swiper = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default())(main, {
-          spaceBetween: 40,
+        main.swiper = new (_js_swiper_swiper_min_js__WEBPACK_IMPORTED_MODULE_11___default())(main, _objectSpread(_objectSpread({
+          spaceBetween: 40
+        }, thumbs ? {
           thumbs: {
             swiper: thumbs.swiper
-          },
+          }
+        } : {}), {}, {
           navigation: {
             prevEl: gallery.querySelector('.swiper-button-prev'),
             nextEl: gallery.querySelector('.swiper-button-next')
@@ -8907,7 +8909,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
               progressBarCheck(instance, gallery);
             }
           }
-        });
+        }));
       }
     });
     var productsSwitcher = document.querySelectorAll('.products__switcher');

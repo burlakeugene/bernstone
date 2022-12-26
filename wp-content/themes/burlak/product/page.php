@@ -9,6 +9,15 @@
   $related = $product->get_cross_sell_ids();
   $links = $fields['links'];
   $gallery = $product->get_gallery_image_ids();
+  $gallery_mobile = $fields['gallery']['mobile'];
+  if(!$gallery_mobile){
+    $gallery_mobile = $gallery;
+  }
+  else{
+    $gallery_mobile = array_map(function($item){
+      return $item['image'];
+    }, $gallery_mobile);
+  }
 ?>
 
 <div class="product">
@@ -24,6 +33,10 @@
   </div>
   <?php
     my_get_template_part('product/gallery', $gallery);
+    my_get_template_part('product/gallery', [
+      'data' => $gallery_mobile,
+      'mobile' => true
+    ]);
   ?>
   <div class="tabs">
     <div class="tabs__buttons">

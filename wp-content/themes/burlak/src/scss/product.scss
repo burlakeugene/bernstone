@@ -102,6 +102,13 @@
           background-repeat: no-repeat;
         }
       }
+      &--no-panel {
+        padding: 0 !important;
+        .swiper {
+          position: static;
+          height: 580px;
+        }
+      }
     }
     &__thumbs {
       overflow: visible;
@@ -123,6 +130,9 @@
           }
         }
       }
+    }
+    &--mobile {
+      display: none;
     }
   }
   .content-block--text,
@@ -191,6 +201,15 @@
         color: var(--gray-light);
         font-size: 15px;
       }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .product__gallery {
+    display: none;
+    &--mobile {
+      display: flex;
     }
   }
 }
