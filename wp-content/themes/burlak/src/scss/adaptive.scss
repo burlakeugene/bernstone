@@ -169,6 +169,9 @@
   }
   .product__gallery__main {
     padding: 50px;
+    &--no-panel .swiper {
+      height: 580px;
+    }
     &__panel {
       min-height: 480px;
       padding: 40px;

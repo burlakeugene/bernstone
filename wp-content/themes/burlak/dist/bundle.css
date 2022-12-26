@@ -4669,7 +4669,7 @@ body.scrolled .fixed-button--top .icon {
 }
 .product__gallery__main--no-panel .swiper {
   position: static;
-  height: 580px;
+  height: 720px;
 }
 .product__gallery__thumbs {
   overflow: visible;
@@ -5467,6 +5467,9 @@ body.scrolled .fixed-button--top .icon {
   }
   .product__gallery__main {
     padding: 50px;
+  }
+  .product__gallery__main--no-panel .swiper {
+    height: 580px;
   }
   .product__gallery__main__panel {
     min-height: 480px;
