@@ -18,6 +18,7 @@
       return $item['image'];
     }, $gallery_mobile);
   }
+  $gallery_panel_hidden = !$fields['gallery']['title'] && !$fields['gallery']['text'];
 ?>
 
 <div class="product">
@@ -31,13 +32,22 @@
       </div>
     <?php endif; ?>
   </div>
-  <?php
-    my_get_template_part('product/gallery', $gallery);
-    my_get_template_part('product/gallery', [
-      'data' => $gallery_mobile,
-      'mobile' => true
-    ]);
-  ?>
+  <div class="product__header">
+    <?php if($fields['iframe'] && $gallery_panel_hidden): ?>
+      <div class="product__header__side product__header__side--iframe">
+        <iframe src="<?= $fields['iframe'] ?>" frameborder="0"></iframe>
+      </div>
+    <?php endif; ?>
+    <div class="product__header__side product__header__side--gallery">
+      <?php
+        my_get_template_part('product/gallery', $gallery);
+        my_get_template_part('product/gallery', [
+          'data' => $gallery_mobile,
+          'mobile' => true
+        ]);
+      ?>
+     </div>
+  </div>
   <div class="tabs">
     <div class="tabs__buttons">
       <button data-tab-id="0" class="tabs__button" data-active>
