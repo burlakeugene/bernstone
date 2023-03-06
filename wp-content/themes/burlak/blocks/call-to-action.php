@@ -12,7 +12,7 @@
     <div class="call-to-action__inner">
       <div class="call-to-action__inner__text">
         Наші спеціалісти допоможуть Вам з вибором: детально опишуть <br />
-        і докладно розкажуть про нашу продукції.
+        і докладно розкажуть про нашу продукцію.
       </div>
       <div class="call-to-action__inner__form">
         <?php get_template_part('forms/callback'); ?>

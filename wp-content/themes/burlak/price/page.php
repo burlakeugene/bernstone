@@ -53,48 +53,7 @@
                   <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
-                <?php if($template['materials']):
-                  $title = $template['materials']['title'];
-                  $list = $template['materials']['list'];
-                  ?>
-                  <div class="price__materials">
-                    <?php if($title): ?>
-                      <h2 class="price__materials__title">
-                        <?= $title ?>
-                      </h2>
-                    <?php endif; ?>
-                    <?php if($list): ?>
-                      <div class="price__materials__list">
-                        <?php
-                          foreach($list as $item):
-                            $count = $item['count'];
-                            $item = $item['item'];
-                            $image = wp_get_attachment_image_src( get_post_thumbnail_id($item->ID), 'material');
-                            $size = get_field('size', $item->ID);
-                          ?>
-                            <div class="price__materials__item">
-                              <div class="price__materials__item__image">
-                                <img src="<?= $image[0] ?>" alt="<?= $item->post_title ?>">
-                              </div>
-                              <?php if($count): ?>
-                                <div class="price__materials__item__count">
-                                  <span>x</span><?= $count ?>
-                                </div>
-                              <?php endif; ?>
-                              <div class="price__materials__item__title">
-                                <?= $item->post_title ?>
-                              </div>
-                              <div class="price__materials__item__size">
-                                <?= $size ?>
-                              </div>
-                            </div>
-                          <?php
-                          endforeach;
-                        ?>
-                      </div>
-                    <?php endif; ?>
-                  </div>
-                <?php endif; ?>
+
                 <?php if($template['texts']):
                   $texts = $template['texts'];
                   ?>
@@ -135,6 +94,48 @@
                         </div>
                       </div>
                     <?php endforeach; ?>
+                  </div>
+                <?php endif; ?>
+                <?php if($template['materials']):
+                  $title = $template['materials']['title'];
+                  $list = $template['materials']['list'];
+                  ?>
+                  <div class="price__materials">
+                    <?php if($title): ?>
+                      <h2 class="price__materials__title">
+                        <?= $title ?>
+                      </h2>
+                    <?php endif; ?>
+                    <?php if($list): ?>
+                      <div class="price__materials__list">
+                        <?php
+                          foreach($list as $item):
+                            $count = $item['count'];
+                            $item = $item['item'];
+                            $image = wp_get_attachment_image_src( get_post_thumbnail_id($item->ID), 'material');
+                            $size = get_field('size', $item->ID);
+                          ?>
+                            <div class="price__materials__item">
+                              <div class="price__materials__item__image">
+                                <img src="<?= $image[0] ?>" alt="<?= $item->post_title ?>">
+                              </div>
+                              <?php if($count): ?>
+                                <div class="price__materials__item__count">
+                                  <span>x</span><?= $count ?>
+                                </div>
+                              <?php endif; ?>
+                              <div class="price__materials__item__title">
+                                <?= $item->post_title ?>
+                              </div>
+                              <div class="price__materials__item__size">
+                                <?= $size ?>
+                              </div>
+                            </div>
+                          <?php
+                          endforeach;
+                        ?>
+                      </div>
+                    <?php endif; ?>
                   </div>
                 <?php endif; ?>
             </div>

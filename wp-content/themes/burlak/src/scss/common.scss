@@ -344,7 +344,7 @@ a,
     height: 100%;
     z-index: 2;
     opacity: 0;
-    background-color: var(--theme);
+    background-color: var(--black);
   }
   &:after {
     content: '';
@@ -689,19 +689,22 @@ a,
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
   width: 100%;
   flex-shrink: 0;
+  gap: 10px;
   &,
   & a {
-    color: var(--white);
+    color: var(--gray);
   }
   li {
     list-style: none;
-    &.post_tag:not(:last-child),
-    &.current-item {
-      display: none;
-    }
+    color: var(--gray);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     & > span {
       display: inline-block;
       vertical-align: middle;
@@ -712,9 +715,24 @@ a,
         display: none;
       }
     }
+
+    &:after {
+      content: '';
+      width: 15px;
+      height: 15px;
+      background-image: url(./images/arrow-right-simple.svg);
+      display: inline-block;
+      vertical-align: middle;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin: 0;
+      transition: all 0.3s;
+    }
   }
   a {
     transition: all 0.3s;
+    position: relative;
     &:hover {
       color: var(--black);
     }
@@ -1565,8 +1583,7 @@ body.scrolled {
   }
 }
 
-.link,
-.breadcrumbs a {
+.link {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -1598,12 +1615,6 @@ body.scrolled {
   }
 }
 
-.breadcrumbs a {
-  &:after {
-    display: none;
-  }
-}
-
 .link {
   &:before {
     display: none;
@@ -1622,6 +1633,9 @@ body.scrolled {
   font-size: 15px;
   line-height: 1.4em;
   color: var(--gray);
+  h3 {
+    margin: 10px 0;
+  }
   a {
     color: var(--theme);
     transition: all 0.3s;
@@ -1812,7 +1826,7 @@ body.scrolled {
 
 .fancybox {
   &__backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
   }
   &__content :focus:not(.carousel__button.is-close) {
     outline: none;

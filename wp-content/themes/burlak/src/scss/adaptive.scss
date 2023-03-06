@@ -39,8 +39,8 @@
     padding-bottom: 30px;
   }
   .price__materials {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 30px;
   }
   .price__image {
     width: flexWidth(2, 40px);
@@ -591,9 +591,6 @@
     gap: 20px;
   }
   .content-block--button {
-  }
-  .breadcrumbs {
-    gap: 15px;
   }
   .product__gallery__main {
     padding: 0;

@@ -148,6 +148,9 @@
         Promise.all(
           [...media].map((item) => {
             return new Promise((resolve, reject) => {
+              if (item.loading === 'lazy') {
+                resolve();
+              }
               if (item.tagName === 'IMG') {
                 item.onload = resolve;
                 item.onerror = () => {

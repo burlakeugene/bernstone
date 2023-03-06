@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   window.Notification = Notification;
 
-  let dialogStatus = window.innerWidth > 768;
+  let dialogStatus = false;
 
   const routerFunc = () => {
     let callbackButtons = document.querySelectorAll('[data-callback]');
@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     maskits.length &&
       maskits.forEach((maskit) => {
         new Maskit(maskit, {
-          mask: maskit.getAttribute('data-maskit') || '+{3}{8} (000) 000-00-0',
+          mask: maskit.getAttribute('data-maskit') || '+{3}{8} (000) 000-00-00',
           // notFilledClear: true,
           onFilled: (scope) => {},
           offFilled: (scope) => {},
