@@ -39,7 +39,7 @@
 					<div class="footer__block">
 						<?php my_get_template_part('blocks/navigation', [
 							'type' => 'footer',
-							'items_wrap' => '<ul>%3$s<li><a class="developer" href="https://t.me/RjAngel" target="_blank">Сайт зроблений</a></li></ul>'
+							// 'items_wrap' => '<ul>%3$s<li><a class="developer" href="https://t.me/RjAngel" target="_blank">Сайт зроблений</a></li></ul>'
 						]) ?>
 					</div>
 					<div class="footer__block">

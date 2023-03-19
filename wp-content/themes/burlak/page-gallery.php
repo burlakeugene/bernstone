@@ -10,7 +10,7 @@
       ],
     ],
     'content' => [
-      'path' => 'gallery/page'
+      'path' => 'gallery/page',
     ]
   ]);
 

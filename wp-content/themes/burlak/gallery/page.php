@@ -1,4 +1,5 @@
 <?php
+  global $post;
   $list = get_pages([
     'numberposts' => -1,
     'child_of' => get_the_ID(),
@@ -6,29 +7,30 @@
     'sort_column' => 'menu_order'
   ]);
   $activeIndex = $_GET['index'] ? $_GET['index'] : 0;
-  if($list):
-    $data = $list[$activeIndex];
+  $data = $list ? $list[$activeIndex] : $post;
+  if($data):
   ?>
-
   <div class="gallery gallery--page">
-    <div class="gallery__buttons">
-      <?php
-        foreach($list as $index => $item):
-          $is_active = $index == $activeIndex;
-      ?>
+    <?php if($list): ?>
+      <div class="gallery__buttons">
+        <?php
+          foreach($list as $index => $item):
+            $is_active = $index == $activeIndex;
+        ?>
 
-      <button
-        data-gallery-url="<?= get_the_permalink().'?index='.$index ?>"
-        class="button button--loader <?= $is_active ? 'button--dark' : 'button--light' ?>"
-        <?= $is_active ? 'disabled' : '' ?>
-      >
-        <?= $item->post_title ?>
-        <?php get_template_part('icons/loading') ?>
-      </button>
-      <?php
-        endforeach;
-      ?>
-    </div>
+        <button
+          data-gallery-url="<?= get_the_permalink().'?index='.$index ?>"
+          class="button button--loader <?= $is_active ? 'button--dark' : 'button--light' ?>"
+          <?= $is_active ? 'disabled' : '' ?>
+        >
+          <?= $item->post_title ?>
+          <?php get_template_part('icons/loading') ?>
+        </button>
+        <?php
+          endforeach;
+        ?>
+      </div>
+    <?php endif;  ?>
       <?php
       if($data):
         $activeImageIndex = 0;
