@@ -792,3 +792,18 @@ add_filter('rank_math/sitemap/urlimages', function($initial, $id){
   }
   return $initial;
 }, 10, 2);
+
+add_filter( 'wpcf7_validate', 'my_form_validate', 10, 2 );
+
+function my_form_validate( $result, $tags ) {
+	$form = WPCF7_Submission::get_instance();
+
+	$field = $form->get_posted_data('phone');
+	$error = 'Неправильний формат';
+
+	if (strlen($field) < 19) {
+		$result->invalidate( 'phone', $error);
+	}
+
+	return $result;
+}
