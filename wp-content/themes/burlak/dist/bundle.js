@@ -8403,6 +8403,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var maskits = document.querySelectorAll('input[data-maskit], input[name="phone"]');
     maskits.length && maskits.forEach(function (maskit) {
       new (maskit__WEBPACK_IMPORTED_MODULE_2___default())(maskit, {
+        // if you want change mask, fix validation in function.php my_form_validate
         mask: maskit.getAttribute('data-maskit') || '+{3}{8} (000) 000-00-00',
         // notFilledClear: true,
         onFilled: function onFilled(scope) {},
