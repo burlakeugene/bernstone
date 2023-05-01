@@ -801,6 +801,7 @@ function my_form_validate( $result, $tags ) {
 	$field = $form->get_posted_data('phone');
 	$error = 'Неправильний формат';
 
+  //fix here
 	if (strlen($field) < 19) {
 		$result->invalidate( 'phone', $error);
 	}

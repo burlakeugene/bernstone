@@ -451,6 +451,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     maskits.length &&
       maskits.forEach((maskit) => {
         new Maskit(maskit, {
+          // if you want change mask, fix validation in function.php my_form_validate
           mask: maskit.getAttribute('data-maskit') || '+{3}{8} (000) 000-00-00',
           // notFilledClear: true,
           onFilled: (scope) => {},
