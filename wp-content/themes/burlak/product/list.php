@@ -1,4 +1,7 @@
 <?php
+	$query = get_queried_object();
+	$description = get_field('description', $query);
+
 	if(!$list){
 		$list = [];
 		if(have_posts()){
@@ -18,6 +21,7 @@
 	}
 
 	my_get_template_part('grid/list', [
-		'list' => $list
+		'list' => $list,
+		'description' => $description,
 	])
 ?>

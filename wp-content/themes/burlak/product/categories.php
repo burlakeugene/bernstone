@@ -1,4 +1,7 @@
 <?php
+$query = get_queried_object();
+$description = get_field('description', $query);
+
 if(!$list){
 	$list = getCategories();
 }
@@ -40,7 +43,8 @@ my_get_template_part('sections/section', [
 	'content' => [
 		'path' => 'grid/list',
 		'props' => [
-			'list' => $list
+			'list' => $list,
+			'description' => $description
 		]
 	]
 ]);

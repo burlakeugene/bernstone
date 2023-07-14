@@ -12,6 +12,11 @@
         my_get_template_part('grid/item', $item['grid']);
       }
     ?>
+    <?php if($description): ?>
+      <div class="grid__description content">
+        <?= $description ?>
+      </div>
+    <?php endif; ?>
   </div>
   <?php
   endif;
