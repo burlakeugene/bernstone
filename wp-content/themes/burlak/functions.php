@@ -117,6 +117,7 @@ add_action('admin_menu', function () {
 
 add_action('admin_init', function () {
     register_setting('theme-page-settings', 'common_scripts');
+    register_setting('theme-page-settings', 'page_scripts');
     register_setting('theme-page-settings', 'head_additions');
     register_setting('theme-page-settings', 'theme');
     register_setting('theme-page-settings', 'email');
@@ -160,6 +161,10 @@ function theme_settings_page()
       <label>
         <div>Common scripts</div>
         <textarea name="common_scripts"><?= esc_attr(get_option('common_scripts')); ?></textarea>
+      </label>
+      <label>
+        <div>Page scripts</div>
+        <textarea name="page_scripts"><?= esc_attr(get_option('page_scripts')); ?></textarea>
       </label>
       <label>
         <div>Head additions</div>

@@ -100,6 +100,7 @@
 		</div>
 	</div>
 	<?= get_option('common_scripts'); ?>
+	<?php get_template_part('blocks/page_scripts') ?>
 	<?php wp_footer(); ?>
 	</body>
 </html>
