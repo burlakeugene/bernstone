@@ -27,8 +27,8 @@ show_admin_bar(false);
 function add_fancybox($content)
 {
     global $post;
-    $pattern = "/<a(.*?)href=('|\")(.*?).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>/i";
-    $replacement = '<a$1href=$2$3.$4$5 data-fancybox="%POSTID%"$6>';
+    $pattern = "/<a(.*?)href=('|\")(.*?).(bmp|gif|jpeg|jpg|png)('|\")(.*?)><img/i";
+    $replacement = '<a$1href=$2$3.$4$5 data-fancybox="%POSTID%"$6><img';
     $content = preg_replace($pattern, $replacement, $content);
     $content = str_replace("%POSTID%", $post->ID, $content);
     return $content;
