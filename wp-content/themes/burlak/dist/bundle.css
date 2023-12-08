@@ -3187,6 +3187,14 @@ body.scrolled .fixed-button--top .icon {
   min-height: 720px;
 }
 
+.phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  flex-direction: column;
+  align-items: start;
+}
+
 @media (max-width: 1400px) {
   .button {
     padding: 15px 20px;
@@ -3565,9 +3573,10 @@ body.scrolled .fixed-button--top .icon {
   color: var(--theme);
   font-weight: 600;
 }
-.footer__phone {
+.footer .phones a {
   font-size: 18px;
   font-weight: 600;
+  margin: 0;
 }
 .footer__contacts {
   padding: 0;

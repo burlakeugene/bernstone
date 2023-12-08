@@ -6,8 +6,6 @@
     'height' => 145
   ];
 
-  $phones = get_option('phone');
-  $phones = explode(',', $phones);
   $address = get_option('address');
   $worktime = get_option('worktime');
   $email = get_option('email');
@@ -53,17 +51,7 @@
       <h2>Відділ продажу</h2>
     </div>
     <div class="contacts__data__block">
-      <?php
-      foreach($phones as $index => $phone):
-        ?>
-          <div>
-            <a href="tel:<?= phone_replace($phone) ?>">
-              <?= $phone ?>
-            </a>
-          </div>
-        <?php
-      endforeach;
-      ?>
+      <?php get_template_part('blocks/phones') ?>
     </div>
     <?php
      if($email):

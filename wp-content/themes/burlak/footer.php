@@ -3,8 +3,6 @@
 			$copyrights = get_option('copyrights');
 			$home_url = home_url();
 			$domain = parse_url($home_url)['host'];
-			$phones = get_option('phone');
-			$phones = explode(',', $phones);
 			$sites = get_option('sites');
 			$sites = explode(',', $sites);
 			$address = get_option('address');
@@ -52,16 +50,8 @@
 							<?php endif; ?>
 							<li>
 								<?php
-									foreach($phones as $index => $phone):
-										?>
-											<div>
-												<a class="footer__phone" href="tel:<?= phone_replace($phone) ?>">
-													<?= $phone ?>
-												</a>
-											</div>
-										<?php
-									endforeach;
-									?>
+									get_template_part('blocks/phones');
+								?>
 							</li>
 							<li>
 								<?php my_get_template_part('blocks/socials', [

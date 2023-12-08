@@ -8,9 +8,6 @@
       'height' => 72
     ];
   }
-
-  $phones = get_option('phone');
-  $phones = explode(',', $phones);
   $email = get_option('email');
 ?>
 <div class="contacts">
@@ -26,27 +23,8 @@
       <?php the_content(); ?>
     </div>
     <div class="contacts__data__block">
-      <?php
-      foreach($phones as $index => $phone):
-        ?>
-          <div>
-            <a href="tel:<?= phone_replace($phone) ?>">
-              <?= $phone ?>
-            </a>
-          </div>
-        <?php
-      endforeach;
-      ?>
+      <?php get_template_part('blocks/phones') ?>
     </div>
-    <?php
-     if($email):
-      ?>
-      <div class="contacts__data__block">
-        <a href="mailto: <?= $email ?>"><?= $email ?></a>
-      </div>
-      <?php
-      endif;
-    ?>
     <?php get_template_part('blocks/socials') ?>
     <div class="contacts__data__block">
       <button class="button" data-callback="Страница дилеров">
