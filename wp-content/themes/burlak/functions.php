@@ -74,11 +74,14 @@ function getMonth($month)
 
 function my_query($query){
   if (!is_admin() && (is_post_type_archive('product') || is_tax(get_object_taxonomies('product')))) {
-      $query->set('posts_per_page',
-      $query->query['numberposts'] ?
-        $query->query['numberposts'] : $_GET['posts_per_page'] ?
-          $_GET['posts_per_page'] : -1
-      );
+      $count = -1;
+      if($_GET['posts_per_page']){
+        $count =  $_GET['posts_per_page'];
+      }
+      if($query->query['numberposts']){
+        $count = $query->query['numberposts'];
+      }
+      $query->set('posts_per_page', $count);
       return;
   }
   if (!is_admin() && is_post_type_archive('articles')) {

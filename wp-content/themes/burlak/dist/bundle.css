@@ -829,7 +829,7 @@ body {
   --container-width: 1700px;
   --white: #ffffff;
   --black: #000000;
-  --background: #e3e3e3;
+  --background: #fcfcfc;
   --theme: #ffe168;
   --theme-light: #ffeb9c;
   --theme-dark: #dfc040;
@@ -1000,43 +1000,24 @@ body {
 }
 
 @font-face {
-  font-family: inter;
-  src: url(assets/f341ca512063c66296d1.ttf);
-  font-weight: 100;
-}
-@font-face {
-  font-family: inter;
-  src: url(assets/eec8664621fec98efb37.ttf);
-  font-weight: 300;
-}
-@font-face {
-  font-family: inter;
-  src: url(assets/e89cb19905e7db5591b0.ttf);
+  font-family: montserrat;
+  src: url(assets/24785cc015b27a3e964b.ttf);
   font-weight: 400;
 }
 @font-face {
-  font-family: inter;
-  src: url(assets/6dcbc9bed1ec438907ee.ttf);
+  font-family: montserrat;
+  src: url(assets/b8c6753baa964ccac1ba.ttf);
   font-weight: 500;
 }
 @font-face {
-  font-family: inter;
-  src: url(assets/88fa7ae373b07b41ecce.ttf);
+  font-family: unbounded;
+  src: url(assets/29479ac97777a463b92f.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: unbounded;
+  src: url(assets/0c54d6e100bb5ec11f3a.ttf);
   font-weight: 600;
-}
-@font-face {
-  font-family: inter;
-  src: url(assets/4d56bb21f2399db8ad48.ttf);
-  font-weight: 700;
-}
-@font-face {
-  font-family: inter;
-  src: url(assets/143c28420846d45c5834.ttf);
-  font-weight: 800;
-}
-@font-face {
-  font-family: gobold;
-  src: url(assets/13442566b67fb3000f50.ttf);
 }
 .preloader {
   position: fixed;
@@ -1496,7 +1477,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: inter;
+  font-family: montserrat;
   font-weight: 400;
   font-size: 15px;
   background-color: var(--background);
@@ -2901,9 +2882,9 @@ body.scrolled .fixed-button--top .icon {
 }
 
 .title {
-  font-size: 48px;
+  font-size: 40px;
+  font-family: unbounded;
   color: var(--gray);
-  font-weight: 500;
 }
 .title--mini {
   font-size: 30px;
