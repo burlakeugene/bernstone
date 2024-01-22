@@ -398,6 +398,31 @@
     overflow: auto;
     justify-content: flex-start;
   }
+  .video {
+    &__background {
+      display: none;
+      &--mobile {
+        display: block;
+      }
+    }
+    video {
+      height: 60vw;
+    }
+  }
+  .content {
+    font-size: 18px;
+    ul,
+    ol {
+      li {
+        padding-left: 30px;
+        &:before {
+          width: 25px;
+          height: 25px;
+          top: 0;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 900px) {

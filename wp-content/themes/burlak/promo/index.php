@@ -46,7 +46,7 @@
         ?>
         <?php
           if($data['button']):
-            $data['button']['classes'] = 'button--dark';
+            $data['button']['classes'] = 'button--dark button--uppercase';
             ?>
             <div>
               <?php

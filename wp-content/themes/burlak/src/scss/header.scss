@@ -5,6 +5,10 @@
   transition: all 0.3s;
   transition-delay: 0.3s;
   background-color: var(--background);
+  .button{
+    font-family: unbounded;
+    font-weight: 400;
+  }
   .logo {
     width: 300px;
     color: var(--black);

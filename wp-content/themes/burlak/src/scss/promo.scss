@@ -66,6 +66,11 @@
       color: var(--gray);
       &__title {
         font-size: 40px;
+        font-family: unbounded;
+      }
+      &__text{
+        font-weight: 500;
+        font-size: 18px;
       }
     }
     &__image {
@@ -89,6 +94,11 @@
     color: var(--gray);
     &__title{
       font-size: 30px;
+      font-family: unbounded;
+    }
+    &__text{
+      font-weight: 500;
+      font-size: 18px;
     }
     &__form{
       margin-top: auto;

@@ -34,7 +34,7 @@ if($gallery):
               </div>
             <?php endif; ?>
             <div class="product__gallery__main__panel__button">
-              <button class="button" data-callback="<?php the_title() ?>">
+              <button class="button button--uppercase" data-callback="<?php the_title() ?>">
                 <?= $panel['button']['text'] ?>
               </button>
             </div>

@@ -16,6 +16,7 @@
       'breadcrumbs' => true,
       'title' => [
         'tag' => 'h1',
+        'uppercase' => true,
         'text' => get_the_title(),
       ],
     ],

@@ -6,7 +6,12 @@
       gap: 10px;
       flex-wrap: wrap;
       white-space: nowrap;
-      justify-content: center;
+      .button{
+        font-family: unbounded;
+        font-weight: 300;
+        text-transform: uppercase;
+        min-width: 140px;
+      }
     }
     &__viewer {
       display: flex;

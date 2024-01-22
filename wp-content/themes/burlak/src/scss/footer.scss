@@ -14,6 +14,8 @@
         margin-bottom: 40px;
         a {
           color: var(--gray-lightest);
+          font-family: unbounded;
+          font-weight: 300;
           &:hover {
             color: var(--theme);
           }
@@ -32,6 +34,8 @@
   &__copyrights {
     font-size: 13px;
     color: var(--gray-light);
+    font-family: unbounded;
+    font-weight: 300;
   }
   &__domains {
     display: flex;
@@ -44,7 +48,7 @@
   }
   .phones a {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     margin: 0;
   }
   &__contacts {
@@ -67,6 +71,10 @@
         left: 0;
         width: 24px;
       }
+    }
+    .button{
+      font-family: unbounded;
+      font-weight: 400;
     }
   }
   &__blocks {

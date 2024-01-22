@@ -20,7 +20,7 @@
 
         <button
           data-gallery-url="<?= get_the_permalink().'?index='.$index ?>"
-          class="button button--loader <?= $is_active ? 'button--dark' : 'button--light' ?>"
+          class="button button--loader <?= $is_active ? 'button--dark' : 'button--gray' ?>"
           <?= $is_active ? 'disabled' : '' ?>
         >
           <?= $item->post_title ?>

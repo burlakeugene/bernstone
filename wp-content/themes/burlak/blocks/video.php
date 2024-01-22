@@ -1,7 +1,14 @@
 <?php
   if($src):
+    $preview = $preview['sizes']['banner'];
+    $mobile_preview = $mobile_preview['sizes']['banner'];
+    if(!$mobile_preview){
+      $mobile_preview = $preview;
+    }
   ?>
-    <div class="video" style="background-image: url('<?= $preview['sizes']['banner'] ?>')">
+    <div class="video">
+      <div class="video__background" style="background-image:url(<?= $preview ?>)"></div>
+      <div class="video__background video__background--mobile" style="background-image:url(<?= $mobile_preview ?>)"></div>
       <video oncontextmenu="return false;" src="<?= $src ?>" controls controlsList="nodownload"></video>
       <button class="video__control">
         <?php get_template_part('icons/play') ?>

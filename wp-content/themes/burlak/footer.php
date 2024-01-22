@@ -59,7 +59,7 @@
 								]) ?>
 							</li>
 							<li>
-								<button class="button" data-callback="Замовити проєкт">
+								<button class="button button--uppercase" data-callback="Замовити проєкт">
 									Замовити проєкт
 								</button>
 							</li>

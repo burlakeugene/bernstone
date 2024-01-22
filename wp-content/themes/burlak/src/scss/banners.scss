@@ -25,7 +25,7 @@
       &s {
         position: relative;
         height: 320px;
-        font-size: 48px;
+        font-size: 40px;
         color: var(--white);
       }
       position: absolute;
@@ -39,6 +39,8 @@
       &__text {
         overflow: hidden;
         flex: 1;
+        text-align: justify;
+        font-family: unbounded;
       }
 
       opacity: 0;
@@ -75,10 +77,10 @@
   &__next {
     position: absolute;
     bottom: -50px;
-    right: 70px;
-    width: 230px;
-    height: 230px;
-    border-radius: 50%;
+    right: 50px;
+    width: 140px;
+    height: 140px;
+    border-radius: 45% 55% 53% 47% / 30% 49% 51% 70%;
     background-color: var(--theme);
     display: block;
     z-index: 1;
@@ -87,24 +89,27 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-    &__arrow {
-      height: 40%;
-      width: auto;
-    }
-    &__letters {
-      position: absolute;
-      top: calc(15% / 2);
-      left: calc(15% / 2);
-      width: 85%;
-      height: 85%;
-      animation: rotate 15s linear infinite;
+    display: flex;
+    flex-direction: column;
+    font-family: unbounded;
+    font-weight: 300;
+    animation: linear 10s infinite alternate blob;
+    span {
+      &:first-child {
+        text-transform: uppercase;
+      }
+      &:nth-child(2) {
+        font-size: 30px;
+        font-weight: 400;
+      }
+      &:last-child {
+        font-size: 18px;
+      }
     }
     &:hover {
       transform: scale(1.1);
       box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
-      .banners__next__letters {
-        animation-play-state: paused;
-      }
+      animation-play-state: paused;
     }
   }
 }

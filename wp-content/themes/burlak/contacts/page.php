@@ -64,7 +64,7 @@
     ?>
     <?php get_template_part('blocks/socials') ?>
     <div class="contacts__data__block">
-      <button class="button" data-callback="Страница контактов">
+      <button class="button button--uppercase" data-callback="Страница контактов">
         Зв’язатися з менеджером
       </button>
     </div>

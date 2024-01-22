@@ -26,7 +26,7 @@ if($data):
         my_get_template_part('blocks/title', $title);
       ?>
         <?php if($link):
-          $linkClasses = 'button button--light';
+          $linkClasses = 'button button--light button--border';
           if($link['ajax']) $linkClasses .= ' ajax';
           if($link['modificators']){
             foreach($link['modificators'] as $modificator){

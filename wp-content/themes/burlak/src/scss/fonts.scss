@@ -11,8 +11,18 @@
 
 @font-face {
   font-family: unbounded;
+  src: url('./fonts/unbounded/Unbounded-Light.ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family: unbounded;
   src: url('./fonts/unbounded/Unbounded-Regular.ttf');
   font-weight: 400;
+}
+@font-face {
+  font-family: unbounded;
+  src: url('./fonts/unbounded/Unbounded-Medium.ttf');
+  font-weight: 500;
 }
 @font-face {
   font-family: unbounded;
