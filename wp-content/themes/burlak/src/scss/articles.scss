@@ -50,6 +50,7 @@
     overflow: hidden;
     transition: all 0.3s;
     position: relative;
+    text-align: justify;
     &:before {
       content: '';
       display: block;

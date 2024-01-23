@@ -633,8 +633,6 @@ a,
     video {
       opacity: 1;
       transition-delay: 0.3s;
-      max-width: 100%;
-      max-height: 800px;
       margin: 0 auto;
       display: block;
     }
@@ -1645,7 +1643,7 @@ body.scrolled {
 }
 
 .content {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 1.4em;
   color: var(--gray);
   h1,
@@ -1687,7 +1685,7 @@ body.scrolled {
         width: 30px;
         height: 30px;
         background-color: var(--theme);
-        top: 5px;
+        top: 0;
         left: 0;
         border-radius: 50%;
       }
@@ -1699,7 +1697,7 @@ body.scrolled {
       counter-increment: li;
       &:before {
         position: absolute;
-        top: 5px;
+        top: 0;
         left: 0px;
         line-height: 1em;
         content: counter(li);
@@ -1843,6 +1841,7 @@ body.scrolled {
   }
   &__excerpt {
     margin: 15px 0;
+    text-align: justify;
   }
 }
 

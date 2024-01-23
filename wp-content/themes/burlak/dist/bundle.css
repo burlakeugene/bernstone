@@ -2065,8 +2065,6 @@ a:focus,
 .video--played video {
   opacity: 1;
   transition-delay: 0.3s;
-  max-width: 100%;
-  max-height: 800px;
   margin: 0 auto;
   display: block;
 }
@@ -2970,7 +2968,7 @@ body.scrolled .fixed-button--top .icon {
 }
 
 .content {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 1.4em;
   color: var(--gray);
 }
@@ -3012,7 +3010,7 @@ body.scrolled .fixed-button--top .icon {
   width: 30px;
   height: 30px;
   background-color: var(--theme);
-  top: 5px;
+  top: 0;
   left: 0;
   border-radius: 50%;
 }
@@ -3024,7 +3022,7 @@ body.scrolled .fixed-button--top .icon {
 }
 .content ol li:before {
   position: absolute;
-  top: 5px;
+  top: 0;
   left: 0px;
   line-height: 1em;
   content: counter(li);
@@ -3159,6 +3157,7 @@ body.scrolled .fixed-button--top .icon {
 }
 .preview__excerpt {
   margin: 15px 0;
+  text-align: justify;
 }
 
 .fancybox__backdrop {
@@ -3917,6 +3916,7 @@ body.scrolled .fixed-button--top .icon {
   overflow: hidden;
   transition: all 0.3s;
   position: relative;
+  text-align: justify;
 }
 .article__excerpt:before {
   content: "";
@@ -4036,6 +4036,7 @@ body.scrolled .fixed-button--top .icon {
 .promo__form__text {
   font-weight: 500;
   font-size: 18px;
+  text-align: justify;
 }
 .promo__form__form {
   margin-top: auto;
@@ -4588,6 +4589,7 @@ body.scrolled .fixed-button--top .icon {
 }
 .price__block__content__text {
   color: var(--gray-lightest);
+  text-align: justify;
 }
 .price__block__content__button .button, .price__block__content__button .tabs__button {
   width: 100%;
@@ -4743,6 +4745,7 @@ body.scrolled .fixed-button--top .icon {
 }
 .product__gallery__main__panel__text {
   color: var(--gray);
+  text-align: justify;
 }
 .product__gallery__main__panel__footer {
   display: flex;
