@@ -507,6 +507,7 @@ a,
   margin: 60px 0;
   border-radius: 50px;
   overflow: hidden;
+  max-height: 800px;
   @extend .safari-overflow;
   &__background {
     background-repeat: no-repeat;
@@ -1654,6 +1655,7 @@ body.scrolled {
     font-family: unbounded;
     font-weight: 400;
     font-size: 1em;
+    font-size: 30px;
   }
   h3 {
     margin: 10px 0;

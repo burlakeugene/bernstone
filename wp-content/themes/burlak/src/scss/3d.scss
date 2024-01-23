@@ -75,9 +75,11 @@
         font-size: 40px;
         color: var(--white);
         font-weight: 500;
+        font-family: unbounded;
       }
       &__text{
         color: var(--gray-lightest);
+        text-align: justify;
       }
     }
   }

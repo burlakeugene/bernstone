@@ -46,7 +46,7 @@ if($list):
 					foreach($categories as $category):
 						$is_active = $category['id'] == $current_category;
 						$activeClass = 'button--dark';
-						$unactiveClass = 'button--light';
+						$unactiveClass = 'button--gray';
 					?>
 						<button
 							class="button <?= $is_active ? $activeClass : $unactiveClass ?>"

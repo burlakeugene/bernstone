@@ -93,8 +93,9 @@
     gap: 30px;
     color: var(--gray);
     &__title{
-      font-size: 30px;
+      font-size: 24px;
       font-family: unbounded;
+      text-align: justify;
     }
     &__text{
       font-weight: 500;

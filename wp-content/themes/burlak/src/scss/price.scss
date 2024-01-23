@@ -4,7 +4,10 @@
   gap: 60px;
   &__templates {
     .tabs__button {
-      min-width: 25%;
+      &s {
+        @include flexContainer(15px, 4);
+      }
+      @include flexItem;
     }
     .tabs__contents {
       border-radius: 50px;

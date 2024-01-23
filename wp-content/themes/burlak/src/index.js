@@ -953,12 +953,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
                       button.classList.remove('button--loading');
                       if (isActive) {
                         button.setAttribute('disabled', 1);
-                        button.classList.remove('button--light');
+                        button.classList.remove('button--gray');
                         button.classList.add('button--dark');
                       } else {
                         button.removeAttribute('disabled');
                         button.classList.remove('button--dark');
-                        button.classList.add('button--light');
+                        button.classList.add('button--gray');
                       }
                     });
                     routerFunc();

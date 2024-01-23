@@ -1942,6 +1942,7 @@ a:focus,
   margin: 60px 0;
   border-radius: 50px;
   overflow: hidden;
+  max-height: 800px;
 }
 .video__background {
   background-repeat: no-repeat;
@@ -2980,6 +2981,7 @@ body.scrolled .fixed-button--top .icon {
   font-family: unbounded;
   font-weight: 400;
   font-size: 1em;
+  font-size: 30px;
 }
 .content h3 {
   margin: 10px 0;
@@ -3509,7 +3511,6 @@ body.scrolled .fixed-button--top .icon {
 .banners__panel__content__text {
   overflow: hidden;
   flex: 1;
-  text-align: justify;
   font-family: unbounded;
 }
 .banners__panel__content[data-active="1"] {
@@ -4030,8 +4031,9 @@ body.scrolled .fixed-button--top .icon {
   color: var(--gray);
 }
 .promo__form__title {
-  font-size: 30px;
+  font-size: 24px;
   font-family: unbounded;
+  text-align: justify;
 }
 .promo__form__text {
   font-weight: 500;
@@ -4394,9 +4396,11 @@ body.scrolled .fixed-button--top .icon {
   font-size: 40px;
   color: var(--white);
   font-weight: 500;
+  font-family: unbounded;
 }
 ._3d__second__content__text {
   color: var(--gray-lightest);
+  text-align: justify;
 }
 
 .price {
@@ -4405,7 +4409,15 @@ body.scrolled .fixed-button--top .icon {
   gap: 60px;
 }
 .price__templates .tabs__button {
-  min-width: 25%;
+  flex-shrink: 0;
+  width: calc(100% / var(--items) - (var(--items) - 1) * var(--gap) / var(--items));
+}
+.price__templates .tabs__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  --gap: 15px;
+  --items: 4;
+  gap: var(--gap);
 }
 .price__templates .tabs__contents {
   border-radius: 50px;
@@ -5577,8 +5589,12 @@ body.scrolled .fixed-button--top .icon {
   .gallery.gallery--page .gallery__viewer__list a {
     width: calc(20% - 16px);
   }
-  .price__templates .tabs__button {
-    min-width: 33.33333%;
+  .price__templates .tabs__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    --gap: 15px;
+    --items: 3;
+    gap: var(--gap);
   }
   .price__materials {
     gap: 15px;
@@ -5747,8 +5763,12 @@ body.scrolled .fixed-button--top .icon {
     bottom: 30px;
     gap: 15px;
   }
-  .price__templates .tabs__button {
-    min-width: 50%;
+  .price__templates .tabs__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    --gap: 15px;
+    --items: 2;
+    gap: var(--gap);
   }
   .tabs__button {
     font-size: 16px;
@@ -6057,7 +6077,7 @@ body.scrolled .fixed-button--top .icon {
     width: calc(33.3333333333% - 13.3333333333px);
   }
   .price__templates .tabs__button {
-    min-width: 100%;
+    width: 100%;
   }
   .zoom__list .zoom__item {
     width: 100%;
@@ -6143,11 +6163,6 @@ body.scrolled .fixed-button--top .icon {
   }
   .price__color {
     width: 100%;
-  }
-}
-@media (max-height: 1000px) {
-  .video video {
-    max-height: 600px;
   }
 }
 

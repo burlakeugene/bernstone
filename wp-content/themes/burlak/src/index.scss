@@ -18,6 +18,21 @@ body {
   @return calc(100% / $count - (($count - 1) * $gap) / $count);
 }
 
+@mixin flexContainer($gap, $items) {
+  display: flex;
+  flex-wrap: wrap;
+  --gap: #{$gap};
+  --items: #{$items};
+  gap: var(--gap);
+}
+
+@mixin flexItem {
+  flex-shrink: 0;
+  width: calc(
+    100% / var(--items) - (var(--items) - 1) * var(--gap) / var(--items)
+  );
+}
+
 @import 'js/swiper/swiper.min.css';
 @import './scss/animations';
 @import './scss/wordpress-fixies';

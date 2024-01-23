@@ -142,8 +142,8 @@
       width: flexWidth(5, 20px);
     }
   }
-  .price__templates .tabs__button {
-    min-width: 33.33333%;
+  .price__templates .tabs__buttons {
+    @include flexContainer(15px, 3);
   }
   .price__materials {
     gap: 15px;
@@ -322,8 +322,8 @@
     bottom: 30px;
     gap: 15px;
   }
-  .price__templates .tabs__button {
-    min-width: 50%;
+  .price__templates .tabs__buttons {
+    @include flexContainer(15px, 2);
   }
   .tabs__button {
     font-size: 16px;
@@ -659,7 +659,7 @@
     }
   }
   .price__templates .tabs__button {
-    min-width: 100%;
+    width: 100%;
   }
   .zoom__list {
     .zoom__item {
@@ -762,10 +762,4 @@
   //     width: flexWidth(1, 20px);
   //   }
   // }
-}
-
-@media (max-height: 1000px) {
-  .video video {
-    max-height: 600px;
-  }
 }
