@@ -37,6 +37,7 @@ my_get_template_part('sections/section', [
 		'breadcrumbs' => true,
 		'title' => [
 			'tag' => 'h1',
+			'uppercase' => true,
 			'text' => $title
 		],
 	],
