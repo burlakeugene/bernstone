@@ -12,6 +12,7 @@ body {
   --gray-light: #8f8f91;
   --gray-lightest: #b4b4b6;
   --gray-lightest-more: #dbdbdb;
+  --section-gap: 50px;
 }
 
 @function flexWidth($count, $gap) {
