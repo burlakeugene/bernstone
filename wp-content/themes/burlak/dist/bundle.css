@@ -2824,6 +2824,7 @@ body.scrolled .fixed-button--top .icon {
   padding: 0;
   margin: 0;
   list-style: none;
+  font-size: 15px;
 }
 .navigation ul {
   list-style: none;
