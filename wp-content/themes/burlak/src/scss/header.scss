@@ -5,7 +5,7 @@
   transition: all 0.3s;
   transition-delay: 0.3s;
   background-color: var(--background);
-  .button{
+  .button {
     font-family: unbounded;
     font-weight: 400;
   }
@@ -144,19 +144,17 @@
   }
 }
 
+.header {
+  .navigation ul li a {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 1480px) {
   .header {
     .logo {
       width: 150px;
       color: var(--black);
-    }
-  }
-}
-
-@media (max-width: 1400px) {
-  .header {
-    .navigation ul li a {
-      font-size: 14px;
     }
   }
 }

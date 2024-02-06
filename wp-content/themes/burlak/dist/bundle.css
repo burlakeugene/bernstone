@@ -3404,15 +3404,14 @@ body.scrolled .fixed-button--top .icon {
   transform: translateX(0);
 }
 
+.header .navigation ul li a {
+  font-size: 13px;
+}
+
 @media (max-width: 1480px) {
   .header .logo {
     width: 150px;
     color: var(--black);
-  }
-}
-@media (max-width: 1400px) {
-  .header .navigation ul li a {
-    font-size: 14px;
   }
 }
 @media (min-width: 1201px) {

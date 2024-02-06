@@ -1,4 +1,8 @@
 <?php
+  if($plain):
+    global $post;
+    echo $post->post_content;
+  else:
   $query = get_queried_object();
   $is_articles = get_post_type() == 'articles';
   if($is_articles){
@@ -31,3 +35,6 @@
   </div>
   <?php endif; ?>
 </div>
+<?php
+  endif;
+?>
