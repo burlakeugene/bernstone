@@ -349,8 +349,10 @@
   .content-block--slider {
     margin: 30px 0;
   }
-  .content-block--text .content--big {
-    font-size: 24px;
+  .content-block--text {
+    .content {
+      font-size: 24px;
+    }
   }
   .product__gallery {
     gap: 20px;
