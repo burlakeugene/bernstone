@@ -1563,7 +1563,7 @@ body.scrolled {
     box-shadow: 0 0 0 2px var(--background);
     .icon {
       position: static;
-      width: 18px;
+      width: 20px;
       color: var(--gray);
       transition: all 0.3s;
     }
@@ -1820,6 +1820,45 @@ body.scrolled {
         overflow: visible;
       }
     }
+    &--socials {
+      .socials {
+        gap: 10px;
+        justify-content: center;
+        .social {
+          width: 46px;
+          height: 46px;
+          .icon {
+            width: 70%;
+          }
+        }
+      }
+    }
+    &--numbers {
+      ol {
+        display: flex;
+        gap: 60px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        li {
+          margin: 0;
+          text-transform: uppercase;
+          padding-left: 60px;
+          max-width: 400px;
+          &:before {
+            font-size: 60px;
+            background: transparent;
+            padding: 0;
+            color: var(--theme);
+            width: auto;
+            height: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: -1;
+          }
+        }
+      }
+    }
   }
   &__wrapper {
     display: flex;
@@ -2036,10 +2075,10 @@ body.scrolled {
 @media (max-width: 991px) {
   .iframe {
     @include flexContainer(30px, 1);
-    &__title{
+    &__title {
       font-size: 20px;
     }
-    &__text{
+    &__text {
       font-size: 15px;
     }
   }
@@ -2076,5 +2115,13 @@ body.scrolled {
   body.scrolled .fixed-button--top {
     height: 60px;
     margin-top: 10px;
+  }
+  .content-block {
+    &--numbers {
+      ol li {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
   }
 }
