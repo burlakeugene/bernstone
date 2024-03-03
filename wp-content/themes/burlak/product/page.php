@@ -19,6 +19,7 @@
     }, $gallery_mobile);
   }
   $gallery_panel_hidden = !$fields['gallery']['title'] && !$fields['gallery']['text'];
+  $is_tabs_needed = $info['templates'] || $info['colors'];
 ?>
 
 <div class="product">
@@ -49,19 +50,22 @@
      </div>
   </div>
   <div class="tabs">
+    <?php if($is_tabs_needed || $links): ?>
     <div class="tabs__buttons">
-      <button data-tab-id="0" class="tabs__button" data-active>
-        <?= $info['tab_first'] ?>
-      </button>
-      <?php if($info['templates']): ?>
-      <button data-tab-id="1" class="tabs__button" >
-        <?= $info['tab_second'] ?>
-      </button>
-      <?php endif; ?>
-      <?php if($info['colors']): ?>
-      <button data-tab-id="2" class="tabs__button" >
-        <?= $info['tab_third'] ?>
-      </button>
+      <?php if($is_tabs_needed): ?>
+        <button data-tab-id="0" class="tabs__button" data-active>
+          <?= $info['tab_first'] ?>
+        </button>
+        <?php if($info['templates']): ?>
+        <button data-tab-id="1" class="tabs__button" >
+          <?= $info['tab_second'] ?>
+        </button>
+        <?php endif; ?>
+        <?php if($info['colors']): ?>
+        <button data-tab-id="2" class="tabs__button" >
+          <?= $info['tab_third'] ?>
+        </button>
+        <?php endif; ?>
       <?php endif; ?>
       <?php
         if($links):
@@ -74,6 +78,7 @@
         endif;
       ?>
     </div>
+    <?php endif; ?>
     <div class="tabs__contents">
       <div data-tab-id="0" class="tabs__content" data-active>
         <?php my_get_template_part('page/configurable/content', $info['blocks']); ?>

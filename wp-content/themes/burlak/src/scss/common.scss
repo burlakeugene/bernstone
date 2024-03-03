@@ -195,6 +195,9 @@ a,
   &--gray {
     background: var(--border-color);
   }
+  &--gray-light {
+    background: #d9d9d9;
+  }
 }
 
 .wpcf7-form.submitting {
@@ -1741,8 +1744,19 @@ body.scrolled {
     padding: 0 10px;
   }
   &-block {
+    margin: var(--section-gap) 0;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &--banner {
+      .banners {
+        margin-top: 0;
+      }
+    }
     &--image {
-      margin: 60px 0;
       a {
         border-radius: 50px;
         overflow: hidden;
@@ -1754,7 +1768,6 @@ body.scrolled {
       flex-wrap: wrap;
       gap: 40px;
       max-width: 1100px;
-      margin: 60px auto;
       .content {
         flex: 1;
         padding: 0;
@@ -1791,16 +1804,11 @@ body.scrolled {
     }
     &--button {
       max-width: 1100px;
-      margin: 60px auto;
       & + .content-block--button {
         margin-top: 50px;
       }
     }
-    &--video {
-      margin: 60px 0;
-    }
     &--slider {
-      margin: 60px 0;
       .slider__inner {
         padding: 0;
       }
@@ -1857,6 +1865,76 @@ body.scrolled {
   &__excerpt {
     margin: 15px 0;
     text-align: justify;
+  }
+}
+
+.teaser {
+  &s {
+    @include flexContainer(80px, 2);
+    justify-content: center;
+  }
+  @include flexItem;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 50px;
+  background-color: var(--grid-background);
+  flex-wrap: wrap;
+  &__image {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    align-self: center;
+  }
+  &__data {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+  }
+  &__title {
+    padding: 10px 40px;
+    background-color: var(--theme);
+    color: var(--gray);
+    text-transform: uppercase;
+    font-family: unbounded;
+    font-size: 20px;
+    border-radius: 50px;
+    text-align: center;
+    width: auto;
+    align-self: center;
+  }
+  &__text {
+    color: var(--white);
+    font-size: 15px;
+  }
+}
+
+.iframe {
+  @include flexContainer(50px, 2);
+  align-items: center;
+  iframe,
+  &__data {
+    @include flexItem;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  &__title {
+    color: var(--gray);
+    font-size: 35px;
+    font-family: unbounded;
+    font-weight: 300;
+  }
+  &__text {
+    font-size: 18px;
+  }
+  .button {
+    align-self: flex-start;
+  }
+  iframe {
+    height: 600px;
   }
 }
 
@@ -1940,6 +2018,30 @@ body.scrolled {
 @media (max-width: 1400px) {
   .button {
     padding: 15px 20px;
+  }
+  .iframe {
+    @include flexContainer(30px, 2);
+    &__data {
+      gap: 20px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    iframe {
+      height: 400px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .iframe {
+    @include flexContainer(30px, 1);
+    &__title{
+      font-size: 20px;
+    }
+    &__text{
+      font-size: 15px;
+    }
   }
 }
 

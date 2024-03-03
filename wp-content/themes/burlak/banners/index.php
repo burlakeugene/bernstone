@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-          <a class="banners__next scroller" href="#categories">
+          <a class="banners__guarantee scroller" href="#categories">
             <span>гарантія</span> <span>240</span> <span>місяців</span>
           </a>
       </div>
