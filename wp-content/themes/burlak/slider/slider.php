@@ -14,6 +14,7 @@
               <div class="swiper-slide">
                 <?php my_get_template_part($item['path'], [
                   'data' => $list_item,
+                  'key' => $key,
                   'index' => $index
                 ]) ?>
               </div>

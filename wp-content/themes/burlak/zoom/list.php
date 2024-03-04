@@ -5,7 +5,7 @@ if($list):
 <div class="zoom">
   <div class="zoom__list">
     <?php foreach($list as $item):
-      $item = $item['zoom'];
+      $item = $item['zoom'] ? $item['zoom'] : $item;
       ?>
       <a
         class="zoom__item"

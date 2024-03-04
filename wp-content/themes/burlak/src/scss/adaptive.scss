@@ -180,12 +180,7 @@
     }
   }
   .zoom__list {
-    margin-top: 40px;
-    gap: 20px;
-    .zoom__item {
-      width: flexWidth(3, 20px);
-      padding-top: calc(flexWidth(3, 20px) - 60px);
-    }
+    @include flexContainer(20px, 3);
   }
   .tabs__button {
     font-size: 20px;
@@ -235,12 +230,30 @@
       gap: 20px;
     }
   }
+  .products-block {
+    &__item {
+      @include flexContainer(40px, 2);
+      &__info {
+        gap: 20px;
+      }
+    }
+    .zoom__list {
+      @include flexContainer(10px, 4);
+    }
+  }
 }
 
 @media (max-width: 1100px) {
   .content__wrapper__sidebar {
     padding: 30px;
     width: 400px;
+  }
+  .products-block__item {
+    @include flexContainer(20px, 1);
+    &__gallery {
+      max-width: 600px;
+      margin: 0 auto;
+    }
   }
 }
 
@@ -385,10 +398,7 @@
     padding-top: flexWidth(2, 20px);
   }
   .zoom__list {
-    .zoom__item {
-      width: flexWidth(2, 20px);
-      padding-top: calc(flexWidth(2, 20px) - 60px);
-    }
+    @include flexContainer(20px, 2);
   }
   ._3d__first__blocks {
     flex-direction: column;
@@ -687,10 +697,7 @@
     width: 100%;
   }
   .zoom__list {
-    .zoom__item {
-      width: 100%;
-      padding-top: calc(100% - 60px);
-    }
+    @include flexContainer(20px, 1);
   }
 }
 
@@ -795,6 +802,13 @@
   .price__materials__item {
     width: 100%;
   }
+  .products-block .zoom__list {
+    @include flexContainer(10px, 3);
+  }
+  .products-block__item__info__title,
+  .products-block__item__info__text-big {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -809,6 +823,9 @@
   }
   .price__color {
     width: 100%;
+  }
+  .products-block .zoom__list{
+    @include flexContainer(10px, 2);
   }
   // .gallery.gallery--page .gallery__viewer__list {
   //   a {

@@ -30,9 +30,10 @@ body {
 
 @mixin flexItem {
   flex-shrink: 0;
-  width: calc(
+  --width: calc(
     100% / var(--items) - (var(--items) - 1) * var(--gap) / var(--items)
   );
+  width: var(--width);
 }
 
 @import 'js/swiper/swiper.min.css';

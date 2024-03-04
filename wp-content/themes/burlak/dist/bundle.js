@@ -496,8 +496,15 @@ var eventDecorator = function eventDecorator(_ref) {
 var declension = function declension() {
   var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
   var words = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ['товар', 'товара', 'товаров'];
+  var replace = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var array = [2, 0, 1, 1, 1, 2];
-  return words[value % 100 > 4 && value % 100 < 20 ? 2 : array[value % 10 < 5 ? value % 10 : 5]];
+  var result = words[value % 100 > 4 && value % 100 < 20 ? 2 : array[value % 10 < 5 ? value % 10 : 5]];
+  Object.keys(replace).forEach(function (key) {
+    var from = new RegExp("".concat(key), 'g');
+    var to = replace[key];
+    result = result.replace(from, to);
+  });
+  return result;
 };
 var formatNumber = function formatNumber(value) {
   var deliverSymbol = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ',';
