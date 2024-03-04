@@ -10,7 +10,7 @@
       <div class="slider__inner">
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <?php foreach($list as $index => $list_item): ?>
+            <?php foreach($list as $index => $list_item):?>
               <div class="swiper-slide">
                 <?php my_get_template_part($item['path'], [
                   'data' => $list_item,

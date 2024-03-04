@@ -7,6 +7,9 @@
     if($data['classes']){
       $classes .= ' '.$data['classes'];
     }
+    if($data['type']){
+      $classes .= ' button--'.$data['type'];
+    }
     if(!$data['data-callback'] && !$data['external']){
       $classes .= ' ajax';
     }

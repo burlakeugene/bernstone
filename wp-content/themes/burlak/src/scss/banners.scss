@@ -39,7 +39,7 @@
       &__text {
         font-weight: 300;
         font-family: unbounded;
-        &--mini{
+        &--mini {
           font-size: 15px;
           font-family: montserrat;
           font-weight: 400;
@@ -114,5 +114,34 @@
       box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
       animation-play-state: paused;
     }
+  }
+}
+
+.banner {
+  border-radius: 50px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  &__panel {
+    width: 50%;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  &__text {
+    font-size: 40px;
+    color: var(--white);
+  }
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
   }
 }

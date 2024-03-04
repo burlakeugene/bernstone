@@ -6,11 +6,12 @@
       gap: 10px;
       flex-wrap: wrap;
       white-space: nowrap;
-      .button{
+      .button {
         font-family: unbounded;
         font-weight: 300;
         text-transform: uppercase;
         min-width: 140px;
+        flex-shrink: 0;
       }
     }
     &__viewer {

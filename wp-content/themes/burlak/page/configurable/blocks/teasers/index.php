@@ -9,7 +9,7 @@
         <div class="teaser">
           <?php if($item['image']):
             ?>
-            <img  class="teaser__image" src="<?= $item['image']['sizes']['medium'] ?>" alt="<?= $item['title'] ?>">
+            <img  class="teaser__image" src="<?= $item['image']['sizes']['medium'] ?>" alt="<?= getAlt($item['image']) ?>">
             <div class="teaser__data">
               <?php if($item['title']): ?>
                 <div class="teaser__title">
