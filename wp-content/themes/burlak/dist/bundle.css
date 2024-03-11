@@ -3985,6 +3985,7 @@ body.scrolled .fixed-button--top .icon {
   flex-direction: column;
   justify-content: space-between;
   gap: 40px;
+  min-height: 660px;
 }
 .banner__text {
   font-size: 40px;
@@ -5945,6 +5946,9 @@ body.scrolled .fixed-button--top .icon {
     font-size: 20px;
     margin-bottom: 15px;
   }
+  .banner__panel {
+    min-height: 520px;
+  }
 }
 @media (max-width: 1400px) {
   .banners__panel__content {
@@ -5952,6 +5956,9 @@ body.scrolled .fixed-button--top .icon {
   }
   .banners__panel__contents {
     height: 230px;
+  }
+  .banner__panel {
+    min-height: 430px;
   }
   .promo__block__image img {
     max-width: 300px;
@@ -5987,6 +5994,9 @@ body.scrolled .fixed-button--top .icon {
 @media (max-width: 1200px) {
   body {
     --section-gap: 30px;
+  }
+  .banner__panel {
+    min-height: 410px;
   }
   .banners__panel {
     padding: 40px;

@@ -33,22 +33,24 @@
       </div>
     <?php endif; ?>
   </div>
-  <div class="product__header">
-    <?php if($fields['iframe'] && $gallery_panel_hidden): ?>
-      <div class="product__header__side product__header__side--iframe">
-        <iframe src="<?= $fields['iframe'] ?>" frameborder="0"></iframe>
+  <?php if(($fields['iframe'] && $gallery_panel_hidden) || count($gallery) || count($gallery_mobile)): ?>
+    <div class="product__header">
+      <?php if($fields['iframe'] && $gallery_panel_hidden): ?>
+        <div class="product__header__side product__header__side--iframe">
+          <iframe src="<?= $fields['iframe'] ?>" frameborder="0"></iframe>
+        </div>
+      <?php endif; ?>
+      <div class="product__header__side product__header__side--gallery">
+        <?php
+          my_get_template_part('product/gallery', $gallery);
+          my_get_template_part('product/gallery', [
+            'data' => $gallery_mobile,
+            'mobile' => true
+          ]);
+        ?>
       </div>
-    <?php endif; ?>
-    <div class="product__header__side product__header__side--gallery">
-      <?php
-        my_get_template_part('product/gallery', $gallery);
-        my_get_template_part('product/gallery', [
-          'data' => $gallery_mobile,
-          'mobile' => true
-        ]);
-      ?>
-     </div>
-  </div>
+    </div>
+  <?php endif; ?>
   <div class="tabs">
     <?php if($is_tabs_needed || $links): ?>
     <div class="tabs__buttons">

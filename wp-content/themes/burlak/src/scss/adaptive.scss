@@ -46,6 +46,9 @@
     font-size: 20px;
     margin-bottom: 15px;
   }
+  .banner__panel{
+    min-height: 520px;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -56,6 +59,9 @@
       }
       font-size: 30px;
     }
+  }
+  .banner__panel{
+    min-height: 430px;
   }
   .promo__block__panel {
   }
@@ -101,6 +107,9 @@
 @media (max-width: 1200px) {
   body {
     --section-gap: 30px;
+  }
+  .banner__panel{
+    min-height: 410px;
   }
   .banners__panel {
     padding: 40px;
