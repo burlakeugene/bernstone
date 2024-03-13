@@ -34,11 +34,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const View = Burlak.InView;
   const Notification = new Notic();
 
-  Notification.addMessage({
-    message: '42141241',
-    type: 'success',
-  });
-
   document.addEventListener('wpcf7mailsent', function (event) {
     Fancybox.close();
     Notification.addMessage({
