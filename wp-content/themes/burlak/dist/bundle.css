@@ -122,16 +122,6 @@
   align-self: center;
 }
 
-.notic__message--empty {
-  text-align: right;
-}
-
-.notic__message--empty .notic__message__inner {
-  width: 40px;
-  height: 40px;
-  padding: 10px;
-}
-
 /*# sourceMappingURL=bundle.css.map*/
 /*!*********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/@fancyapps/ui/dist/fancybox.css ***!
