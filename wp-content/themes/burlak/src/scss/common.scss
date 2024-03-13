@@ -1768,6 +1768,7 @@ body.scrolled {
       flex-wrap: wrap;
       gap: 40px;
       max-width: 1100px;
+      margin: var(--section-gap) auto;
       .content {
         flex: 1;
         padding: 0;

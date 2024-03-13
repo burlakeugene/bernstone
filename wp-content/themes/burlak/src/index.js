@@ -4,6 +4,7 @@ import Maskit from 'maskit';
 import Map from './js/map.js';
 import GoogleMap from './js/google-map.js';
 import Notic from 'notic';
+import 'notic/dist/bundle.css';
 import CookieToggler from './js/cookieToggler';
 import Search from './js/search';
 import Cart from './js/cart';
@@ -32,6 +33,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const isMobile = new Burlak.Detection().isMobile;
   const View = Burlak.InView;
   const Notification = new Notic();
+
+  Notification.addMessage({
+    message: '42141241',
+    type: 'success',
+  });
 
   document.addEventListener('wpcf7mailsent', function (event) {
     Fancybox.close();
