@@ -4,7 +4,6 @@ import Maskit from 'maskit';
 import Map from './js/map.js';
 import GoogleMap from './js/google-map.js';
 import Notic from 'notic';
-import 'notic/dist/bundle.css';
 import CookieToggler from './js/cookieToggler';
 import Search from './js/search';
 import Cart from './js/cart';
