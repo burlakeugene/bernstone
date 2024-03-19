@@ -5,8 +5,13 @@
   <div class="teasers">
     <?php
       foreach($list as $item):
+        $tag = $item['anchor'] ? 'a' : 'div';
+        $class = 'teaser';
+        if($item['anchor']){
+          $class .= ' scroller';
+        }
       ?>
-        <div class="teaser">
+        <<?= $tag ?> class="<?= $class ?>" <?= $item['anchor'] ? 'href="'.$item['anchor'].'"' : '' ?>>
           <?php if($item['image']):
             ?>
             <img  class="teaser__image" src="<?= $item['image']['sizes']['medium'] ?>" alt="<?= getAlt($item['image']) ?>">
@@ -23,7 +28,7 @@
               <?php endif; ?>
             </div>
           <?php endif; ?>
-        </div>
+        </<?= $tag ?>>
       <?php
       endforeach;
     ?>

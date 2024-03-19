@@ -3225,6 +3225,12 @@ body.scrolled .fixed-button--top .icon {
 .content-block--content .content .button, .content-block--content .content .tabs__button {
   align-self: flex-start;
 }
+.content-block--banners .banners {
+  margin: 0;
+}
+.content-block--anchor {
+  margin: 0;
+}
 .content__wrapper {
   display: flex;
   flex-wrap: wrap;
