@@ -1745,6 +1745,7 @@ body.scrolled {
   }
   &-block {
     margin: var(--section-gap) 0;
+    color: var(--gray);
     &:first-child {
       margin-top: 0;
     }
@@ -1971,6 +1972,7 @@ body.scrolled {
   border-radius: 50px;
   background-color: var(--grid-background);
   flex-wrap: wrap;
+  color: currentColor;
   &__image {
     width: 100%;
     max-width: 260px;
@@ -1986,7 +1988,6 @@ body.scrolled {
   &__title {
     padding: 10px 40px;
     background-color: var(--theme);
-    color: var(--gray);
     text-transform: uppercase;
     font-family: unbounded;
     font-size: 20px;
@@ -2012,7 +2013,6 @@ body.scrolled {
     gap: 40px;
   }
   &__title {
-    color: var(--gray);
     font-size: 35px;
     font-family: unbounded;
     font-weight: 300;
@@ -2083,7 +2083,6 @@ body.scrolled {
     color: var(--gray-light);
   }
   &__name {
-    color: var(--gray);
   }
   &__rate {
     --size: 15px;
@@ -2115,7 +2114,11 @@ body.scrolled {
     font-size: 30px;
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--gray);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
   }
   &__item {
     @include flexContainer(100px, 2);
@@ -2146,7 +2149,6 @@ body.scrolled {
         font-family: unbounded;
         text-transform: uppercase;
         font-size: 25px;
-        color: var(--gray);
       }
       &__attribute {
         span {
@@ -2232,7 +2234,6 @@ body.scrolled {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    color: var(--gray);
     &__title {
       h2 {
         font-size: 40px;

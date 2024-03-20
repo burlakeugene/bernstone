@@ -13,7 +13,7 @@
   .banners__panel {
     padding: 50px;
   }
-  .banners__next {
+  .banners__guarantee {
     width: 140px;
     height: 140px;
   }
@@ -280,7 +280,7 @@
     width: 100%;
     border-radius: 50px;
   }
-  .banners__next {
+  .banners__guarantee {
     display: none;
   }
   .banners {
@@ -692,6 +692,12 @@
     &__text {
       font-size: 20px;
     }
+  }
+  .banners__panel__content__text--mini{
+    display: none;
+  }
+  .content-block--numbers ol{
+    gap: 30px;
   }
 }
 
