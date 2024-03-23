@@ -14,7 +14,7 @@
         ?>
         <div class="products-block__list">
           <?php
-          foreach($list as $index => $product):
+          foreach($list as $inner_index => $product):
           ?>
           <div class="products-block__item">
             <?php
@@ -28,7 +28,7 @@
                     'config' => [
                       'slidesPerView' => 1,
                     ],
-                    'key' => 'gallery--'.$index,
+                    'key' => 'gallery--'.$index.'-'.$inner_index,
                     'item' => [
                       'path' => 'blocks/content-slider-item'
                     ]
